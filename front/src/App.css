@@ -186,7 +186,9 @@ h3{
 
 .links{
     text-decoration: none;
+    font-size: 30px;
 }
+
 
 @media only screen and (max-width:500px) {
 .btnElegir-page{
