@@ -57,15 +57,15 @@ login(userData)
         setLogin(false)
        
       } else {
-      
-        alert('Usuario o contraseña incorrecto')
+      throw new Error('error')
+        
       }
     } catch (error) {
       console.log(error)
     }
    
   }
-
+console.log(user)
   return (
     <div className='login-container'>
       <div className='login-logo'></div>
