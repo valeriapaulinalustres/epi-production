@@ -1,0 +1,70 @@
+.navbar-container{
+  right: 0;
+    width: 200px;
+    position: fixed;
+    top: 100px;
+   
+}
+
+.linksContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+background-color: var(--rojo);
+    position: absolute;
+    z-index: 3;
+    width: 200px;
+   
+    
+    
+}
+
+.menu-layer{
+   
+   position: absolute;
+   z-index: 5;
+   width: 200px;
+   height: 60px;
+}
+
+.x{
+  
+  
+    position: absolute;
+    z-index: 10;
+   margin: 2px;
+  
+}
+
+.xButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--rojo);
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+   color: white;
+   
+}
+
+
+.nav-links{
+   
+    border-left: 1px solid var(--naranja);
+    border-right: 1px solid var(--naranja);
+    border-top: 0.5px solid var(--naranja);
+    border-bottom: 0.5px solid var(--naranja);
+ 
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--naranja);
+  
+    
+
+
+}

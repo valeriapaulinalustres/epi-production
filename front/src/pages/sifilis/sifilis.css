@@ -1,0 +1,45 @@
+.doughnutChart-sifilis{
+    width: 400px;
+    height: 500px;
+    margin: 20px;
+    border: 1px solid var(--salmon);
+    padding: 20px;
+}
+
+.barChart-sifilis{
+    width: 80%;
+    margin: 20px;
+    border: 1px solid var(--salmon);
+    padding: 20px;
+    
+}
+
+.barChartENO-sifilis{
+    width: 80%;
+    margin: 20px;
+    border: 1px solid var(--salmon);
+    padding: 20px;  
+}
+
+
+@media only screen and (max-width:980px) {
+    
+    .doughnutChart-sifilis{
+        width: 70%;
+       
+    }
+    
+    .barChart-sifilis{
+        width: 70%;
+       
+        
+    }
+    
+    .barChartENO-sifilis{
+        width: 70%;
+       
+    
+    
+        
+    }
+    }

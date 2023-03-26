@@ -12,3 +12,5 @@ export const comparePasswords = async(password,passwordBD)=>{
 }
 
 export const PORT = '8084'
+
+//en el front, escribirle a 'https://epi-production.vercel.app/api/users' por ej

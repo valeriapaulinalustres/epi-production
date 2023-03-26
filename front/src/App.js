@@ -1,36 +1,88 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './app.css'
 
-function App() {
+// components
+import Home from './pages/home/Home';
+import HeaderMenu from './header/HeaderMenu';
+import Navbar from './header/Navbar';
+import Header from './header/Header'
+import Dengue from './pages/dengue/Dengue';
+import Hiv from './pages/hiv/Hiv';
+import Footer from './footer/Footer';
+import Upload from './pages/upload/Upload';
+import Covid from './pages/covid/Covid';
+import Sifilis from './pages/sifilis/Sifilis';
+import Tbc from './pages/tbc/Tbc';
+import LoginUser from './pages/login/LoginUser'
+import DataContext, { DataProvider } from './context/DataContext';
+import Profile from './pages/profile/Profile'
+import { useContext } from 'react';
+import AddUser from './pages/profile/AddUser';
 
-async function probar () {
-  const res = await fetch('https://epi-production.vercel.app/api/users')
-  //http://localhost:8083/api/users
-  const data = await res.json()
-console.log(data)
-  return data
-} 
 
-let data = probar()
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        {data.users}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+const App = () => {
+
+const [login, setLogin] = useState(true)
+
+  return ( <>
+    {login 
+    ? (
+     <DataProvider>
+     <BrowserRouter>
+      
+       <Routes>
+       <Route path="/" element={<LoginUser setLogin={setLogin}/>} />
+         
+       </Routes>
+      
+     </BrowserRouter>
+   </DataProvider>
+    ) : (<DataProvider>
+     <BrowserRouter>
+       <Header />
+       <Routes>
+       
+         <Route path="/" element={<Home />} />
+         <Route path="/dengue" element={<Dengue />} />
+         <Route path="/hiv" element={<Hiv />} />
+         <Route path="/sifilis" element={<Sifilis />} />
+         <Route path="/tbc" element={<Tbc />} />
+         <Route path="/upload" element={<Upload />} />
+         <Route path="/covid" element={<Covid />} />
+         <Route path='/profile' element={<Profile />} />
+         <Route path='/profile/add-user' element={<AddUser />} />
+       </Routes>
+       <Footer />
+     </BrowserRouter>
+   </DataProvider>
+    )
+    }
+    </>
+   
   );
-}
+};
 
 export default App;
+
+{/*  <DataProvider>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+      <Route path="/login" element={<LoginUser />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/dengue" element={<Dengue />} />
+        <Route path="/hiv" element={<Hiv />} />
+        <Route path="/sifilis" element={<Sifilis />} />
+        <Route path="/tbc" element={<Tbc />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/covid" element={<Covid />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+    </DataProvider> */}
+
+{/*    */}

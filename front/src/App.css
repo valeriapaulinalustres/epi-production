@@ -1,38 +1,197 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding:0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+:root{
+    --rojo: #FF003C;
+    --rosa: #ffc6d3;
+    --lila: #d7afff;
+    --naranja: #FF9700;
+    --salmon: #ffd18d;
+    --violeta: #63128D;
+    --gris-claro: #F4F5FA;
+    --gris-oscuro: #828282;
+  
   }
+
+h2{
+    margin: 40px 10px 10px 10px;
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h3{
+    margin: 10px;
+    text-align: center;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.button{
+    border-radius: 5px;
+    padding: 10px ;
+    margin: 10px 10px;
+    color: var(--naranja);
+    font-weight: bold;
+    width: 150px;
+    background-color: white;
+    box-shadow: 2px 2px 2px gray;
+    border: none;
+    cursor: pointer;
+    border: 2px solid var(--naranja);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button:hover{
+    background-color: var(--salmon);
+    color: white;
+    border: 2px solid var(--salmon);
+}
+
+.buttonActive{
+    border-radius: 5px;
+    padding: 10px ;
+    margin: 10px 10px;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    background-color: var(--rojo);
+    box-shadow: 2px 2px 2px  gray;
+    border: none;
+    cursor: pointer;
+    border: 2px solid var(--rojo);
+}
+
+.buttonActive:hover{
+    background-color: white;
+    color: var(--rojo);
+    border: 2px solid var(--rojo);
+}
+
+.download-btn{
+    border-radius: 5px;
+    margin: 10px 10px;
+    color: var(--naranja);
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 2px gray;
+    cursor: pointer;
+    border: 2px solid var(--naranja);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-btn-icon{
+    color: var(--naranja);
+    width: 20px;
+    height: 20px;
+}
+
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btnElegir-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.totales-page-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.graphs-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.totalesGraphs-container{
+    max-width: 1000px;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.recuadro{
+    width: 200px;
+   
+    border-radius: 5px;
+    color: white;
+    box-shadow: 2px 2px 2px gray;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.rojo{
+    background-color: var(--rojo);
+}
+
+.salmon{
+    background-color: var(--salmon);
+}
+
+.rosa{
+    background-color: var(--rosa);
+}
+
+.naranja{
+    background-color: var(--naranja);
+}
+
+.lila{
+    background-color: var(--lila);
+}
+
+.violeta{
+    background-color: var(--violeta);
+}
+
+.totalNumber{
+    font-size: 60px;
+    font-weight: bold;
+   text-align: right;
+}
+
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.links{
+    text-decoration: none;
+}
+
+@media only screen and (max-width:500px) {
+.btnElegir-page{
+   
+    flex-direction: column;
+    
+}
 }

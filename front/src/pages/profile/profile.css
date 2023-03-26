@@ -1,0 +1,120 @@
+.profile-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 0;
+}
+
+.profile-userData{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.profile-usersList{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table{
+    table-layout: fixed;
+  border-collapse: collapse;
+  border: 3px solid white;
+  min-width: 100%;
+max-height: 100%;
+
+  }
+
+  .th{
+    background-color: var(--rojo);
+    border-radius: 15px;
+    color: white;
+    padding: 3px;
+    height: 70px;
+  }
+
+
+  
+
+  .thead th:nth-child(1) {
+    width: 10%;
+    border: 6px solid white;
+  }
+  
+  .thead th:nth-child(2) {
+    width: 10%;
+    border: 6px solid white;
+  }
+  
+  .thead th:nth-child(3) {
+    width: 30%;
+     border: 6px solid white;
+  }
+  
+  .thead th:nth-child(4) {
+    width: 10%;
+     border: 6px solid white;
+  }
+  
+  .thead th:nth-child(5) {
+    width: 15%;
+     border: 6px solid white;
+  }
+
+  .thead th:nth-child(6) {
+    width: 5%;
+     border: 6px solid white;
+  }
+
+  .thead th:nth-child(7) {
+    width: 10%;
+     border: 6px solid white;
+  }
+
+  
+  .thead th:nth-child(8) {
+    width: 10%;
+     border: 6px solid white;
+  }
+
+
+  
+.th, .td {
+  padding: 5px;
+}
+
+.tbody td {
+  text-align: center;
+}
+
+.td {
+  border: 6px solid white;
+}
+
+.tbody tr:nth-child(odd) {
+  background-color: var(--salmon);
+}
+
+.tbody tr:nth-child(even) {
+  background-color: var(--rosa);
+}
+
+.profile-icons{
+    width: 40px;
+    height: 40px;
+    color: var(--rojo);
+    cursor: pointer;
+}
+
+.checkbox{
+  width: 20px;
+  height: 20px;
+
+}
+
+
