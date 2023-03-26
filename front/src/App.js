@@ -4,21 +4,21 @@ import './App.css';
 function App() {
 
 async function probar () {
-  const res = await fetch('https://epi-production.vercel.app')
+  const res = await fetch('https://epi-production.vercel.app/api/users')
   //http://localhost:8083/api/users
   const data = await res.json()
 console.log(data)
   return data
 } 
 
-probar()
+let data = probar()
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        {data.users}
         </p>
         <a
           className="App-link"
