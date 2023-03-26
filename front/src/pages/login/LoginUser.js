@@ -33,7 +33,7 @@ login(userData)
 
 
   async function login (user){
-  // console.log('front', user)
+   console.log('hola')
     try {
       let response = await fetch(`${URI}/api/users/login`,{
         method: "POST",
