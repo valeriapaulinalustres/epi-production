@@ -47,10 +47,7 @@ login(userData)
         }
        ),
       })
-      console.log('--llega--')
-      console.log(response)
-      const responseData = await response.json()
-      console.log(responseData)
+   
 
       if (response.status === 200) {
         const responseData = await response.json()
