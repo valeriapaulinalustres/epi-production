@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //rutas
 app.use('/api/users', (req,res)=>{
-    res.send('funciona')
+    res.json({user: 'valeria'})
 })
 
 
