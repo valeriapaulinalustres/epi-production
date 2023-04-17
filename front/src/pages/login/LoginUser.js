@@ -70,8 +70,8 @@ console.log(user)
     <div className='login-container'>
       <div className='login-logo'></div>
       <div className='login-alert-container'>
-        <h1>Página de prueba</h1>
-        <h2>Login</h2>
+        <h1>Municipalidad de Morón</h1>
+        <h2>Dirección de Epidemiología</h2>
         <form className='form-login' onSubmit={handleSubmitLogin}>
           <input className='calendar-input' placeholder='Ingrese su mail' />
           <input className='calendar-input' placeholder='Ingrese su contraseña' type='password' name='password'/>
