@@ -1,0 +1,12 @@
+Uso local:
+
+Desde la carpeta Back: npm start en la terminal.
+Desde la carpeta Front: npm start en la terminal.
+
+En el Front, en utils, cambiar la URI a localhost.
+
+Uso en la web:
+
+En el Front, en utils, cambiar la URI a Vercel.
+Luego pushear cambios.
+Ir a Vercel para ver el deploy de epi-production

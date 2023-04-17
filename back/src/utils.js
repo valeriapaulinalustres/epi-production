@@ -11,6 +11,6 @@ export const comparePasswords = async(password,passwordBD)=>{
     return bcrypt.compare(password,passwordBD)
 }
 
-export const PORT = '8084'
+export const PORT = '8082'
 
 //en el front, escribirle a 'https://epi-production.vercel.app/api/users' por ej

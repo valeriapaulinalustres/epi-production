@@ -32,6 +32,23 @@ function Profile() {
     }
   }
 
+  async function deleteUser(id){
+    try {
+      const response = await fetch (`${URI}/api/users/delete-user/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-type': 'application/json'}
+      })
+      const responseData = await response.json()
+      console.log(responseData)
+    } catch (error) {
+      console.log('error:', error)
+    }
+  }
+
+  function handleDelete (id) {
+    deleteUser(id).then(()=> getUsers())
+  }
+
   //rol user sólo verá el principio
   return (
     <div className="profile-container">
@@ -74,13 +91,18 @@ function Profile() {
                       <td className="td">{el.profession}</td>
                       <td className="td">{el.job}</td>
                       <td className="td">{el.email}</td>
-
+                      <td className="td">
                       <input type="checkbox" className="td checkbox" checked={user?.isAdmin === true && 'checked'}/>
+                      </td>
+                      
                       <td className="td black">
                         <BsPencil className="profile-icons" />
                       </td>
                       <td className="td blue">
-                        <RiDeleteBin6Line className="profile-icons" />
+                        <RiDeleteBin6Line 
+                        className="profile-icons" 
+                        onClick={()=>handleDelete(el._id)}
+                        />
                       </td>
                     </tr>
                   );
