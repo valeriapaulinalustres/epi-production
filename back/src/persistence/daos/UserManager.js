@@ -45,27 +45,15 @@ console.log('usa localhost')
 
 
 async getUsers () {
-  console.log('pasa')
+ 
   try {
     const users = await userModel.find()
-let newUsers = []
+
 
     if (users) { 
 
 
-      for (let i = 0; i < users.length; i++) {
-let user = {
-  first_name,
-  last_name,
-  email,
-  profession,
-  job,
-isAdmin
-}
-  newUsers.push(user)
-      }
-console.log(newUsers)
-      return newUsers
+      return users
     } else {
     return null
     }

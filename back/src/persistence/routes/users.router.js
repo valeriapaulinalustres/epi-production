@@ -8,9 +8,25 @@ const usersManager = new UsersManager();
 router.get("/", async (req, res) => {
   //traerá la lista de usuarios y la mostrará en perfil
   const users = await usersManager.getUsers();
+  const newUsers= []
   if (users) {
-   // res.send('llega')
-    res.json(users);
+
+    for (let i = 0; i < users.length; i++) {
+      let user = {
+      
+        first_name: users[i].first_name,
+        last_name: users[i].last_name,
+        email: users[i].email,
+        profession: users[i].profession,
+        job: users[i].job,
+      isAdmin: users[i].isAdmin
+      }
+        newUsers.push(user)
+            }
+      console.log(newUsers)
+
+
+    res.json(newUsers);
   } else {
     res.json({ mensaje: "no hay usuarios en la base de datos" });
   }
