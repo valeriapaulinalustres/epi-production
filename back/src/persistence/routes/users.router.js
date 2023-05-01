@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
       }
         newUsers.push(user)
             }
-      console.log(newUsers)
+
 
 
     res.json(newUsers);

@@ -78,9 +78,8 @@ async getUsers () {
 
 async editUser (id, editedUser) {
   console.log(editedUser)
-  const hashNewPassword = await hashPassword(editedUser.password)
-  const newUser = { ...editedUser, password: hashNewPassword }
-   const { first_name, last_name, email, profession, job, rol, password} = newUser
+ 
+   const { first_name, last_name, email, profession, job, rol} = newUser
   
    try {
     const editedUser = await userModel.findByIdAndUpdate(id, {
@@ -89,8 +88,7 @@ async editUser (id, editedUser) {
       email,
       profession,
       job,
-      rol, 
-      password
+      rol
     }, {new: true})
     return editedUser
 

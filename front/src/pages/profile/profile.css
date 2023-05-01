@@ -61,22 +61,22 @@ max-height: 100%;
   }
   
   .thead th:nth-child(3) {
-    width: 25%;
+    width: 20%;
      border: 6px solid white;
   }
   
   .thead th:nth-child(4) {
-    width: 15%;
+    width: 10%;
      border: 6px solid white;
   }
   
   .thead th:nth-child(5) {
-    width: 15%;
+    width: 20%;
      border: 6px solid white;
   }
 
   .thead th:nth-child(6) {
-    width: 5%;
+    width: 10%;
      border: 6px solid white;
   }
 
@@ -87,6 +87,11 @@ max-height: 100%;
 
   
   .thead th:nth-child(8) {
+    width: 10%;
+     border: 6px solid white;
+  }
+
+  .thead th:nth-child() {
     width: 10%;
      border: 6px solid white;
   }

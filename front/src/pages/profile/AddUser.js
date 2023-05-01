@@ -13,6 +13,62 @@ function AddUser() {
   function handleSubmit(e) {
     e.preventDefault();
 
+{
+  if (userToEdit?.first_name) {
+    //se va a usar el botón submit como edit
+    let first_name = e.target[0].value;
+    let last_name = e.target[1].value;
+    let email = e.target[2].value;
+    let profession = e.target[3].value;
+    let job = e.target[4].value;
+    let isAdmin = e.target[5].checked;
+
+    if (
+      !first_name ||
+      !last_name ||
+      !email ||
+      !profession ||
+      !job 
+    
+      
+    ) {
+      return console.error("Falta ingresar datos");
+    }
+  
+
+    let expReg =
+      /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+        email
+      );
+
+  
+
+      if (!expReg) {return console.log(`${email} es un mail inválido`)}
+  
+
+    const newUser = {
+      first_name,
+      last_name,
+      email,
+      profession,
+      job,
+      isAdmin
+    };
+    e.target[0].value = "";
+    e.target[1].value = "";
+    e.target[2].value = "";
+    e.target[3].value = "";
+    e.target[4].value = "";
+
+    e.target[5].checked = false;
+
+    console.log(newUser)
+
+   editUser(newUser)
+   //.then(()=>navigate("/profile"))
+  } else {
+    //se va a usar el botón submit como add
+
     let first_name = e.target[0].value;
     let last_name = e.target[1].value;
     let email = e.target[2].value;
@@ -66,6 +122,10 @@ function AddUser() {
    register(newUser)
    .then(()=>navigate("/profile"))
   }
+}
+    
+   
+  }
 
   async function register(newUser) {
     const { first_name, last_name, email, profession, job, password, isAdmin } =
@@ -96,6 +156,10 @@ function AddUser() {
     } catch (error) {
       console.log("error al crear usuario");
     }
+  }
+
+  async function editUser (newUser){
+    console.log(newUser)
   }
 
   return (
@@ -160,8 +224,10 @@ function AddUser() {
             defaultValue={userToEdit.job}
           />
         </div>
-
-        <div className="smallContainer">
+{
+!userToEdit?.first_name &&
+<>
+<div className="smallContainer">
           <label className="titleLabel">Contraseña</label>
           <input
             type="password"
@@ -170,6 +236,9 @@ function AddUser() {
           
           />
         </div>
+</>
+}
+       
 
         <div className="smallContainer">
           <label className="titleLabel">¿Es admin?</label>

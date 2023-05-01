@@ -7,7 +7,8 @@ import DataContext from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import {IoMdCloseCircleOutline} from 'react-icons/io';
 import {BiCheckboxChecked} from 'react-icons/bi';
-import {BiCheckbox} from 'react-icons/bi'
+import {BiCheckbox} from 'react-icons/bi';
+import {GiPadlock} from 'react-icons/gi'
 
 function Profile() {
   const [usersList, setUsersList] = useState([]);
@@ -64,6 +65,10 @@ function Profile() {
      navigate("/profile/add-user")
   }
 
+  function handleChangePassword (el) {
+    console.log(el)
+  }
+
   //rol user sólo verá el principio
   return (
     <div className="profile-container">
@@ -101,7 +106,7 @@ function Profile() {
                   <th className="th">Puesto</th>
                   <th className="th">Mail</th>
                   <th className="th">Admin</th>
-                  <th className="th" colSpan="2">
+                  <th className="th" colSpan="3">
                     Edición
                   </th>
                 </tr>
@@ -135,6 +140,12 @@ function Profile() {
                         <RiDeleteBin6Line 
                         className="profile-icons" 
                         onClick={()=>handleDelete(el._id)}
+                        />
+                      </td>
+                      <td className="td blue">
+                        <GiPadlock 
+                        className="profile-icons" 
+                        onClick={()=>handleChangePassword(el._id)}
                         />
                       </td>
                     </tr>
