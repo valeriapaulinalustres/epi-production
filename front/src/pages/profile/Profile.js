@@ -5,12 +5,14 @@ import { useState, useEffect, useContext } from "react";
 import { URI } from "../../utils";
 import DataContext from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
-import {IoMdCloseCircleOutline} from 'react-icons/io'
+import {IoMdCloseCircleOutline} from 'react-icons/io';
+import {BiCheckboxChecked} from 'react-icons/bi';
+import {BiCheckbox} from 'react-icons/bi'
 
 function Profile() {
   const [usersList, setUsersList] = useState([]);
 
-  const { user } = useContext(DataContext);
+  const { user,userToEdit, setUserToEdit, } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -48,6 +50,18 @@ function Profile() {
 
   function handleDelete (id) {
     deleteUser(id).then(()=> getUsers())
+  }
+
+  function handleAddUser () {
+    //para indicar que la vista AddUser será usada para add
+    setUserToEdit({})
+    navigate("/profile/add-user")
+  }
+
+  function handleEditUser (el) {
+     //para indicar que la vista AddUser será usada para edit
+     setUserToEdit(el)
+     navigate("/profile/add-user")
   }
 
   //rol user sólo verá el principio
@@ -103,11 +117,19 @@ function Profile() {
                       <td className="td">{el.job}</td>
                       <td className="td">{el.email}</td>
                       <td className="td">
-                      <input type="checkbox" className="td checkbox" checked={user?.isAdmin === true && 'checked'}/>
+                        {
+                          el?.isAdmin
+                          ? <BiCheckboxChecked className="close-icon"/>
+                          : <BiCheckbox className="close-icon"/>
+                        }
+                    
                       </td>
                       
                       <td className="td black">
-                        <BsPencil className="profile-icons" />
+                        <BsPencil 
+                        className="profile-icons" 
+                        onClick={()=>handleEditUser(el)}
+                        />
                       </td>
                       <td className="td blue">
                         <RiDeleteBin6Line 
@@ -123,7 +145,7 @@ function Profile() {
           </div>
           <button
             className="button btnProfile"
-            onClick={() => navigate("/profile/add-user")}
+            onClick={handleAddUser}
           >
             Agregar Usuario
           </button>
