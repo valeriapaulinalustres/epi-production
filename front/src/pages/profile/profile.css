@@ -81,12 +81,12 @@ max-height: 100%;
   }
 
   .thead th:nth-child(7) {
-    width: 10%;
+    width: 20%;
      border: 6px solid white;
   }
 
   
-  .thead th:nth-child(8) {
+  /* .thead th:nth-child(8) {
     width: 10%;
      border: 6px solid white;
   }
@@ -94,7 +94,7 @@ max-height: 100%;
   .thead th:nth-child(9) {
     width: 10%;
      border: 6px solid white;
-  }
+  } */
 
 
   
