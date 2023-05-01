@@ -167,7 +167,7 @@ function AddUser() {
             type="password"
             className="addUdser-input"
             name="password"
-            defaultValue={userToEdit.password}
+          
           />
         </div>
 

@@ -26,7 +26,7 @@ export default class UsersManager {
 
 
   async loginUser(user) {
-    console.log('aca', user)
+console.log('usa localhost')
     try {
       const { email, password } = user
       const usuario = await userModel.findOne({ email })
@@ -45,10 +45,27 @@ export default class UsersManager {
 
 
 async getUsers () {
+  console.log('pasa')
   try {
     const users = await userModel.find()
+let newUsers = []
+
     if (users) { 
-      return users
+
+
+      for (let i = 0; i < users.length; i++) {
+let user = {
+  first_name,
+  last_name,
+  email,
+  profession,
+  job,
+isAdmin
+}
+  newUsers.push(user)
+      }
+console.log(newUsers)
+      return newUsers
     } else {
     return null
     }
@@ -73,7 +90,9 @@ async getUsers () {
 
 async editUser (id, editedUser) {
   console.log(editedUser)
-   const { first_name, last_name, email, profession, job, rol} = editedUser
+  const hashNewPassword = await hashPassword(editedUser.password)
+  const newUser = { ...editedUser, password: hashNewPassword }
+   const { first_name, last_name, email, profession, job, rol, password} = newUser
   
    try {
     const editedUser = await userModel.findByIdAndUpdate(id, {
@@ -82,7 +101,8 @@ async editUser (id, editedUser) {
       email,
       profession,
       job,
-      rol
+      rol, 
+      password
     }, {new: true})
     return editedUser
 
