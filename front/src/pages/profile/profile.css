@@ -91,7 +91,7 @@ max-height: 100%;
      border: 6px solid white;
   }
 
-  .thead th:nth-child() {
+  .thead th:nth-child(9) {
     width: 10%;
      border: 6px solid white;
   }

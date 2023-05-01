@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
     for (let i = 0; i < users.length; i++) {
       let user = {
-      
+      _id: users[i]._id,
         first_name: users[i].first_name,
         last_name: users[i].last_name,
         email: users[i].email,
