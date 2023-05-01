@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { URI } from "../../utils";
 import DataContext from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
+import {IoMdCloseCircleOutline} from 'react-icons/io'
 
 function Profile() {
   const [usersList, setUsersList] = useState([]);
@@ -53,18 +54,28 @@ function Profile() {
   return (
     <div className="profile-container">
       <div className="profile-user">
-        <h1>Hola usuario 👋</h1>
+        <h1>Hola usuario 👋 {user.first_name}</h1>
         <div className="profile-userData">
-          <h3>Nombre y apellido:</h3>
-          <h3>Profesión:</h3>
-          <h3>Puesto:</h3>
-          <h3>Rol:</h3>
+          <h3>Nombre y apellido: {user.first_name} {user.last_name}</h3>
+          <h3>Profesión: {user.profession}</h3>
+          <h3>Puesto: {user.job}</h3>
+          <h3>Rol: {user.isAdmin ? 'Admin' : 'user'}</h3>
         </div>
       </div>
 
       {user?.isAdmin && (
         <div className="profile-usersList">
-          <h2>Lista de usuarios</h2>
+          <div className="title-users">
+          <h2 className="add-user-title">Lista de usuarios</h2>
+          <IoMdCloseCircleOutline
+        className="close-icon"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+          </div>
+
+         
 
           <div className="secondBlock">
             <table className="table">

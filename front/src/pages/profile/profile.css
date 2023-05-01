@@ -7,6 +7,14 @@
     padding: 40px 0;
 }
 
+.profile-user{
+  width: 80%;
+}
+
+.secondBlock{
+  width: 100%;
+}
+
 .profile-userData{
     display: flex;
     flex-direction: column;
@@ -19,13 +27,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
 
 .table{
     table-layout: fixed;
   border-collapse: collapse;
   border: 3px solid white;
-  min-width: 100%;
+width: 100%;
 max-height: 100%;
 
   }
@@ -52,12 +61,12 @@ max-height: 100%;
   }
   
   .thead th:nth-child(3) {
-    width: 30%;
+    width: 25%;
      border: 6px solid white;
   }
   
   .thead th:nth-child(4) {
-    width: 10%;
+    width: 15%;
      border: 6px solid white;
   }
   

@@ -189,6 +189,12 @@ h3{
     font-size: 30px;
 }
 
+.close-icon{
+    width: 40px;
+    height: 40px;
+    color: var(--rojo);
+}
+
 
 @media only screen and (max-width:500px) {
 .btnElegir-page{
