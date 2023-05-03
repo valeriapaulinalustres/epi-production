@@ -61,6 +61,7 @@ function Profile() {
 
   function handleEditUser (el) {
      //para indicar que la vista AddUser será usada para edit
+  
      setUserToEdit(el)
      navigate("/profile/add-user")
   }
@@ -80,6 +81,7 @@ function Profile() {
           <h3>Puesto: {user.job}</h3>
           <h3>Rol: {user.isAdmin ? 'Admin' : 'user'}</h3>
         </div>
+        <button className="button">Cerrar sesión</button>
       </div>
 
       {user?.isAdmin && (
@@ -136,12 +138,14 @@ function Profile() {
                         onClick={()=>handleEditUser(el)}
                         />
                       </td>
+
                       <td className="td blue">
                         <RiDeleteBin6Line 
                         className="profile-icons" 
                         onClick={()=>handleDelete(el._id)}
                         />
                       </td>
+                      
                       <td className="td blue">
                         <GiPadlock 
                         className="profile-icons" 

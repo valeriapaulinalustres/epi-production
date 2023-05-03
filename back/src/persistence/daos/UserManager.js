@@ -76,10 +76,10 @@ async getUsers () {
   }
 }
 
-async editUser (id, editedUser) {
-  console.log(editedUser)
+async editUser (editedUser, id) {
+  console.log('del manager prev',editedUser)
  
-   const { first_name, last_name, email, profession, job, rol} = newUser
+   const { first_name, last_name, email, profession, job, isAdmin} = editedUser
   
    try {
     const editedUser = await userModel.findByIdAndUpdate(id, {
@@ -88,7 +88,7 @@ async editUser (id, editedUser) {
       email,
       profession,
       job,
-      rol
+      isAdmin
     }, {new: true})
     return editedUser
 

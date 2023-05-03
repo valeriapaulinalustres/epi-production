@@ -62,10 +62,10 @@ function AddUser() {
 
     e.target[5].checked = false;
 
-    console.log(newUser)
+    console.log(newUser, userToEdit._id)
 
-   editUser(newUser)
-   //.then(()=>navigate("/profile"))
+  editUser(newUser, userToEdit._id)
+  .then(()=>navigate("/profile"))
   } else {
     //se va a usar el botón submit como add
 
@@ -158,8 +158,28 @@ function AddUser() {
     }
   }
 
-  async function editUser (newUser){
-    console.log(newUser)
+  async function editUser (editedUser, idUser){
+    const { first_name, last_name, email, profession, job, isAdmin } =
+    editedUser;
+
+    try {
+      const response = await fetch (`${URI}/api/users/edit-user/${idUser}`, {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          first_name,
+          last_name,
+          email,
+          profession,
+          job,
+          isAdmin,
+        }),
+      })
+      const responseData = await response.json();
+      console.log(responseData.mensaje);
+    } catch (error) {
+      console.log("error al crear usuario");
+    }
   }
 
   return (
@@ -246,7 +266,7 @@ function AddUser() {
             type="checkbox"
             className="addUdser-checkbox"
             name="isAdmin"
-            checked={userToEdit.isAdmin && "checked"}
+            defaultChecked={userToEdit.isAdmin && "checked"}
           />
         </div>
 

@@ -66,7 +66,8 @@ router.post("/login", async (req, res) => {
 
 router.put("/edit-user/:id", async (req, res) => {
   //editará usuarios
-  const editedUser = await usersManager.editUser(req.params.id, req.body);
+  console.log('del router', req.body)
+  const editedUser = await usersManager.editUser(req.body, req.params.id);
   if (editedUser) {
     return res.json({
       mensaje: `Usuario ${editedUser.first_name} actualizado con éxito`,
