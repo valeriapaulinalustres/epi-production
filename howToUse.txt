@@ -11,6 +11,3 @@ En el Front, en utils, cambiar la URI a Vercel.
 Luego pushear cambios en la carpeta base (epi-production)
 Ir a Vercel para ver el deploy de epi-production
 
-****
-hacer:
-edición de usuarios

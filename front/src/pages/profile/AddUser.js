@@ -4,137 +4,90 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 import { useContext } from "react";
+import UsersContext from "../../context/UsersContext.js";
 
 function AddUser() {
   const { user, userToEdit, setUserToEdit } = useContext(DataContext);
+
+  const { register, editUser } = useContext(UsersContext);
 
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-{
-  if (userToEdit?.first_name) {
-    //se va a usar el botón submit como edit
-    let first_name = e.target[0].value;
-    let last_name = e.target[1].value;
-    let email = e.target[2].value;
-    let profession = e.target[3].value;
-    let job = e.target[4].value;
-    let isAdmin = e.target[5].checked;
+    {
+      if (userToEdit?.first_name) {
+        //se va a usar el botón submit como edit
+        let first_name = e.target[0].value;
+        let last_name = e.target[1].value;
+        let email = e.target[2].value;
+        let profession = e.target[3].value;
+        let job = e.target[4].value;
+        let isAdmin = e.target[5].checked;
 
-    if (
-      !first_name ||
-      !last_name ||
-      !email ||
-      !profession ||
-      !job 
-    
-      
-    ) {
-      return console.error("Falta ingresar datos");
-    }
-  
+        if (!first_name || !last_name || !email || !profession || !job) {
+          return console.error("Falta ingresar datos");
+        }
 
-    let expReg =
-      /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
-        email
-      );
+        let expReg =
+          /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+            email
+          );
 
-  
+        if (!expReg) {
+          return console.log(`${email} es un mail inválido`);
+        }
 
-      if (!expReg) {return console.log(`${email} es un mail inválido`)}
-  
+        const newUser = {
+          first_name,
+          last_name,
+          email,
+          profession,
+          job,
+          isAdmin,
+        };
+        e.target[0].value = "";
+        e.target[1].value = "";
+        e.target[2].value = "";
+        e.target[3].value = "";
+        e.target[4].value = "";
 
-    const newUser = {
-      first_name,
-      last_name,
-      email,
-      profession,
-      job,
-      isAdmin
-    };
-    e.target[0].value = "";
-    e.target[1].value = "";
-    e.target[2].value = "";
-    e.target[3].value = "";
-    e.target[4].value = "";
+        e.target[5].checked = false;
 
-    e.target[5].checked = false;
+        editUser(newUser, userToEdit._id).then(() => navigate("/profile"));
+      } else {
+        //se va a usar el botón submit como add
 
-    console.log(newUser, userToEdit._id)
+        let first_name = e.target[0].value;
+        let last_name = e.target[1].value;
+        let email = e.target[2].value;
+        let profession = e.target[3].value;
+        let job = e.target[4].value;
+        let password = e.target[5].value;
+        let isAdmin = e.target[6].checked;
 
-  editUser(newUser, userToEdit._id)
-  .then(()=>navigate("/profile"))
-  } else {
-    //se va a usar el botón submit como add
+        if (
+          !first_name ||
+          !last_name ||
+          !email ||
+          !profession ||
+          !job ||
+          !password
+        ) {
+          return console.error("Falta ingresar datos");
+        }
 
-    let first_name = e.target[0].value;
-    let last_name = e.target[1].value;
-    let email = e.target[2].value;
-    let profession = e.target[3].value;
-    let job = e.target[4].value;
-    let password = e.target[5].value;
-    let isAdmin = e.target[6].checked;
+        let expReg =
+          /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+            email
+          );
 
-    if (
-      !first_name ||
-      !last_name ||
-      !email ||
-      !profession ||
-      !job ||
-      !password 
-      
-    ) {
-      return console.error("Falta ingresar datos");
-    }
-  
+        if (!expReg) {
+          return console.log(`${email} es un mail inválido`);
+        }
 
-    let expReg =
-      /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
-        email
-      );
-
-      console.log(expReg)
-
-      if (!expReg) {return console.log(`${email} es un mail inválido`)}
-  
-
-    const newUser = {
-      first_name,
-      last_name,
-      email,
-      profession,
-      job,
-      password,
-      isAdmin
-    };
-    e.target[0].value = "";
-    e.target[1].value = "";
-    e.target[2].value = "";
-    e.target[3].value = "";
-    e.target[4].value = "";
-    e.target[5].value = "";
-    e.target[6].checked = false;
-
-    console.log(newUser)
-
-   register(newUser)
-   .then(()=>navigate("/profile"))
-  }
-}
-    
-   
-  }
-
-  async function register(newUser) {
-    const { first_name, last_name, email, profession, job, password, isAdmin } =
-      newUser;
-    try {
-      const response = await fetch(`${URI}/api/users/register`, {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
+        const newUser = {
           first_name,
           last_name,
           email,
@@ -142,43 +95,18 @@ function AddUser() {
           job,
           password,
           isAdmin,
-        }),
-      });
-      const responseData = await response.json();
-      console.log(responseData.mensaje);
-      // if (Response.status === 200) {
-      //  const responseData = response.json()
-      //  console.log(responseData)
+        };
+        e.target[0].value = "";
+        e.target[1].value = "";
+        e.target[2].value = "";
+        e.target[3].value = "";
+        e.target[4].value = "";
+        e.target[5].value = "";
+        e.target[6].checked = false;
 
-      // } else {
-      //   throw new Error ('error al crear usuario')
-      // }
-    } catch (error) {
-      console.log("error al crear usuario");
-    }
-  }
 
-  async function editUser (editedUser, idUser){
-    const { first_name, last_name, email, profession, job, isAdmin } =
-    editedUser;
-
-    try {
-      const response = await fetch (`${URI}/api/users/edit-user/${idUser}`, {
-        method: "PUT",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          first_name,
-          last_name,
-          email,
-          profession,
-          job,
-          isAdmin,
-        }),
-      })
-      const responseData = await response.json();
-      console.log(responseData.mensaje);
-    } catch (error) {
-      console.log("error al crear usuario");
+        register(newUser).then(() => navigate("/profile"));
+      }
     }
   }
 
@@ -244,21 +172,18 @@ function AddUser() {
             defaultValue={userToEdit.job}
           />
         </div>
-{
-!userToEdit?.first_name &&
-<>
-<div className="smallContainer">
-          <label className="titleLabel">Contraseña</label>
-          <input
-            type="password"
-            className="addUdser-input"
-            name="password"
-          
-          />
-        </div>
-</>
-}
-       
+        {!userToEdit?.first_name && (
+          <>
+            <div className="smallContainer">
+              <label className="titleLabel">Contraseña</label>
+              <input
+                type="password"
+                className="addUdser-input"
+                name="password"
+              />
+            </div>
+          </>
+        )}
 
         <div className="smallContainer">
           <label className="titleLabel">¿Es admin?</label>
@@ -270,7 +195,7 @@ function AddUser() {
           />
         </div>
 
-        <button type="submit" className="button" >
+        <button type="submit" className="button">
           Guardar cambios
         </button>
       </form>

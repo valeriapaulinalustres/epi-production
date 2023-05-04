@@ -5,15 +5,17 @@ import { useState, useEffect, useContext } from "react";
 import { URI } from "../../utils";
 import DataContext from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
-import {IoMdCloseCircleOutline} from 'react-icons/io';
-import {BiCheckboxChecked} from 'react-icons/bi';
-import {BiCheckbox} from 'react-icons/bi';
-import {GiPadlock} from 'react-icons/gi'
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { BiCheckboxChecked } from "react-icons/bi";
+import { BiCheckbox } from "react-icons/bi";
+import { GiPadlock } from "react-icons/gi";
+import UsersContext from "../../context/UsersContext.js";
 
 function Profile() {
-  const [usersList, setUsersList] = useState([]);
+  const { user, userToEdit, setUserToEdit } = useContext(DataContext);
 
-  const { user,userToEdit, setUserToEdit, } = useContext(DataContext);
+  const { getUsers, deleteUser, usersList, setUsersList } =
+    useContext(UsersContext);
 
   const navigate = useNavigate();
 
@@ -21,53 +23,25 @@ function Profile() {
     getUsers();
   }, []);
 
-  async function getUsers() {
-    try {
-      const response = await fetch(`${URI}/api/users`);
-      if (response.status === 200) {
-        const responseData = await response.json();
-        console.log(responseData);
-        setUsersList(responseData);
-      } else {
-        console.log(`Response Status ${response.status}`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  function handleDelete(id) {
+    deleteUser(id).then(() => getUsers());
   }
 
-  async function deleteUser(id){
-    try {
-      const response = await fetch (`${URI}/api/users/delete-user/${id}`, {
-        method: 'DELETE',
-        headers: {'Content-type': 'application/json'}
-      })
-      const responseData = await response.json()
-      console.log(responseData)
-    } catch (error) {
-      console.log('error:', error)
-    }
-  }
-
-  function handleDelete (id) {
-    deleteUser(id).then(()=> getUsers())
-  }
-
-  function handleAddUser () {
+  function handleAddUser() {
     //para indicar que la vista AddUser será usada para add
-    setUserToEdit({})
-    navigate("/profile/add-user")
+    setUserToEdit({});
+    navigate("/profile/add-user");
   }
 
-  function handleEditUser (el) {
-     //para indicar que la vista AddUser será usada para edit
-  
-     setUserToEdit(el)
-     navigate("/profile/add-user")
+  function handleEditUser(el) {
+    //para indicar que la vista AddUser será usada para edit
+
+    setUserToEdit(el);
+    navigate("/profile/add-user");
   }
 
-  function handleChangePassword (el) {
-    console.log(el)
+  function handleChangePassword(el) {
+    console.log(el);
   }
 
   //rol user sólo verá el principio
@@ -76,10 +50,12 @@ function Profile() {
       <div className="profile-user">
         <h1>Hola usuario 👋 {user.first_name}</h1>
         <div className="profile-userData">
-          <h3>Nombre y apellido: {user.first_name} {user.last_name}</h3>
+          <h3>
+            Nombre y apellido: {user.first_name} {user.last_name}
+          </h3>
           <h3>Profesión: {user.profession}</h3>
           <h3>Puesto: {user.job}</h3>
-          <h3>Rol: {user.isAdmin ? 'Admin' : 'user'}</h3>
+          <h3>Rol: {user.isAdmin ? "Admin" : "user"}</h3>
         </div>
         <button className="button">Cerrar sesión</button>
       </div>
@@ -87,16 +63,14 @@ function Profile() {
       {user?.isAdmin && (
         <div className="profile-usersList">
           <div className="title-users">
-          <h2 className="add-user-title">Lista de usuarios</h2>
-          <IoMdCloseCircleOutline
-        className="close-icon"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
+            <h2 className="add-user-title">Lista de usuarios</h2>
+            <IoMdCloseCircleOutline
+              className="close-icon"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
           </div>
-
-         
 
           <div className="secondBlock">
             <table className="table">
@@ -124,32 +98,31 @@ function Profile() {
                       <td className="td">{el.job}</td>
                       <td className="td">{el.email}</td>
                       <td className="td">
-                        {
-                          el?.isAdmin
-                          ? <BiCheckboxChecked className="close-icon"/>
-                          : <BiCheckbox className="close-icon"/>
-                        }
-                    
+                        {el?.isAdmin ? (
+                          <BiCheckboxChecked className="close-icon" />
+                        ) : (
+                          <BiCheckbox className="close-icon" />
+                        )}
                       </td>
-                      
+
                       <td className="td black">
-                        <BsPencil 
-                        className="profile-icons" 
-                        onClick={()=>handleEditUser(el)}
+                        <BsPencil
+                          className="profile-icons"
+                          onClick={() => handleEditUser(el)}
                         />
                       </td>
 
                       <td className="td blue">
-                        <RiDeleteBin6Line 
-                        className="profile-icons" 
-                        onClick={()=>handleDelete(el._id)}
+                        <RiDeleteBin6Line
+                          className="profile-icons"
+                          onClick={() => handleDelete(el._id)}
                         />
                       </td>
-                      
+
                       <td className="td blue">
-                        <GiPadlock 
-                        className="profile-icons" 
-                        onClick={()=>handleChangePassword(el._id)}
+                        <GiPadlock
+                          className="profile-icons"
+                          onClick={() => handleChangePassword(el._id)}
                         />
                       </td>
                     </tr>
@@ -158,10 +131,7 @@ function Profile() {
               </tbody>
             </table>
           </div>
-          <button
-            className="button btnProfile"
-            onClick={handleAddUser}
-          >
+          <button className="button btnProfile" onClick={handleAddUser}>
             Agregar Usuario
           </button>
         </div>
