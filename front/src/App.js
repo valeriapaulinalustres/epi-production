@@ -49,7 +49,7 @@ const App = () => {
                 <Route path="/tbc" element={<Tbc />} />
                 <Route path="/upload" element={<Upload />} />
                 <Route path="/covid" element={<Covid />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<Profile setLogin={setLogin} />} />
                 <Route path="/profile/add-user" element={<AddUser />} />
               </Routes>
               <Footer />

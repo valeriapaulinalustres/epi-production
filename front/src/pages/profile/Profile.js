@@ -11,10 +11,10 @@ import { BiCheckbox } from "react-icons/bi";
 import { GiPadlock } from "react-icons/gi";
 import UsersContext from "../../context/UsersContext.js";
 
-function Profile() {
-  const { user, userToEdit, setUserToEdit } = useContext(DataContext);
+function Profile({setLogin}) {
+  const { user, setUser, userToEdit, setUserToEdit} = useContext(DataContext);
 
-  const { getUsers, deleteUser, usersList, setUsersList } =
+  const { getUsers, deleteUser, usersList, setUsersList, logout } =
     useContext(UsersContext);
 
   const navigate = useNavigate();
@@ -44,6 +44,13 @@ function Profile() {
     console.log(el);
   }
 
+  function handleLogout (){
+    logout().then(()=>{
+      setUser(null)
+      setLogin(true)
+      navigate('/')})
+  }
+
   //rol user sólo verá el principio
   return (
     <div className="profile-container">
@@ -57,7 +64,7 @@ function Profile() {
           <h3>Puesto: {user.job}</h3>
           <h3>Rol: {user.isAdmin ? "Admin" : "user"}</h3>
         </div>
-        <button className="button">Cerrar sesión</button>
+        <button className="button" onClick={handleLogout}>Cerrar sesión</button>
       </div>
 
       {user?.isAdmin && (

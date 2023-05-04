@@ -118,6 +118,17 @@ const UsersProvider = ({ children }) => {
     }
   }
 
+  async function logout() {
+  
+    try {
+      const response = await fetch(`${URI}/api/users/logout`);
+      const responseData = await response.json();
+      console.log(responseData.mensaje);
+    } catch (error) {
+      console.log("error logout");
+    }
+  }
+
   const data = {
     getUsers,
     deleteUser,
@@ -126,6 +137,7 @@ const UsersProvider = ({ children }) => {
     register,
     editUser,
     login,
+    logout
   };
 
   return <UsersContext.Provider value={data}>{children}</UsersContext.Provider>;
