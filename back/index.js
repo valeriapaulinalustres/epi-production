@@ -6,7 +6,7 @@ import mongoStore from 'connect-mongo'
 import cors from 'cors'
 import { PORT } from './src/utils.js'
 
-import usersRouter from './src/persistence/routes/users.router.js'
+import usersRouter from './src/routes/users.router.js'
 
 const app = express()
 app.use(cors())
