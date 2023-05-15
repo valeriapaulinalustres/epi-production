@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <div className='header-container'>
-      <NavLink to="/home" className='logo'></NavLink>
+      <NavLink to="/" className='logo'></NavLink>
       <div className='menubar-container'>
         <NavLink to="/upload"  >
           <div className='menubar-buttons'>

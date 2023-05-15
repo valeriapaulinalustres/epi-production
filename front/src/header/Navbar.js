@@ -98,7 +98,7 @@ function Navbar(props) {
       
       <nav className="linksContainer" ref={el => (linksContainer = el)}>
           <NavLink 
-          to="/home" 
+          to="/" 
           className="nav-links" 
           onMouseEnter={mouseEnter} 
           onMouseLeave={mouseLeave} 
