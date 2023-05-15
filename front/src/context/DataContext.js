@@ -151,7 +151,10 @@ function calcularConfirmadosPorClasificacionEntreFechas(clasificacion, fechaInic
 
     let a = baseCompleta.filter(el => el.CLASIFICACION_MANUAL == "Caso confirmado DEN-1" && el.DEPARTAMENTO_RESIDENCIA == "Morón" )
     let b = baseCompleta.filter(el => el.CLASIFICACION_MANUAL == "Caso confirmado sin serotipo" && el.DEPARTAMENTO_RESIDENCIA == "Morón" )
-let ab = [...a, ...b]
+    let c = baseCompleta.filter(el => el.CLASIFICACION_MANUAL == "Caso confirmado DEN-2" && el.DEPARTAMENTO_RESIDENCIA == "Morón" )
+    let d = baseCompleta.filter(el => el.CLASIFICACION_MANUAL == "Caso confirmado por nexo epidemiológico autóctono" && el.DEPARTAMENTO_RESIDENCIA == "Morón" )
+    let e = baseCompleta.filter(el => el.CLASIFICACION_MANUAL == "Caso de Dengue en brote con laboratorio (+)" && el.DEPARTAMENTO_RESIDENCIA == "Morón" )
+let ab = [...a, ...b, ...c, ...d, ...e]
     return ab
   }
 
