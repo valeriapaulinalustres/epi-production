@@ -9,6 +9,7 @@ const UsersProvider = ({ children }) => {
     const { user, setUser } = useContext(DataContext);
 
   const [usersList, setUsersList] = useState([]);
+  const [errorLogin, setErrorLogin] = useState(false)
 
   async function login(user, setLogin) {
     try {
@@ -28,6 +29,7 @@ const UsersProvider = ({ children }) => {
 
         setLogin(false);
       } else {
+     setErrorLogin(true)
         throw new Error("error");
       }
     } catch (error) {
@@ -137,7 +139,9 @@ const UsersProvider = ({ children }) => {
     register,
     editUser,
     login,
-    logout
+    logout,
+    errorLogin, 
+    setErrorLogin
   };
 
   return <UsersContext.Provider value={data}>{children}</UsersContext.Provider>;
