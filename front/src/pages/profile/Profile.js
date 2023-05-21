@@ -10,6 +10,8 @@ import { BiCheckboxChecked } from "react-icons/bi";
 import { BiCheckbox } from "react-icons/bi";
 import { GiPadlock } from "react-icons/gi";
 import UsersContext from "../../context/UsersContext.js";
+import { toastAlert } from "../../alerts";
+import Swal from "sweetalert2";
 
 function Profile({setLogin}) {
   const { user, setUser, userToEdit, setUserToEdit} = useContext(DataContext);
@@ -23,8 +25,25 @@ function Profile({setLogin}) {
     getUsers();
   }, []);
 
-  function handleDelete(id) {
-    deleteUser(id).then(() => getUsers());
+  function handleDelete(el) {
+    Swal.fire({
+      icon: "warning",
+      iconColor: "red",
+      title: `¿Está seguro de querer eliminar el usuario ${el.first_name} ${el.last_name}?`,
+
+      showConfirmButton: true,
+      confirmButtonText: "SI",
+      confirmButtonColor: "red",
+
+      showCancelButton: true,
+      cancelButtonText: "NO",
+      cancelButtonColor: "grey",
+    }).then((res) => {
+      if (res.isConfirmed === true) {
+        deleteUser(el._id).then(() => getUsers());
+      }
+    });
+   
   }
 
   function handleAddUser() {
@@ -122,7 +141,7 @@ function Profile({setLogin}) {
                       <td className="td blue">
                         <RiDeleteBin6Line
                           className="profile-icons"
-                          onClick={() => handleDelete(el._id)}
+                          onClick={() => handleDelete(el)}
                         />
                       </td>
 

@@ -1,15 +1,15 @@
 import { createContext, useState, useContext } from "react";
 import { URI } from "../utils.js";
 import DataContext from "./DataContext.js";
+import { toastAlert } from "../alerts.js";
 
 const UsersContext = createContext();
 
 const UsersProvider = ({ children }) => {
-
-    const { user, setUser } = useContext(DataContext);
+  const { user, setUser } = useContext(DataContext);
 
   const [usersList, setUsersList] = useState([]);
-  const [errorLogin, setErrorLogin] = useState(false)
+  const [errorLogin, setErrorLogin] = useState(false);
 
   async function login(user, setLogin) {
     try {
@@ -25,15 +25,17 @@ const UsersProvider = ({ children }) => {
       if (response.status === 200) {
         const responseData = await response.json();
         console.log(responseData);
+        toastAlert('success', `Hola ${responseData.user.first_name} 👋🏻. ¿Cómo estás?`);
         setUser(responseData.user);
 
         setLogin(false);
       } else {
-     setErrorLogin(true)
+        setErrorLogin(true);
+        toastAlert("error", "Error al login");
         throw new Error("error");
       }
     } catch (error) {
-      console.log(error);
+      toastAlert("error", "Error al login");
     }
   }
 
@@ -46,9 +48,10 @@ const UsersProvider = ({ children }) => {
         setUsersList(responseData);
       } else {
         console.log(`Response Status ${response.status}`);
+        toastAlert("error", "Error al obtener los usuarios");
       }
     } catch (error) {
-      console.log(error);
+      toastAlert("error", "Error al obtener los usuarios");
     }
   }
 
@@ -59,9 +62,10 @@ const UsersProvider = ({ children }) => {
         headers: { "Content-type": "application/json" },
       });
       const responseData = await response.json();
-      console.log(responseData);
+
+      toastAlert("success", responseData.mensaje);
     } catch (error) {
-      console.log("error:", error);
+      toastAlert("error", "Error al eliminar el usuario");
     }
   }
 
@@ -83,16 +87,10 @@ const UsersProvider = ({ children }) => {
         }),
       });
       const responseData = await response.json();
-      console.log(responseData.mensaje);
-      // if (Response.status === 200) {
-      //  const responseData = response.json()
-      //  console.log(responseData)
 
-      // } else {
-      //   throw new Error ('error al crear usuario')
-      // }
+      toastAlert("success", responseData.message);
     } catch (error) {
-      console.log("error al crear usuario");
+      toastAlert("error", "Error al crear el usuario");
     }
   }
 
@@ -114,20 +112,21 @@ const UsersProvider = ({ children }) => {
         }),
       });
       const responseData = await response.json();
-      console.log(responseData.mensaje);
+
+      toastAlert("success", responseData.mensaje);
     } catch (error) {
-      console.log("error al crear usuario");
+      toastAlert("error", "Error al editar el usuario");
     }
   }
 
   async function logout() {
-  
     try {
       const response = await fetch(`${URI}/api/users/logout`);
       const responseData = await response.json();
       console.log(responseData.mensaje);
+      toastAlert('success', `Adios ${user.first_name}. ¡Que tengas muy lindo día! 🌞`);
     } catch (error) {
-      console.log("error logout");
+      toastAlert('error', 'Error al logout')
     }
   }
 
@@ -140,8 +139,8 @@ const UsersProvider = ({ children }) => {
     editUser,
     login,
     logout,
-    errorLogin, 
-    setErrorLogin
+    errorLogin,
+    setErrorLogin,
   };
 
   return <UsersContext.Provider value={data}>{children}</UsersContext.Provider>;

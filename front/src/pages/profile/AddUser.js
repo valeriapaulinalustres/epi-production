@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 import { useContext } from "react";
 import UsersContext from "../../context/UsersContext.js";
+import { toastAlert } from "../../alerts";
 
 function AddUser() {
   const { user, userToEdit, setUserToEdit } = useContext(DataContext);
@@ -27,7 +28,7 @@ function AddUser() {
         let isAdmin = e.target[5].checked;
 
         if (!first_name || !last_name || !email || !profession || !job) {
-          return console.error("Falta ingresar datos");
+          return toastAlert('error', "Falta ingresar datos") 
         }
 
         let expReg =
@@ -36,7 +37,7 @@ function AddUser() {
           );
 
         if (!expReg) {
-          return console.log(`${email} es un mail inválido`);
+          return toastAlert('error', `${email} es un mail inválido`)
         }
 
         const newUser = {
@@ -75,7 +76,7 @@ function AddUser() {
           !job ||
           !password
         ) {
-          return console.error("Falta ingresar datos");
+          return toastAlert('error', "Falta ingresar datos") 
         }
 
         let expReg =
@@ -84,7 +85,7 @@ function AddUser() {
           );
 
         if (!expReg) {
-          return console.log(`${email} es un mail inválido`);
+          return toastAlert('error', `${email} es un mail inválido`) 
         }
 
         const newUser = {
@@ -194,10 +195,18 @@ function AddUser() {
             defaultChecked={userToEdit.isAdmin && "checked"}
           />
         </div>
-
-        <button type="submit" className="button">
-          Guardar cambios
+{
+  userToEdit?.first_name
+  ? 
+  <button type="submit" className="button">
+  Guardar cambios
+</button>
+:
+<button type="submit" className="button">
+          Crear usuario
         </button>
+}
+        
       </form>
     </div>
   );

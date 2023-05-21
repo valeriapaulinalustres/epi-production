@@ -1,4 +1,5 @@
 import UsersManager from "../persistence/daos/UserManager.js";
+import CustomError from "../utils/errors/CustomError.js";
 
 const usersManager = new UsersManager();
 
@@ -20,36 +21,50 @@ export const getUsersController = async (req, res) => {
     }
     res.json(newUsers);
   } else {
-    res.json({ mensaje: "no hay usuarios en la base de datos" });
+    res.json({ error: "no hay usuarios en la base de datos" });
   }
 };
 
 export const createUserController = async (req, res) => {
   const newUser = await usersManager.createUser(req.body);
   if (newUser) {
-    res.json({ mensaje: "usuario creado con éxito" });
+    res.json({ message: "Usuario creado con éxito" });
   } else {
-    res.json({ mensaje: "error al crear usuario" });
+    res.json({ message: "Error al crear usuario" });
   }
 };
 
 export const loginUserController = async (req, res) => {
-  console.log("llega acá");
-  const { email, password } = req.body;
-  const user = await usersManager.loginUser(req.body);
-  if (user) {
-    const { first_name, last_name, profession, job, email, isAdmin } = user;
-    //  res.set('Access-Control-Allow-Origin', '*')
-    //    req.session.name = first_name
-    req.session.email = email;
-    req.session.password = password;
-    res.json({
-      user: { first_name, last_name, profession, job, email, isAdmin },
-    });
-  } else {
-    return null;
-    //   let mensaje = 'Usuario o contraseña inválidos'
-    // res.json({mensaje: mensaje})
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      CustomError.createCustomError({
+        name: ErrorsName.PRODUCT_DATA_INCORRECT_TYPE,
+        cause: ErrorsCause.PRODUCT_DATA_INCORRECT_TYPE,
+        message: ErrorsMessage.PRODUCT_DATA_INCORRECT_TYPE,
+      });
+    }
+
+    const user = await usersManager.loginUser(req.body);
+    if (user) {
+      const { first_name, last_name, profession, job, email, isAdmin } = user;
+      //  res.set('Access-Control-Allow-Origin', '*')
+      //    req.session.name = first_name
+      req.session.email = email;
+      req.session.password = password;
+      res.json({
+        user: { first_name, last_name, profession, job, email, isAdmin },
+      });
+    } else {
+      return res
+        .status(401)
+        .json({ message: "Incorrect user or password", error: "Login error" });
+      //   let mensaje = 'Usuario o contraseña inválidos'
+      // res.json({mensaje: mensaje})
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -68,8 +83,8 @@ export const editUserController = async (req, res) => {
 export const deleteUserController = async (req, res) => {
   const deletedUser = await usersManager.deleteUser(req.params.id);
   if (deletedUser) {
-    res.json({ mensaje: `usuario ${deletedUser} eliminado con éxito` });
+    res.json({ mensaje: `Usuario eliminado con éxito` });
   } else {
-    res.json({ mensaje: "usuario no encontrado" });
+    res.json({ mensaje: "Error al eliminar el usuario" });
   }
 };

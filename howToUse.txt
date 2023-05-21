@@ -12,3 +12,7 @@ Luego pushear cambios en la carpeta base (epi-production)
 Ir a Vercel para ver el deploy de epi-production
 
 install.packages("jsonlite")
+
+Para hacer:
+
+Front: gestión de contraseñas
