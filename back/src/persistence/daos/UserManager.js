@@ -129,4 +129,17 @@ export default class UsersManager {
       logger.error("Edit user error", error);
     }
   }
+
+  async changePassword (userId, newPassword) {
+try {
+  const password = await hashPassword(newPassword)
+  console.log(password)
+  const response= await userModel.findByIdAndUpdate(userId,{password}, {new:true})
+  console.log(response);
+  return response
+} catch (error) {
+  logger.error("Change password error", error);
+}
+  
+  }
 }

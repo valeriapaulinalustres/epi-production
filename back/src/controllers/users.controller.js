@@ -1,5 +1,6 @@
 import UsersManager from "../persistence/daos/UserManager.js";
 import CustomError from "../utils/errors/CustomError.js";
+import { ErrorsCause, ErrorsMessage, ErrorsName } from "../utils/errors/errorsEnum.js";
 
 const usersManager = new UsersManager();
 
@@ -38,13 +39,13 @@ export const loginUserController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      CustomError.createCustomError({
-        name: ErrorsName.PRODUCT_DATA_INCORRECT_TYPE,
-        cause: ErrorsCause.PRODUCT_DATA_INCORRECT_TYPE,
-        message: ErrorsMessage.PRODUCT_DATA_INCORRECT_TYPE,
-      });
-    }
+    // if (!email || !password) {
+    //   CustomError.createCustomError({
+    //     name: ErrorsName.USER_DATA_INCORRECT_TYPE,
+    //     cause: ErrorsCause.USER_DATA_INCORRECT_TYPE,
+    //     message: ErrorsMessage.USER_DATA_INCORRECT_TYPE,
+    //   });
+    // }
 
     const user = await usersManager.loginUser(req.body);
     if (user) {
@@ -88,3 +89,11 @@ export const deleteUserController = async (req, res) => {
     res.json({ mensaje: "Error al eliminar el usuario" });
   }
 };
+
+export const changePasswordController = async(req,res) =>{
+  console.log('llega')
+  const newPassword = req.body.newPassword
+  const userId = req.body.userId
+  const response = await usersManager.changePassword(userId, newPassword)
+  res.json({message: response})
+}

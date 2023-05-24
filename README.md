@@ -5,25 +5,25 @@ This fullstack project was created to improve the collection of statistical data
 
 # Frontend Features
 
-✔ React JS
-✔ React Chart JS 2
-✔ Xlsx
-✔ React Icons
-✔ GSAP
-✔ React Router Dom
-✔ React Spinners
-✔ Sweet Alert 2
+✔ React JS  
+✔ React Chart JS 2  
+✔ Xlsx  
+✔ React Icons  
+✔ GSAP  
+✔ React Router Dom  
+✔ React Spinners  
+✔ Sweet Alert 2  
 
 ✔ Responsive
 
 # Backend Features
 
-✔ Node Js
-✔ Express Js
-✔ Passport
-✔ Bcrypt
-✔ Moongose
-✔ Winston
+✔ Node Js  
+✔ Express Js  
+✔ Passport  
+✔ Bcrypt  
+✔ Moongose  
+✔ Winston  
 
 ✔ Users Login
 

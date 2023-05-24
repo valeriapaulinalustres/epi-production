@@ -20,6 +20,7 @@ import Profile from "./pages/profile/Profile";
 import { useContext } from "react";
 import AddUser from "./pages/profile/AddUser";
 import { UsersProvider } from "./context/UsersContext";
+import ChangePassword from "./pages/profile/ChangePassword";
 
 const App = () => {
   const [login, setLogin] = useState(true);
@@ -51,6 +52,7 @@ const App = () => {
                 <Route path="/covid" element={<Covid />} />
                 <Route path="/profile" element={<Profile setLogin={setLogin} />} />
                 <Route path="/profile/add-user" element={<AddUser />} />
+                <Route path="/profile/change-password" element={<ChangePassword />} />
               </Routes>
               <Footer />
             </BrowserRouter>

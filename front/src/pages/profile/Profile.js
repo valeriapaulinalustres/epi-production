@@ -60,7 +60,9 @@ function Profile({setLogin}) {
   }
 
   function handleChangePassword(el) {
-    console.log(el);
+    setUserToEdit(el);
+ console.log('profile',el)
+  navigate('/profile/change-password')
   }
 
   function handleLogout (){

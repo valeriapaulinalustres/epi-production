@@ -130,6 +130,25 @@ const UsersProvider = ({ children }) => {
     }
   }
 
+  async function saveNewPassword(userId, newPassword){
+console.log(userId, newPassword)
+try {
+  const response = await fetch(`${URI}/api/users/change-password}`, {
+    method: "PUT",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({
+     userId,
+     newPassword
+    }),
+  });
+  const responseData = await response.json();
+console.log(responseData)
+  toastAlert("success", responseData.mensaje);
+} catch (error) {
+  toastAlert("error", "Error, funcionalidad aún no creada");
+}
+  }
+
   const data = {
     getUsers,
     deleteUser,
@@ -141,6 +160,7 @@ const UsersProvider = ({ children }) => {
     logout,
     errorLogin,
     setErrorLogin,
+    saveNewPassword
   };
 
   return <UsersContext.Provider value={data}>{children}</UsersContext.Provider>;

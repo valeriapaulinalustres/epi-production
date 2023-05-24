@@ -6,6 +6,7 @@ import {
   loginUserController,
   deleteUserController,
   editUserController,
+  changePasswordController
 } from "../controllers/users.controller.js";
 
 const router = Router();
@@ -20,6 +21,8 @@ router.post("/login", loginUserController);
 router.put("/edit-user/:id", editUserController);
 
 router.delete("/delete-user/:id", deleteUserController);
+
+router.put("/change-password", changePasswordController)
 
 router.get("/logout", async (req, res) => {
   req.session.destroy((error) => {
