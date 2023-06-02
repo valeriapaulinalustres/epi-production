@@ -22,27 +22,21 @@ function ChangePassword() {
   function handleSubmit(e) {
     e.preventDefault();
 
-   
-        //se va a usar el botón submit como add
+    //se va a usar el botón submit como add
 
-        let password = e.target[0].value;
-        let repeatedPassword = e.target[1].value;
-      
+    let password = e.target[0].value;
+    let repeatedPassword = e.target[1].value;
 
-        if (
-       !password || !repeatedPassword
-        ) {
-          return toastAlert("error", "Falta ingresar datos");
-        }
+    if (!password || !repeatedPassword) {
+      return toastAlert("error", "Falta ingresar datos");
+    }
 
-        if (password !== repeatedPassword) {return toastAlert('error', 'No coinciden las contraseñas')}
+    if (password !== repeatedPassword) {
+      return toastAlert("error", "No coinciden las contraseñas");
+    }
 
-  
-saveNewPassword(userToEdit, password).then(() => navigate("/profile"));
-    
-      }
-    
-  
+    saveNewPassword(userToEdit, password).then(() => navigate("/profile"));
+  }
 
   return (
     <div className="big-container-add-user">

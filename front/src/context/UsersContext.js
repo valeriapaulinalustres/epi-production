@@ -130,22 +130,30 @@ const UsersProvider = ({ children }) => {
     }
   }
 
-  async function saveNewPassword(userId, newPassword){
-console.log(userId, newPassword)
+  async function saveNewPassword(id, password){
+
 try {
-  const response = await fetch(`${URI}/api/users/change-password}`, {
+  const response = await fetch(`${URI}/api/users/change-password`, {
     method: "PUT",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({
-     userId,
-     newPassword
+     userId: id,
+     newPassword : `${password}`
     }),
   });
   const responseData = await response.json();
+
 console.log(responseData)
-  toastAlert("success", responseData.mensaje);
+
+if (responseData?.status) {
+  toastAlert("success", responseData.message);
+} else {
+  toastAlert("error", 'Error al cambiar la contraseña');
+}
+
+ 
 } catch (error) {
-  toastAlert("error", "Error, funcionalidad aún no creada");
+  toastAlert("error", "Error, no funciona la ruta");
 }
   }
 

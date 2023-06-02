@@ -95,5 +95,5 @@ export const changePasswordController = async(req,res) =>{
   const newPassword = req.body.newPassword
   const userId = req.body.userId
   const response = await usersManager.changePassword(userId, newPassword)
-  res.json({message: response})
+  res.json({user: response , status: 'succes', message: 'Contraseña actualizada correctamente'})
 }

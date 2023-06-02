@@ -136,6 +136,7 @@ try {
   console.log(password)
   const response= await userModel.findByIdAndUpdate(userId,{password}, {new:true})
   console.log(response);
+  logger.info("Password edited successfully");
   return response
 } catch (error) {
   logger.error("Change password error", error);
