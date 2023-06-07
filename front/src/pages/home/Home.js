@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 function Home() {
 
 
@@ -46,6 +47,10 @@ function Home() {
   const [ultimoMesHome, setUltimoMesHome] = useState(false)
 
   const [salmonTransparente, salmon, lilaTransparente, lila, rosaTransparente, rosa, amarilloTransparente, amarillo] = Colors
+
+
+ 
+
 
   const navigate = useNavigate()
 
@@ -165,7 +170,7 @@ console.log(anioBaseActual)
 
   return (
     <div className='home-container'>
-
+ 
       <h2>Vigilancia de Enfermedades de Notificación Obligatoria</h2>
 
 
@@ -200,6 +205,7 @@ console.log(anioBaseActual)
         <button
           className={ultimoMesHome ? "buttonActive" : "button"}
           onClick={() => setUltimoMesHome(true)}
+          id='enteFechas'
         >
           Ver entre fechas
         </button>
