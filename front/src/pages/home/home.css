@@ -34,6 +34,12 @@
     margin-bottom: 100px;
 }
 
+.homeInstruction{
+    margin: 100px 0px;
+    color: var(--naranja);
+    text-decoration: none;
+}
+
 @media only screen and (max-width:980px) {
 #eno1, #eno2{
     display: none;

@@ -22,35 +22,40 @@ function Header() {
     steps: [
       {
         content: <h2>¡Comencemos la recorrida!</h2>,
-        locale: { skip: <strong>SKIP</strong> },
+        locale: { skip: <strong>Saltear</strong> },
         placement: "center",
         target: "body"
       },
       {
-        content: <h2>Haz click aquí para cargar los archivos y las fechas, que permitirán generar los gráficos</h2>,
+        content: <h2>Primero haz click aquí para cargar los archivos y las fechas, los cuales permitirán generar los gráficos</h2>,
         placement: "bottom",
         target: "#upload",
-        title: "Primer paso"
+        title: "Primer paso",
+        locale: { skip: <strong>Saltear</strong> },
+      },
+      {
+        content: <h2>Luego puedes elegir la enfermedad en el menú desplegable para ver su estadística específica</h2>,
+        placement: "bottom",
+        target: "#menu",
+        title: "Segundo paso",
+        locale: { skip: <strong>Saltear</strong> },
       },
       {
         content: <h2>Aquí verás tu información de usuario</h2>,
         placement: "bottom",
         target: "#profile",
-        title: "Segundo paso"
+        title: "Tercer paso",
+        locale: { skip: <strong>Saltear</strong> },
       },
       {
-        content: <h2>Calendario epidemiológico</h2>,
+        content: <h2>Aquí encontrarás el Calendario epidemiológico</h2>,
         placement: "bottom",
         target: "#calendar",
-        title: "Tercer paso"
+        title: "Cuarto paso",
+        locale: { skip: <strong>Saltear</strong> },
       },
  
-      {
-        content: <h2>Luego puedes elegir la enfermedad para ver su estadística específica</h2>,
-        placement: "bottom",
-        target: "#menuIcon",
-        title: "Cuarto paso"
-      },
+   
       // {
       //   content: <h2>Here is six step!</h2>,
       //   placement: "bottom",
@@ -106,8 +111,11 @@ setStateJoyride({...stateJoyride, run: true})
         <button className='menubar-buttons' onClick={() => setModalCalendar(true)}>
           <GoCalendar className='menubar-icons' id='calendar'/>
         </button>
+    
         <HeaderMenu menu={menu} setMenu={setMenu} />
         <Navbar menu={menu} setMenu={setMenu}  />
+    
+      
       </div>
 
       {modalCalendar && <div className='modal'>

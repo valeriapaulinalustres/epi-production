@@ -9,7 +9,7 @@ const {menu, setMenu} = props;
 
   return (
     
-<button className="menu-button" onClick={()=>setMenu(!menu)}><TiThMenu className='menu-icon'/></button>
+<button className="menu-button" onClick={()=>setMenu(!menu)}><TiThMenu className='menu-icon' id='menu'/></button>
    
     
   )
