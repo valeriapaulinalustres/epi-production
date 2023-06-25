@@ -40,6 +40,23 @@
     text-decoration: none;
 }
 
+.home-news{
+ border: 1px solid var(--naranja);
+    padding: 10px;
+    border-radius: 15px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.home-news-title{
+    margin: 0;
+    padding: 0;
+    color: var(--naranja);
+}
+
 @media only screen and (max-width:980px) {
 #eno1, #eno2{
     display: none;

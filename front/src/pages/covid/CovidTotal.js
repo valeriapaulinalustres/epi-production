@@ -123,6 +123,12 @@ function Covid() {
                 {numeroConfirmadosVsr}
               </p>
             </div>
+             <div className='recuadro lila' onClick={detallarEmbarazadasDengue}>
+              Notificados Bronquiolitis:
+              <p className='totalNumber'>
+               0
+              </p>
+            </div>
           
             <div className='recuadro salmon'>
               Covid conf. por Morón:
