@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import DataContext from '../../context/DataContext';
 import './home.css';
 import { Link } from 'react-router-dom';

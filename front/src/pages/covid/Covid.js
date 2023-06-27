@@ -9,7 +9,7 @@ function Covid() {
   const [ultimoMesCovid, setUltimoMesCovid] = useState(false);
 
   //destructuring from context
-  const { anioBaseActual, baseCompleta } = useContext(DataContext);
+  const { anioBaseActual, baseCompleta,  } = useContext(DataContext);
 
   return (
     <div className='page-container'>
