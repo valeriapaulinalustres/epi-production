@@ -8,9 +8,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "../../components/Loading/Loading";
 
-import excelFile from "./moron.csv";
+import excelFile from "./moron2022.csv";
 import excelFile2023 from "./moron2023.csv";
-import excelFileClinica from "./clinica.csv";
+import excelFileClinica from "./clinica2022.csv";
+import excelFileClinica2023 from "./clinica2023.csv";
 import * as xlsx from "xlsx";
 
 function Upload() {
@@ -236,7 +237,7 @@ function Upload() {
 
       // get file from the imported url
       let requestClinica = new XMLHttpRequest();
-      requestClinica.open('GET', excelFileClinica , true);
+      requestClinica.open('GET', excelFileClinica2023 , true);
       requestClinica.responseType = "arraybuffer";
       requestClinica.onload = function() {
 

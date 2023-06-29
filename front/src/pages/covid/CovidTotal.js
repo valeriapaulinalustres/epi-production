@@ -111,7 +111,8 @@ function Covid() {
 
   return (
     <div className='totalesGraphs-container'>
-         <p style={{border:'1px solid red', borderRadius:'15px', padding:'10px', color:'red'}}>Atención: datos no reales de COVID y OVR, página en remodelación</p>
+         <p style={{border:'1px solid red', borderRadius:'15px', padding:'10px', color:'red'}}>
+          Atención: Página en remodelación</p>
       <div className='totales-page-container'>
      
         <div className='recuadro naranja'>

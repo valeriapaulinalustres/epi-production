@@ -24,3 +24,5 @@ csv a json para enviar datos al back
 
 mejorar código
 ver si da lo de covid en el mundo
+pasar por R archivo descargado
+continuar con internados covid y sacar los covid e influenza a y b que no existen más

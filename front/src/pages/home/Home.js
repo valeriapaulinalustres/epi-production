@@ -20,7 +20,7 @@ function Home() {
   return (
     <div className='home-container'>
       <h2>Vigilancia de Enfermedades de Notificación Obligatoria</h2>
-      <h6>Datos actualizados al 30/05/2023</h6>
+      <h6>Datos actualizados al 27/06/2023</h6>
 
       {anioBaseActual && <h3>Datos del año {anioBaseActual}</h3>}
 
@@ -51,8 +51,9 @@ function Home() {
           <div className='home-news'>
             <h3 className='home-news-title'>Novedades</h3>
             <p>
-              Próximamente estará disponible la información sobre Bronquiolitis
-              en la pestaña de COVID y OVR
+              Está disponible la información sobre Bronquiolitis
+              en la pestaña de COVID y OVR.
+              Próximamente se modificará la sección "COVID" para representar internaciones.
             </p>
           </div>
 
