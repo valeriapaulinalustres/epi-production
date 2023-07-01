@@ -1,67 +1,68 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .login-container {
-    background: var(--rojo);
-    background: linear-gradient(90deg, rgba(255, 0, 60, 1) 0%, rgba(255, 209, 141, 1) 100%);
-    height: 100vh;
+  background: var(--rojo);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 60, 1) 0%,
+    rgba(255, 209, 141, 1) 100%
+  );
+  height: 100vh;
 
-    justify-content: space-between;
-
-
+  justify-content: space-between;
 }
 
 .login-logo {
-    content: url(/public/logoEpi.png);
-    width: 25%;
-    position: absolute;
-    top: 6%;
-    left: 4%;
+  content: url(/public/logoEpi.png);
+  width: 25%;
+  position: absolute;
+  top: 6%;
+  left: 4%;
 }
 
 .login-alert-container {
-    background-color: white;
-    width: 40%;
-    height: 50%;
-    position: absolute;
-    bottom: 6%;
-    right: 4%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: white;
+  width: 40%;
+  height: 50%;
+  position: absolute;
+  bottom: 6%;
+  right: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@media only screen and (max-width:980px) {
+@media only screen and (max-width: 980px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15% 3%;
+  }
 
-    .login-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15% 3%;
-    }
+  .login-alert-container {
+    width: 85%;
+    height: 75%;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    right: 0;
+  }
 
-    .login-alert-container {
-        width: 85%;
-        height: 75%;
-        text-align: center;
-        position: relative;
-        bottom: 0;
-        right: 0;
-    }
-
-    .login-logo {
-        position: relative;
-        top: 0;
-        left: 0;
-    }
+  .login-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 }

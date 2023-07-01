@@ -1,129 +1,126 @@
-
 .file-select {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
-  }
-  
-  .file-select::before {
-    background-color: var(--naranja);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    content: 'Seleccionar'; /* texto por defecto */
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-width: 125px;
-height: 50px;
-text-align: center;
-box-shadow: 2px 2px 2px  gray;
-height: 30px;
-font-size: 14px;
-padding: 10px;
-border: 2px solid var(--naranja);
-  }
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
 
-  .file-select::before:hover{
-    background-color: white;
-    color: var(--rojo);
-    border: 2px solid var(--rojo);
-  }
+.file-select::before {
+  background-color: var(--naranja);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  content: 'Seleccionar'; /* texto por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 125px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 2px gray;
+  height: 30px;
+  font-size: 14px;
+  padding: 10px;
+  border: 2px solid var(--naranja);
+}
 
-  
-  .file-select input[type="file"] {
-    opacity: 0;
-    width: 150px;
-    height: 55px;
-    display: inline-block;
-  }
-  
-  #src-file1::before {
-    content: 'Cargar archivo externo csv';
-  }
+.file-select::before:hover {
+  background-color: white;
+  color: var(--rojo);
+  border: 2px solid var(--rojo);
+}
 
-  .upload-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 200px;
-  }
+.file-select input[type='file'] {
+  opacity: 0;
+  width: 150px;
+  height: 55px;
+  display: inline-block;
+}
 
-  .upload-inputs-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+#src-file1::before {
+  content: 'Cargar archivo externo csv';
+}
 
-  .upload-spinner{
-    height: 100px;
-  }
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+}
 
-  .calendar-container{
-    margin: 10px;
-    border: 2px solid var(--naranja);
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    
-  }
-  .calendar-inputs-btn-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+.upload-inputs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  .calendar-form-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .calendar-input{
-    margin: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 2px solid var(--salmon);
-    box-shadow: 2px 2px 2px  gray;
-    font-size: 18px;
-    color: var(--naranja);
-  }
+.upload-spinner {
+  height: 100px;
+}
 
-  .calendar-input:hover{
-    background-color: var(--salmon);
-    color: white;
-  }
+.calendar-container {
+  margin: 10px;
+  border: 2px solid var(--naranja);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.calendar-inputs-btn-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
-  .calendar-title{
-    margin-left: 10px;
-  }
+.calendar-form-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
-  .uploaded-file{
-    color: var(--naranja);
-    font-weight: 600;
-    font-size: 22px;
-    margin: 20px;
-  }
+.calendar-input {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid var(--salmon);
+  box-shadow: 2px 2px 2px gray;
+  font-size: 18px;
+  color: var(--naranja);
+}
 
-  .notUploaded-file{
-    color: var(--rojo);
-    font-weight: 600;
-    font-size: 22px;
-    margin: 20px;
-  }
+.calendar-input:hover {
+  background-color: var(--salmon);
+  color: white;
+}
+
+.calendar-title {
+  margin-left: 10px;
+}
+
+.uploaded-file {
+  color: var(--naranja);
+  font-weight: 600;
+  font-size: 22px;
+  margin: 20px;
+}
+
+.notUploaded-file {
+  color: var(--rojo);
+  font-weight: 600;
+  font-size: 22px;
+  margin: 20px;
+}

@@ -1,7 +1,7 @@
-import { createContext, useState, useContext } from "react";
-import { URI } from "../utils.js";
-import DataContext from "./DataContext.js";
-import { toastAlert } from "../alerts.js";
+import { createContext, useState, useContext } from 'react';
+import { URI } from '../utils.js';
+import DataContext from './DataContext.js';
+import { toastAlert } from '../alerts.js';
 
 const UsersContext = createContext();
 
@@ -14,8 +14,8 @@ const UsersProvider = ({ children }) => {
   async function login(user, setLogin) {
     try {
       let response = await fetch(`${URI}/api/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: user.email,
           password: user.password,
@@ -25,17 +25,20 @@ const UsersProvider = ({ children }) => {
       if (response.status === 200) {
         const responseData = await response.json();
         console.log(responseData);
-        toastAlert('success', `Hola ${responseData.user.first_name} 👋🏻. ¿Cómo estás?`);
+        toastAlert(
+          'success',
+          `Hola ${responseData.user.first_name} 👋🏻. ¿Cómo estás?`
+        );
         setUser(responseData.user);
 
         setLogin(false);
       } else {
         setErrorLogin(true);
-        toastAlert("error", "Error al login");
-        throw new Error("error");
+        toastAlert('error', 'Error al login');
+        throw new Error('error');
       }
     } catch (error) {
-      toastAlert("error", "Error al login");
+      toastAlert('error', 'Error al login');
     }
   }
 
@@ -48,24 +51,24 @@ const UsersProvider = ({ children }) => {
         setUsersList(responseData);
       } else {
         console.log(`Response Status ${response.status}`);
-        toastAlert("error", "Error al obtener los usuarios");
+        toastAlert('error', 'Error al obtener los usuarios');
       }
     } catch (error) {
-      toastAlert("error", "Error al obtener los usuarios");
+      toastAlert('error', 'Error al obtener los usuarios');
     }
   }
 
   async function deleteUser(id) {
     try {
       const response = await fetch(`${URI}/api/users/delete-user/${id}`, {
-        method: "DELETE",
-        headers: { "Content-type": "application/json" },
+        method: 'DELETE',
+        headers: { 'Content-type': 'application/json' },
       });
       const responseData = await response.json();
 
-      toastAlert("success", responseData.mensaje);
+      toastAlert('success', responseData.mensaje);
     } catch (error) {
-      toastAlert("error", "Error al eliminar el usuario");
+      toastAlert('error', 'Error al eliminar el usuario');
     }
   }
 
@@ -74,8 +77,8 @@ const UsersProvider = ({ children }) => {
       newUser;
     try {
       const response = await fetch(`${URI}/api/users/register`, {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
           first_name,
           last_name,
@@ -88,9 +91,9 @@ const UsersProvider = ({ children }) => {
       });
       const responseData = await response.json();
 
-      toastAlert("success", responseData.message);
+      toastAlert('success', responseData.message);
     } catch (error) {
-      toastAlert("error", "Error al crear el usuario");
+      toastAlert('error', 'Error al crear el usuario');
     }
   }
 
@@ -100,8 +103,8 @@ const UsersProvider = ({ children }) => {
 
     try {
       const response = await fetch(`${URI}/api/users/edit-user/${idUser}`, {
-        method: "PUT",
-        headers: { "Content-type": "application/json" },
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
           first_name,
           last_name,
@@ -113,9 +116,9 @@ const UsersProvider = ({ children }) => {
       });
       const responseData = await response.json();
 
-      toastAlert("success", responseData.mensaje);
+      toastAlert('success', responseData.mensaje);
     } catch (error) {
-      toastAlert("error", "Error al editar el usuario");
+      toastAlert('error', 'Error al editar el usuario');
     }
   }
 
@@ -124,37 +127,37 @@ const UsersProvider = ({ children }) => {
       const response = await fetch(`${URI}/api/users/logout`);
       const responseData = await response.json();
       console.log(responseData.mensaje);
-      toastAlert('success', `Adios ${user.first_name}. ¡Que tengas muy lindo día! 🌞`);
+      toastAlert(
+        'success',
+        `Adios ${user.first_name}. ¡Que tengas muy lindo día! 🌞`
+      );
     } catch (error) {
-      toastAlert('error', 'Error al logout')
+      toastAlert('error', 'Error al logout');
     }
   }
 
-  async function saveNewPassword(id, password){
+  async function saveNewPassword(id, password) {
+    try {
+      const response = await fetch(`${URI}/api/users/change-password`, {
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({
+          userId: id,
+          newPassword: `${password}`,
+        }),
+      });
+      const responseData = await response.json();
 
-try {
-  const response = await fetch(`${URI}/api/users/change-password`, {
-    method: "PUT",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({
-     userId: id,
-     newPassword : `${password}`
-    }),
-  });
-  const responseData = await response.json();
+      console.log(responseData);
 
-console.log(responseData)
-
-if (responseData?.status) {
-  toastAlert("success", responseData.message);
-} else {
-  toastAlert("error", 'Error al cambiar la contraseña');
-}
-
- 
-} catch (error) {
-  toastAlert("error", "Error, no funciona la ruta");
-}
+      if (responseData?.status) {
+        toastAlert('success', responseData.message);
+      } else {
+        toastAlert('error', 'Error al cambiar la contraseña');
+      }
+    } catch (error) {
+      toastAlert('error', 'Error, no funciona la ruta');
+    }
   }
 
   const data = {
@@ -168,7 +171,7 @@ if (responseData?.status) {
     logout,
     errorLogin,
     setErrorLogin,
-    saveNewPassword
+    saveNewPassword,
   };
 
   return <UsersContext.Provider value={data}>{children}</UsersContext.Provider>;

@@ -1,35 +1,32 @@
-import React from 'react';
 import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { gsap } from 'gsap';
-import {AiOutlineClose} from 'react-icons/ai';
-import './navbar.css'
-
+import { AiOutlineClose } from 'react-icons/ai';
+import './navbar.css';
 
 function Navbar(props) {
-
-  const { menu, setMenu } = props
+  const { menu, setMenu } = props;
 
   //-----------------links hover and navlink style----------------------
   const mouseEnter = ({ currentTarget }) => {
-    gsap.to(currentTarget, { color: "#ffffff", backgroundColor:"#ffd18d"});
+    gsap.to(currentTarget, { color: '#ffffff', backgroundColor: '#ffd18d' });
   };
   const mouseLeave = ({ currentTarget }) => {
-    gsap.to(currentTarget, { color: "#FF9700", backgroundColor: "#ffffff" });
+    gsap.to(currentTarget, { color: '#FF9700', backgroundColor: '#ffffff' });
   };
 
   const styleLinks = ({ isActive }) =>
     isActive
       ? {
-        color: '#ffffff',
-        backgroundColor: '#FF003C',
-        paddingLeft: 6,
-        paddingRight: 6,
-      }
+          color: '#ffffff',
+          backgroundColor: '#FF003C',
+          paddingLeft: 6,
+          paddingRight: 6,
+        }
       : {
-        color: '#FF9700',
-        backgroundColor: "#ffffff"
-      }
+          color: '#FF9700',
+          backgroundColor: '#ffffff',
+        };
 
   //-----------------------------NavBar animation------------------
 
@@ -46,42 +43,36 @@ function Navbar(props) {
         duration: 0,
         y: 0,
         opacity: 0,
-        
-
       },
       {
         duration: 0.5,
         y: 0,
         ease: 'power3.inOut',
         stagger: 0.3,
-        opacity: 1
+        opacity: 1,
         // {
         // amount: 2
         //},
-
-      },
-
-
+      }
     );
-    menuTimeline.current.fromTo(".nav-links",
+    menuTimeline.current.fromTo(
+      '.nav-links',
       {
         duration: 0,
         y: 0,
-        opacity: 0
-
+        opacity: 0,
       },
       {
         duration: 0.5,
-        
+
         ease: 'power3.inOut',
         stagger: 0.1,
-        opacity: 1
+        opacity: 1,
         // {
         // amount: 2
         //},
-
-      },
-    )
+      }
+    );
   }, []);
 
   useEffect(() => {
@@ -90,83 +81,83 @@ function Navbar(props) {
 
   return (
     <div className='navbar-container'>
-      <div
-        className="x"
-        ref={el => (x = el)}
-        onClick={() => setMenu(false)}
-      ><button className='xButton'><AiOutlineClose /></button></div>
-      
-      <nav className="linksContainer" ref={el => (linksContainer = el)}>
-          <NavLink 
-          to="/" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
-          onClick={() => setMenu(false)}
-          >
-            Home
-            </NavLink>
+      <div className='x' ref={el => (x = el)} onClick={() => setMenu(false)}>
+        <button className='xButton'>
+          <AiOutlineClose />
+        </button>
+      </div>
 
-          <NavLink 
-          to="/dengue" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
+      <nav className='linksContainer' ref={el => (linksContainer = el)}>
+        <NavLink
+          to='/'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
           onClick={() => setMenu(false)}
-          >
-            Dengue
-            </NavLink>
+        >
+          Home
+        </NavLink>
 
-          <NavLink 
-          to="/sifilis" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
+        <NavLink
+          to='/dengue'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
           onClick={() => setMenu(false)}
-          >
-            Sífilis
-            </NavLink>
+        >
+          Dengue
+        </NavLink>
 
-          <NavLink 
-          to="/tbc" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
+        <NavLink
+          to='/sifilis'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
           onClick={() => setMenu(false)}
-          >
-            TBC
-            </NavLink>
+        >
+          Sífilis
+        </NavLink>
 
-          <NavLink 
-          to="/hiv" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
+        <NavLink
+          to='/tbc'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
           onClick={() => setMenu(false)}
-          >
-            HIV
-            </NavLink>
-          
-            <NavLink 
-          to="/covid" 
-          className="nav-links" 
-          onMouseEnter={mouseEnter} 
-          onMouseLeave={mouseLeave} 
-          style={styleLinks} 
+        >
+          TBC
+        </NavLink>
+
+        <NavLink
+          to='/hiv'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
           onClick={() => setMenu(false)}
-          >
-            COVID y OVR
-            </NavLink>
-        </nav>
+        >
+          HIV
+        </NavLink>
+
+        <NavLink
+          to='/covid'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
+          onClick={() => setMenu(false)}
+        >
+          COVID y OVR
+        </NavLink>
+      </nav>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
 
 //<div className="menu-layer" ref={el => (menuLayer = el)}>.</div>

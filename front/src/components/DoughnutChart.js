@@ -1,79 +1,69 @@
 import { useRef, useCallback } from 'react';
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 import { FiDownload } from 'react-icons/fi';
 
-
-
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-
-
-function DoughnutChart({ title, datos, labels, backgroundColor, borderColor, }) {
-
-  //download chart button
-  const ref = useRef(null)
+function DoughnutChart({ title, datos, labels, backgroundColor, borderColor }) {
+  // download chart button
+  const ref = useRef(null);
 
   const downloadImage = useCallback(() => {
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.download = `${title}.png`;
     link.href = ref.current.toBase64Image();
     link.click();
     console.log(link.href);
-  }, [])
+  }, []);
 
   const data = {
-    labels: labels,
+    labels,
     datasets: [
       {
-        label: "hola",
+        label: 'hola',
         data: datos,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
+        backgroundColor,
+        borderColor,
         borderWidth: 1,
       },
     ],
-    
   };
 
   const options = {
-    
-      plugins: {
-        title: {
-          display: true,
-          text: title,
-          align: "center",
-          padding: {
-            top: 10,
-            bottom: 30,
-          },
-        },
-        legend: {
-          display: true,
-          position: "top",
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
+    plugins: {
+      title: {
+        display: true,
+        text: title,
+        align: 'center',
+        padding: {
+          top: 10,
+          bottom: 30,
         },
       },
-   
-  }
-
- 
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
 
   return (
     <div className='chart-container'>
-       <Doughnut ref={ref} data={data}  options={options}/>
-      <button type="button" onClick={downloadImage} className="download-btn">
+      <Doughnut ref={ref} data={data} options={options} />
+      <button type='button' onClick={downloadImage} className='download-btn'>
         <FiDownload />
       </button>
     </div>
-  )
+  );
 }
 
-export default DoughnutChart
+export default DoughnutChart;
 
 /*
 

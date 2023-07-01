@@ -7,7 +7,6 @@ import Colors from '../../components/Colors';
 import { Link } from 'react-router-dom';
 
 function HivEntreFechas() {
-
   //destructuring from context
   const {
     semanaInicial,
@@ -23,46 +22,76 @@ function HivEntreFechas() {
     numeroTotalNotificadosHivPerinatalEntreFechas,
     porcentajeNotificadosHivMoronEntreFechas,
     numeroTotalGeneralHivMoronEntreFechas,
-    numeroTotalGeneralHivNoMoronEntreFechas
-
+    numeroTotalGeneralHivNoMoronEntreFechas,
   } = useContext(DataContext);
 
-  const [salmonTransparente, salmon, lilaTransparente, lila, rosaTransparente, rosa] = Colors
-
+  const [
+    salmonTransparente,
+    salmon,
+    lilaTransparente,
+    lila,
+    rosaTransparente,
+    rosa,
+  ] = Colors;
 
   //Gráfico notificados según sexo entre fechas
-  const labelsSexoHiv = ['Maculino', 'Femenino', 'SD']
-  const backgroundColorHiv = [salmonTransparente, lilaTransparente, rosaTransparente]
-  const borderColorHiv = [salmon, lila, rosa]
-  const totalPorSexoHivEntreFechas = [numeroTotalGeneralNotificadosHivMasculinoEntreFechas, numeroTotalGeneralNotificadosHivFemeninoEntreFechas, numeroTotalGeneralNotificadosHivSdEntreFechas]
-  const titleSexoHivEntreFechas = `Casos notificados según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  const labelsSexoHiv = ['Maculino', 'Femenino', 'SD'];
+  const backgroundColorHiv = [
+    salmonTransparente,
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorHiv = [salmon, lila, rosa];
+  const totalPorSexoHivEntreFechas = [
+    numeroTotalGeneralNotificadosHivMasculinoEntreFechas,
+    numeroTotalGeneralNotificadosHivFemeninoEntreFechas,
+    numeroTotalGeneralNotificadosHivSdEntreFechas,
+  ];
+  const titleSexoHivEntreFechas = `Casos notificados según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
   //Gráfico embarazadas sobre total de notificadas mujeres entre fechas
-  const labelsEmbarazoHiv = ['Gestantes', 'No gestantes',]
-  const backgroundColorEmbarazoHiv = [rosaTransparente, salmonTransparente]
-  const borderColorEmbarazoHiv = [rosa, salmon]
-  const embarazadasEnMujeresHivEntreFechas = [numeroTotalNotificadosHivEmbarazoEntreFechas, parseInt(numeroTotalGeneralNotificadosHivFemeninoEntreFechas - numeroTotalNotificadosHivEmbarazoEntreFechas)]
-  const titleEmbarazoHivEntreFechas = `Casos notificados en gestantes, sobre personas con posibilidad de gestar. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  const labelsEmbarazoHiv = ['Gestantes', 'No gestantes'];
+  const backgroundColorEmbarazoHiv = [rosaTransparente, salmonTransparente];
+  const borderColorEmbarazoHiv = [rosa, salmon];
+  const embarazadasEnMujeresHivEntreFechas = [
+    numeroTotalNotificadosHivEmbarazoEntreFechas,
+    parseInt(
+      numeroTotalGeneralNotificadosHivFemeninoEntreFechas -
+        numeroTotalNotificadosHivEmbarazoEntreFechas
+    ),
+  ];
+  const titleEmbarazoHivEntreFechas = `Casos notificados en gestantes, sobre personas con posibilidad de gestar. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
-  //Gráfico notificados Morón/Total entre fechas 
-  const labelsEstablecimientoHiv = ['Establecimientos de Morón', 'Establecimientos no pertenecientes a Morón',]
-  const backgroundColorEstablecimientoHiv = [lilaTransparente, rosaTransparente]
-  const borderColorEstablecimientoHiv = [lila, rosa]
-  const notificadosHivEstablecimientoCargaEntreFechas = [numeroTotalGeneralHivMoronEntreFechas, numeroTotalGeneralHivNoMoronEntreFechas]
-  const titleEstablecimientoHivEntreFechas = `Casos notificados según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`
-
+  //Gráfico notificados Morón/Total entre fechas
+  const labelsEstablecimientoHiv = [
+    'Establecimientos de Morón',
+    'Establecimientos no pertenecientes a Morón',
+  ];
+  const backgroundColorEstablecimientoHiv = [
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorEstablecimientoHiv = [lila, rosa];
+  const notificadosHivEstablecimientoCargaEntreFechas = [
+    numeroTotalGeneralHivMoronEntreFechas,
+    numeroTotalGeneralHivNoMoronEntreFechas,
+  ];
+  const titleEstablecimientoHivEntreFechas = `Casos notificados según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
   return (
     <div className='totalesGraphs-container'>
-      {
-        semanaInicial
-          ? <h3>Semanas Epidemiológicas {semanaInicial} a {semanaFinal}</h3>
-          : <div>
-            <p>No hay fechas ingresadas</p>
-            <Link to="/upload"><button className='button'>Ingresar fechas</button></Link>
-          </div>
-
-      }
+      {semanaInicial ? (
+        <h3>
+          Semanas Epidemiológicas {semanaInicial} a {semanaFinal}
+        </h3>
+      ) : (
+        <div>
+          <p>No hay fechas ingresadas</p>
+          <Link to='/upload'>
+            <button className='button'>Ingresar fechas</button>
+          </Link>
+        </div>
+      )}
       <div className='totales-page-container'>
         <div className='recuadro naranja'>
           Notificados:
@@ -108,8 +137,6 @@ function HivEntreFechas() {
         </div>
       </div>
       <div className='graphs-container'>
-
-
         <div className='doughnutChart-sifilis'>
           <DoughnutChart
             title={titleSexoHivEntreFechas}
@@ -141,7 +168,7 @@ function HivEntreFechas() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default HivEntreFechas
+export default HivEntreFechas;

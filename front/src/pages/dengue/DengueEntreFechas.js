@@ -8,7 +8,6 @@ import Colors from '../../components/Colors';
 import { Link } from 'react-router-dom';
 
 function DengueEntreFechas() {
-
   //destructuring from context
   const {
     semanaInicial,
@@ -29,59 +28,98 @@ function DengueEntreFechas() {
     numeroEmbarazadasNotificadoTotalDengueEntreFechas,
   } = useContext(DataContext);
 
-  const [salmonTransparente, salmon, lilaTransparente, lila, rosaTransparente, rosa, amarillo, amarilloTransparente, verde, verdeTransparente] = Colors
-
+  const [
+    salmonTransparente,
+    salmon,
+    lilaTransparente,
+    lila,
+    rosaTransparente,
+    rosa,
+    amarillo,
+    amarilloTransparente,
+    verde,
+    verdeTransparente,
+  ] = Colors;
 
   //Gráfico notificados según sexo entre fechas
-  const labelsSexoDengue = ['Maculino', 'Femenino', 'SD']
-  const backgroundColorDengue = [salmonTransparente, lilaTransparente, rosaTransparente]
-  const borderColorDengue = [salmon, lila, rosa]
-  const totalPorSexoDengueEntreFechas = [numeroTotalNotificadosDengueMasculinoEntreFechas, numeroTotalNotificadosDengueFemeninoEntreFechas, numeroTotalNotificadosDengueSdEntreFechas]
-  const titleSexoDengueEntreFechas = `Casos notificados de Dengue según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  const labelsSexoDengue = ['Maculino', 'Femenino', 'SD'];
+  const backgroundColorDengue = [
+    salmonTransparente,
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorDengue = [salmon, lila, rosa];
+  const totalPorSexoDengueEntreFechas = [
+    numeroTotalNotificadosDengueMasculinoEntreFechas,
+    numeroTotalNotificadosDengueFemeninoEntreFechas,
+    numeroTotalNotificadosDengueSdEntreFechas,
+  ];
+  const titleSexoDengueEntreFechas = `Casos notificados de Dengue según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
   //Gráfico clasificación entre fechas
-  const labelsClasificacionDengue = ["Clasificación"]
-  const label1ClasificacionDengue = "Confirmados"
-  const label2ClasificacionDengue = "Probables"
-  const label3ClasificacionDengue = "Sospechosos no conclusivos"
-  const label4ClasificacionDengue = "Sospechosos"
-  const label5ClasificacionDengue = "Descartados"
-  const titleClasificacionDengueEntreFechas = `Clasificación de los casos de Dengue. Morón, SE ${semanaInicial} a ${semanaFinal}.`
-  const dataConfirmadosClasificacionDengueEntreFechas = [numeroConfirmadosTotalDengueEntreFechas]
-  const dataProbablesClasificacionDengueEntreFechas = [numeroProbablesTotalDengueEntreFechas]
-  const dataSospechososNoConcClasificacionDengueEntreFechas = [numeroConfirmadosTotalDengueEntreFechas]
-  const dataSospechososClasificacionDengueEntreFechas = [numeroSospechososTotalDengueEntreFechas]
-  const dataDescartadosClasificacionDengueEntreFechas = [numeroDescartadosTotalDengueEntreFechas]
+  const labelsClasificacionDengue = ['Clasificación'];
+  const label1ClasificacionDengue = 'Confirmados';
+  const label2ClasificacionDengue = 'Probables';
+  const label3ClasificacionDengue = 'Sospechosos no conclusivos';
+  const label4ClasificacionDengue = 'Sospechosos';
+  const label5ClasificacionDengue = 'Descartados';
+  const titleClasificacionDengueEntreFechas = `Clasificación de los casos de Dengue. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
+  const dataConfirmadosClasificacionDengueEntreFechas = [
+    numeroConfirmadosTotalDengueEntreFechas,
+  ];
+  const dataProbablesClasificacionDengueEntreFechas = [
+    numeroProbablesTotalDengueEntreFechas,
+  ];
+  const dataSospechososNoConcClasificacionDengueEntreFechas = [
+    numeroConfirmadosTotalDengueEntreFechas,
+  ];
+  const dataSospechososClasificacionDengueEntreFechas = [
+    numeroSospechososTotalDengueEntreFechas,
+  ];
+  const dataDescartadosClasificacionDengueEntreFechas = [
+    numeroDescartadosTotalDengueEntreFechas,
+  ];
 
   //Gráfico notificados Morón/Total entre fechas
-  const labelsEstablecimientoDengue = ['Establecimientos de Morón', 'Establecimientos no pertenecientes a Morón',]
-  const backgroundColorEstablecimientoDengue = [lilaTransparente, rosaTransparente]
-  const borderColorEstablecimientoDengue = [lila, rosa]
-  const notificadosDengueEstablecimientoCargaEntreFechas = [numeroTotalGeneralDengueMoronEntreFechas, numeroTotalGeneralDengueNoMoronEntreFechas]
-  const titleEstablecimientoDengueEntreFechas = `Casos notificados de Dengue según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}..`
+  const labelsEstablecimientoDengue = [
+    'Establecimientos de Morón',
+    'Establecimientos no pertenecientes a Morón',
+  ];
+  const backgroundColorEstablecimientoDengue = [
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorEstablecimientoDengue = [lila, rosa];
+  const notificadosDengueEstablecimientoCargaEntreFechas = [
+    numeroTotalGeneralDengueMoronEntreFechas,
+    numeroTotalGeneralDengueNoMoronEntreFechas,
+  ];
+  const titleEstablecimientoDengueEntreFechas = `Casos notificados de Dengue según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}..`;
 
   //Alerts
 
   function detallarEmbarazadasDengue() {
-
     Toast.fire({
       title: `Gestantes confirmadas: ${numeroEmbarazadasConfirmadasDengue}, \n 
     Gestantes descartadas: ${numeroEmbarazadasDescartadasDengue}. \n
-    `
-    })
+    `,
+    });
   }
 
   return (
     <div className='totalesGraphs-container'>
-      {
-        semanaInicial
-          ? <h3>Semanas Epidemiológicas {semanaInicial} a {semanaFinal}</h3>
-          : <div>
-            <p>No hay fechas ingresadas</p>
-            <Link to="/upload"><button className='button'>Ingresar fechas</button></Link>
-          </div>
-
-      }
+      {semanaInicial ? (
+        <h3>
+          Semanas Epidemiológicas {semanaInicial} a {semanaFinal}
+        </h3>
+      ) : (
+        <div>
+          <p>No hay fechas ingresadas</p>
+          <Link to='/upload'>
+            <button className='button'>Ingresar fechas</button>
+          </Link>
+        </div>
+      )}
 
       <div className='totales-page-container'>
         <div className='recuadro naranja'>
@@ -98,9 +136,7 @@ function DengueEntreFechas() {
         </div>
         <div className='recuadro rosa'>
           Probables:
-          <p className='totalNumber'>
-            {numeroProbablesTotalDengueEntreFechas}
-          </p>
+          <p className='totalNumber'>{numeroProbablesTotalDengueEntreFechas}</p>
         </div>
         <div className='recuadro lila'>
           Descartados:
@@ -129,7 +165,6 @@ function DengueEntreFechas() {
       </div>
 
       <div className='graphs-container'>
-
         <div className='doughnutChart-sifilis'>
           <DoughnutChart
             title={titleSexoDengueEntreFechas}
@@ -176,10 +211,9 @@ function DengueEntreFechas() {
             bgColor5={verdeTransparente}
           />
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default DengueEntreFechas
+export default DengueEntreFechas;

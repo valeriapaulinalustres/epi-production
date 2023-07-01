@@ -1,5 +1,5 @@
-import {useRef, useCallback} from 'react';
-import {FiDownload} from 'react-icons/fi'
+import { useRef, useCallback } from 'react';
+import { FiDownload } from 'react-icons/fi';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +11,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,8 +19,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-
 
 function BarChartThreeData({
   title,
@@ -39,7 +36,6 @@ function BarChartThreeData({
   bgColor2,
   bgColor3,
 }) {
-
   const options = {
     indexAxis: 'x',
     elements: {
@@ -59,16 +55,17 @@ function BarChartThreeData({
       // Change options for ALL labels of THIS CHART
       datalabels: {
         color: function (context) {
-          var index = context.dataIndex;
-          var value = context.dataset.data[index];
-          return value < 1 ? 'white' :  // draw negative values in red
-            index % 2 ? 'grey' :      // else, alternate values in blue and green
-              'grey';
-        }
-      }
+          const index = context.dataIndex;
+          const value = context.dataset.data[index];
+          return value < 1
+            ? 'white' // draw negative values in red
+            : index % 2
+            ? 'grey' // else, alternate values in blue and green
+            : 'grey';
+        },
+      },
     },
   };
-
 
   const labels = barLabels;
 
@@ -93,32 +90,31 @@ function BarChartThreeData({
         borderColor: borderColor3,
         backgroundColor: bgColor3,
       },
-      
-
     ],
   };
 
+  // download chart button
+  const refChartFiveData = useRef(null);
 
-//download chart button
-const refChartFiveData = useRef(null)
+  const downloadImageBarChartFive = useCallback(() => {
+    const link = document.createElement('a');
+    link.download = `${title}.png`;
+    link.href = refChartFiveData.current.toBase64Image();
+    link.click();
+  }, []);
 
-const downloadImageBarChartFive = useCallback(()=>{
-  const link = document.createElement("a");
-  link.download = `${title}.png`;
-  link.href = refChartFiveData.current.toBase64Image();
-  link.click();
-},[])
-
-
-
-
-  return <div className='chart-container'>
-  <Bar options={options} data={data} ref={refChartFiveData}/>
-  <button type="button" onClick={downloadImageBarChartFive} className="download-btn">
-      <FiDownload />
-    </button>
-  </div>
- 
+  return (
+    <div className='chart-container'>
+      <Bar options={options} data={data} ref={refChartFiveData} />
+      <button
+        type='button'
+        onClick={downloadImageBarChartFive}
+        className='download-btn'
+      >
+        <FiDownload />
+      </button>
+    </div>
+  );
 }
 
-export default BarChartThreeData
+export default BarChartThreeData;

@@ -11,7 +11,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,8 +19,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-
 
 function BarChartSe({
   eje,
@@ -32,34 +29,29 @@ function BarChartSe({
   borderColor1,
   bgColor1,
 }) {
-
   const options = {
-    //responsive: true,
-    //maintainAspectRatio: false,
+    // responsive: true,
+    // maintainAspectRatio: false,
     indexAxis: eje,
     scales: {
       y: {
-
         ticks: {
           crossAlign: 'far',
           autoSkip: false,
-
         },
         grid: {
           display: true,
-        }
+        },
       },
       x: {
-
         ticks: {
           align: 'left',
           //  autoSkip: false,
         },
         grid: {
           display: true,
-        }
+        },
       },
-
     },
     elements: {
       bar: {
@@ -80,14 +72,15 @@ function BarChartSe({
       // Change options for ALL labels of THIS CHART
       datalabels: {
         color: function (context) {
-          var index = context.dataIndex;
-          var value = context.dataset.data[index];
-          return value < 1 ? 'white' :  // draw negative values in red
-            index % 2 ? 'grey' :      // else, alternate values in blue and green
-              'grey';
-        }
-      }
-
+          const index = context.dataIndex;
+          const value = context.dataset.data[index];
+          return value < 1
+            ? 'white' // draw negative values in red
+            : index % 2
+            ? 'grey' // else, alternate values in blue and green
+            : 'grey';
+        },
+      },
     },
   };
 
@@ -105,27 +98,28 @@ function BarChartSe({
     ],
   };
 
-
-  //download chart button
-  const refBarChartSe = useRef(null)
+  // download chart button
+  const refBarChartSe = useRef(null);
 
   const downloadImageBarChartSe = useCallback(() => {
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.download = `${title}.png`;
     link.href = refBarChartSe.current.toBase64Image();
     link.click();
-  }, [])
+  }, []);
 
-
-
-
-  return <div className='chart-container'>
-    <Bar options={options} data={data} ref={refBarChartSe} />
-    <button type="button" onClick={downloadImageBarChartSe} className="download-btn">
-      <FiDownload />
-    </button>
-  </div>
-
+  return (
+    <div className='chart-container'>
+      <Bar options={options} data={data} ref={refBarChartSe} />
+      <button
+        type='button'
+        onClick={downloadImageBarChartSe}
+        className='download-btn'
+      >
+        <FiDownload />
+      </button>
+    </div>
+  );
 }
 
-export default BarChartSe
+export default BarChartSe;

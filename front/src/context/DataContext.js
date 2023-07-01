@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState} from 'react';
 
 const DataContext = createContext();
 
@@ -21,7 +21,7 @@ const DataProvider = ({ children }) => {
   const anioActual = date.getFullYear();
   //   const eneroFormatoNumero = pasarFechaAFormatoNumero(1-1-2022)
 
-console.log(baseCompletaClinica)
+  console.log(baseCompletaClinica);
 
   const semanas = [
     '1',
@@ -110,27 +110,27 @@ console.log(baseCompletaClinica)
   const semanaFinal = weeksCalendar.weekTo;
 
   // function calcularTotalNotificadosX() {
-  //   return baseCompleta.filter(el => el.EVENTO === "Tuberculosis" && el.DEPARTAMENTO_RESIDENCIA === "Morón" && el.FECHA_APERTURA >= fechaInicioFormatoNumero && el.FECHA_APERTURA <= fechaFinFormatoNumero)
+  //   return baseCompleta.filter(el => el.EVENTO ==== "Tuberculosis" && el.DEPARTAMENTO_RESIDENCIA ==== "Morón" && el.FECHA_APERTURA >= fechaInicioFormatoNumero && el.FECHA_APERTURA <= fechaFinFormatoNumero)
   // }
 
   // const a = calcularTotalNotificadosX()
 
   function calculateLastWeek(base) {
-    let semanas = [];
-    base.forEach((el) => semanas.push(el.SEPI_APERTURA));
+    const semanas = [];
+    base.forEach(el => semanas.push(el.SEPI_APERTURA));
     return Math.max(...semanas);
   }
-  let lastWeek = calculateLastWeek(baseCompleta);
-  //console.log(lastWeek)
+  const lastWeek = calculateLastWeek(baseCompleta);
+  // console.log(lastWeek)
 
-  //==================================================
-  //----------FÓRMULAS----------------------------
-  //==================================================
+  // ===========================================================================
+  // ----------FÓRMULAS----------------------------
+  // ===========================================================================
 
-  //-------TOTALES
+  // -------TOTALES
   function calcularTotalNotificados(enfermedad) {
     return baseCompleta.filter(
-      (el) => el.EVENTO === enfermedad && el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+      el => el.EVENTO === enfermedad && el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
@@ -140,7 +140,7 @@ console.log(baseCompletaClinica)
     fechaFin
   ) {
     return baseCompleta.filter(
-      (el) =>
+      el =>
         el.EVENTO === enfermedad &&
         el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
@@ -151,16 +151,15 @@ console.log(baseCompletaClinica)
   function calcularNumeroTotalNotificados(enfermedad) {
     return (
       baseCompleta.filter(
-        (el) => el.EVENTO == enfermedad && el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el => el.EVENTO === enfermedad && el.DEPARTAMENTO_RESIDENCIA === 'Morón'
       ).length || 0
     );
   }
 
   function calcularPorSexo(arr, sexo) {
     return (
-      arr.filter(
-        (el) => el.SEXO == sexo && el.DEPARTAMENTO_RESIDENCIA == 'Morón'
-      ).length || 0
+      arr.filter(el => el.SEXO === sexo && el.DEPARTAMENTO_RESIDENCIA === 'Morón')
+        .length || 0
     );
   }
 
@@ -172,9 +171,9 @@ console.log(baseCompletaClinica)
   ) {
     return (
       arr.filter(
-        (el) =>
-          el.SEXO == sexo &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+        el =>
+          el.SEXO === sexo &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0
@@ -183,19 +182,19 @@ console.log(baseCompletaClinica)
 
   function calcularEventoPorSexo(enfermedad, sexo) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == enfermedad &&
-        el.SEXO == sexo &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.EVENTO === enfermedad &&
+        el.SEXO === sexo &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
   function calcularClasificacionManualPorEvento(evento, clasificacion) {
     return baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == clasificacion &&
-        el.EVENTO == evento &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.CLASIFICACION_MANUAL === clasificacion &&
+        el.EVENTO === evento &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
@@ -206,10 +205,10 @@ console.log(baseCompletaClinica)
     fechaFin
   ) {
     return baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == clasificacion &&
-        el.EVENTO == evento &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.CLASIFICACION_MANUAL === clasificacion &&
+        el.EVENTO === evento &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -223,10 +222,10 @@ console.log(baseCompletaClinica)
   ) {
     return (
       baseCompleta.filter(
-        (el) =>
-          el.SEXO == sexo &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.CLASIFICACION_MANUAL == clasificacion &&
+        el =>
+          el.SEXO === sexo &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.CLASIFICACION_MANUAL === clasificacion &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0
@@ -235,9 +234,9 @@ console.log(baseCompletaClinica)
 
   function calcularConfirmadosPorClasificacion(clasificacion) {
     return baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == clasificacion &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.CLASIFICACION_MANUAL === clasificacion &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
@@ -247,7 +246,7 @@ console.log(baseCompletaClinica)
     fechaFin
   ) {
     return baseCompleta.filter(
-      (el) =>
+      el =>
         el.CLASIFICACION_MANUAL === clasificacion &&
         el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
@@ -262,9 +261,9 @@ console.log(baseCompletaClinica)
   ) {
     return (
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == clasificacion &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+        el =>
+          el.CLASIFICACION_MANUAL === clasificacion &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0
@@ -272,51 +271,51 @@ console.log(baseCompletaClinica)
   }
 
   function calcularConfirmadosDengue() {
-    let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado DEN-1' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+    const a = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
-    let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+    const b = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
-    let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado DEN-2' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+    const c = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-2' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
-    let d = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+    const d = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso confirmado por nexo epidemiológico autóctono' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
-    let e = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+    const e = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso de Dengue en brote con laboratorio (+)' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
-    let ab = [...a, ...b, ...c, ...d, ...e];
+    const ab = [...a, ...b, ...c, ...d, ...e];
     return ab;
   }
 
   function calcularConfirmadosDengueEntreFechas(fechaInicio, fechaFin) {
-    let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado DEN-1' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+    const a = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -326,23 +325,23 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosTuberculosis() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Descartado TBC - Micobacteria no tuberculosis' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Bacteriología Negativa' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Bacteriología Negativa' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso invalidado por epidemiología' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso invalidado por epidemiología' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
 
     let abc = [...a, ...b, ...c];
@@ -351,27 +350,27 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosTuberculosisEntreFechas(fechaInicio, fechaFin) {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Descartado TBC - Micobacteria no tuberculosis' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Bacteriología Negativa' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Bacteriología Negativa' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso invalidado por epidemiología' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso invalidado por epidemiología' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -382,22 +381,22 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosDengue() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado por epidemiología' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado por epidemiología' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
 
     let abc = [...a, ...b, ...c];
@@ -406,27 +405,27 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosDengueEntreFechas(fechaInicio, fechaFin) {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado por epidemiología' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado por epidemiología' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -436,16 +435,16 @@ console.log(baseCompletaClinica)
 
   function calcularSospechososDengue() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso sospechoso' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso sospechoso' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso sospechoso no conclusivo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso sospechoso no conclusivo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
 
     let ab = [...a, ...b];
@@ -454,18 +453,18 @@ console.log(baseCompletaClinica)
 
   function calcularSospechososDengueEntreFechas(fechaInicio, fechaFin) {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso sospechoso' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso sospechoso' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso sospechoso no conclusivo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Dengue' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso sospechoso no conclusivo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -476,19 +475,19 @@ console.log(baseCompletaClinica)
 
   function calcularEventoEnEmbarazo(evento) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
-        el.EMBARAZADA == 'SI' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.EVENTO === evento &&
+        el.EMBARAZADA === 'SI' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
   function calcularEventoEnEmbarazoEntreFechas(evento, fechaInicio, fechaFin) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
-        el.EMBARAZADA == 'SI' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.EVENTO === evento &&
+        el.EMBARAZADA === 'SI' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -496,25 +495,25 @@ console.log(baseCompletaClinica)
 
   function calcularConfirmadosEmbarazoTuberculosis() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Baciloscopía positiva' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Baciloscopía positiva' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.EMBARAZADA === 'SI'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Complejo Mycobacterium tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Complejo Mycobacterium tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.EMBARAZADA === 'SI'
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Mycobacterium tuberculosis' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EVENTO == 'Tuberculosis' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Mycobacterium tuberculosis' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Tuberculosis' &&
+        el.EMBARAZADA === 'SI'
     );
 
     let abc = [...a, ...b, ...c];
@@ -528,31 +527,31 @@ console.log(baseCompletaClinica)
   ) {
     let a =
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == 'Baciloscopía positiva' &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.EVENTO == 'Tuberculosis' &&
-          el.EMBARAZADA == 'SI' &&
+        el =>
+          el.CLASIFICACION_MANUAL === 'Baciloscopía positiva' &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.EVENTO === 'Tuberculosis' &&
+          el.EMBARAZADA === 'SI' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0;
     let b =
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == 'Complejo Mycobacterium tuberculosis' &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.EVENTO == 'Tuberculosis' &&
-          el.EMBARAZADA == 'SI' &&
+        el =>
+          el.CLASIFICACION_MANUAL === 'Complejo Mycobacterium tuberculosis' &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.EVENTO === 'Tuberculosis' &&
+          el.EMBARAZADA === 'SI' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0;
     let c =
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == 'Mycobacterium tuberculosis' &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.EVENTO == 'Tuberculosis' &&
-          el.EMBARAZADA == 'SI' &&
+        el =>
+          el.CLASIFICACION_MANUAL === 'Mycobacterium tuberculosis' &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.EVENTO === 'Tuberculosis' &&
+          el.EMBARAZADA === 'SI' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0;
@@ -566,21 +565,21 @@ console.log(baseCompletaClinica)
   ) {
     let a =
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == 'Caso descartado' &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.EMBARAZADA == 'SI' &&
-          el.EVENTO == 'Tuberculosis' &&
+        el =>
+          el.CLASIFICACION_MANUAL === 'Caso descartado' &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.EMBARAZADA === 'SI' &&
+          el.EVENTO === 'Tuberculosis' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0;
     let b =
       baseCompleta.filter(
-        (el) =>
-          el.CLASIFICACION_MANUAL == 'Caso invalidado por epidemiología' &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.EMBARAZADA == 'SI' &&
-          el.EVENTO == 'Tuberculosis' &&
+        el =>
+          el.CLASIFICACION_MANUAL === 'Caso invalidado por epidemiología' &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.EMBARAZADA === 'SI' &&
+          el.EVENTO === 'Tuberculosis' &&
           el.SEPI_APERTURA >= fechaInicio &&
           el.SEPI_APERTURA <= fechaFin
       ).length || 0;
@@ -590,16 +589,16 @@ console.log(baseCompletaClinica)
 
   function calcularConfirmadosEmbarazoDengue() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado DEN-1' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
 
     let ab = [...a, ...b];
@@ -609,18 +608,18 @@ console.log(baseCompletaClinica)
 
   function calcularConfirmadosEmbarazoDengueEntreFechas(fechaInicio, fechaFin) {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado DEN-1' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -631,30 +630,30 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosEmbarazoDengue() {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado por epidemiología' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado por epidemiología' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
     let d = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI'
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI'
     );
 
     let abcd = [...a, ...b, ...c, ...d];
@@ -663,28 +662,28 @@ console.log(baseCompletaClinica)
 
   function calcularDescartadosEmbarazoDengueEntreFechas(fechaInicio, fechaFin) {
     let a = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL ==
+      el =>
+        el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let c = baseCompleta.filter(
-      (el) =>
-        el.CLASIFICACION_MANUAL == 'Caso descartado por epidemiología' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-        el.EMBARAZADA == 'SI' &&
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso descartado por epidemiología' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EMBARAZADA === 'SI' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -695,19 +694,19 @@ console.log(baseCompletaClinica)
 
   function calcularDptoCargaMoron(evento) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
-        el.DEPARTAMENTO_CARGA == 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+      el =>
+        el.EVENTO === evento &&
+        el.DEPARTAMENTO_CARGA === 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
   function calcularDptoCargaMoronEntreFechas(evento, fechaInicio, fechaFin) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
-        el.DEPARTAMENTO_CARGA == 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+      el =>
+        el.EVENTO === evento &&
+        el.DEPARTAMENTO_CARGA === 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -715,19 +714,19 @@ console.log(baseCompletaClinica)
 
   function calcularDptoCargaNoMoron(evento) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
+      el =>
+        el.EVENTO === evento &&
         el.DEPARTAMENTO_CARGA !== 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
     );
   }
 
   function calcularDptoCargaNoMoronEntreFechas(evento, fechaInicio, fechaFin) {
     return baseCompleta.filter(
-      (el) =>
-        el.EVENTO == evento &&
+      el =>
+        el.EVENTO === evento &&
         el.DEPARTAMENTO_CARGA !== 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
@@ -736,10 +735,10 @@ console.log(baseCompletaClinica)
   function calcularResultadoTuberculosis(resultado) {
     return (
       baseCompleta.filter(
-        (el) =>
-          el.EVENTO == 'Tuberculosis' &&
-          el.RESULTADO == resultado &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón'
+        el =>
+          el.EVENTO === 'Tuberculosis' &&
+          el.RESULTADO === resultado &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón'
       ).length || 0
     );
   }
@@ -747,10 +746,10 @@ console.log(baseCompletaClinica)
   function calcularEdadSexo(arr, sexo, edad) {
     return (
       arr.filter(
-        (el) =>
-          el.SEXO == sexo &&
-          el.DEPARTAMENTO_RESIDENCIA == 'Morón' &&
-          el.GRUPO_ETARIO == edad
+        el =>
+          el.SEXO === sexo &&
+          el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+          el.GRUPO_ETARIO === edad
       ).length || 0
     );
   }
@@ -758,7 +757,7 @@ console.log(baseCompletaClinica)
   function calcularNotificadosXSE(arr, se) {
     return (
       arr.filter(
-        (el) => el.DEPARTAMENTO_RESIDENCIA == 'Morón' && el.SEPI_APERTURA == se
+        el => el.DEPARTAMENTO_RESIDENCIA === 'Morón' && el.SEPI_APERTURA === se
       ).length || 0
     );
   }
@@ -766,9 +765,7 @@ console.log(baseCompletaClinica)
   //fórmulas para clinica.csv
 
   function calcularTotalNotificadosClinica(enfermedad) {
-    return baseCompletaClinica.filter(
-      (el) => el.NOMBREEVENTOAGRP == enfermedad
-    );
+    return baseCompletaClinica.filter(el => el.NOMBREEVENTOAGRP === enfermedad);
   }
 
   function calcularTotalNotificadosClinicaEntreFechas(
@@ -777,8 +774,8 @@ console.log(baseCompletaClinica)
     fechaFin
   ) {
     return baseCompletaClinica.filter(
-      (el) =>
-        el.NOMBREEVENTOAGRP == enfermedad &&
+      el =>
+        el.NOMBREEVENTOAGRP === enfermedad &&
         el.SEMANA >= fechaInicio &&
         el.SEMANA <= fechaFin
     );
@@ -786,8 +783,8 @@ console.log(baseCompletaClinica)
 
   function calcularNotificadosXSEClinica(arr, se) {
     return (
-      arr.filter((el) => el.DEPARTAMENTO == 'MORÓN' && el.SEMANA == se)
-        .length || 0
+      arr.filter(el => el.DEPARTAMENTO === 'MORÓN' && el.SEMANA === se).length ||
+      0
     );
   }
 
@@ -797,9 +794,9 @@ console.log(baseCompletaClinica)
     for (let i = 0; i < arr.length; i++) {
       const el1 = arr[i];
       //console.log(el1.DNI);
-      let filtrado = sinDuplicados.filter((el) => el.NRO_DOC === el1.NRO_DOC);
+      let filtrado = sinDuplicados.filter(el => el.NRO_DOC === el1.NRO_DOC);
 
-      if (filtrado.length == 0) {
+      if (filtrado.length === 0) {
         sinDuplicados.push(el1);
       }
     }
@@ -807,9 +804,9 @@ console.log(baseCompletaClinica)
     return sinDuplicados;
   }
 
-  //==================================================
+  //===========================================================================
   //----------ENFERMEDADES----------------------------
-  //==================================================
+  //===========================================================================
 
   //--------Sífilis--------------------------------------------------------------------------
 
@@ -954,7 +951,7 @@ console.log(baseCompletaClinica)
 
   arrayConfirmadosTotalGeneralSifilis =
     arrayConfirmadosTotalGeneralSifilis.filter(
-      (el) =>
+      el =>
         el.EVENTO === 'Sífilis' ||
         el.EVENTO === 'Sífilis en personas gestantes' ||
         el.EVENTO === 'Sífilis congénita'
@@ -977,7 +974,7 @@ console.log(baseCompletaClinica)
   ];
 
   arrayProbablesTotalGeneralSifilis = arrayProbablesTotalGeneralSifilis.filter(
-    (el) =>
+    el =>
       el.EVENTO === 'Sífilis' ||
       el.EVENTO === 'Sífilis en personas gestantes' ||
       el.EVENTO === 'Sífilis congénita'
@@ -1034,7 +1031,7 @@ console.log(baseCompletaClinica)
 
   arrayConfirmadosTotalGeneralSifilisEntreFechas =
     arrayConfirmadosTotalGeneralSifilisEntreFechas.filter(
-      (el) =>
+      el =>
         el.EVENTO === 'Sífilis' ||
         el.EVENTO === 'Sífilis en personas gestantes' ||
         el.EVENTO === 'Sífilis congénita'
@@ -1073,7 +1070,7 @@ console.log(baseCompletaClinica)
 
   arrayProbablesTotalGeneralSifilisEntreFechas =
     arrayProbablesTotalGeneralSifilisEntreFechas.filter(
-      (el) =>
+      el =>
         el.EVENTO === 'Sífilis' ||
         el.EVENTO === 'Sífilis en personas gestantes' ||
         el.EVENTO === 'Sífilis congénita'
@@ -1185,17 +1182,17 @@ console.log(baseCompletaClinica)
   //---------confirmados femeninos, masculinos y sin datos
 
   let arrayConfirmadosFemeninosSifilis =
-    arrayConfirmadosTotalGeneralSifilis.filter((el) => el.SEXO === 'F');
+    arrayConfirmadosTotalGeneralSifilis.filter(el => el.SEXO === 'F');
   const numeroConfirmadosFemeninosSifilis =
     arrayConfirmadosFemeninosSifilis.length || 0;
 
   let arrayConfirmadosMasculinosSifilis =
-    arrayConfirmadosTotalGeneralSifilis.filter((el) => el.SEXO === 'M');
+    arrayConfirmadosTotalGeneralSifilis.filter(el => el.SEXO === 'M');
   const numeroConfirmadosMasculinosSifilis =
     arrayConfirmadosMasculinosSifilis.length || 0;
 
   let arrayConfirmadosSDSifilis = arrayConfirmadosTotalGeneralSifilis.filter(
-    (el) => el.SEXO === 'A' || el.SEXO === 'NA'
+    el => el.SEXO === 'A' || el.SEXO === 'NA'
   );
   const numeroConfirmadosSDSifilis = arrayConfirmadosSDSifilis.length || 0;
 
@@ -1408,18 +1405,18 @@ console.log(baseCompletaClinica)
   //---------probables femeninas, masculinos
 
   let arrayProbablesFemeninosSifilis = arrayProbablesTotalGeneralSifilis.filter(
-    (el) => el.SEXO === 'F'
+    el => el.SEXO === 'F'
   );
   const numeroProbablesFemeninosSifilis =
     arrayProbablesFemeninosSifilis.length || 0;
 
   let arrayProbablesMasculinosSifilis =
-    arrayProbablesTotalGeneralSifilis.filter((el) => el.SEXO === 'M');
+    arrayProbablesTotalGeneralSifilis.filter(el => el.SEXO === 'M');
   const numeroProbablesMasculinosSifilis =
     arrayProbablesMasculinosSifilis.length || 0;
 
   let arrayProbablesSDSifilis = arrayProbablesTotalGeneralSifilis.filter(
-    (el) => el.SEXO === 'A' || el.SEXO === 'NA'
+    el => el.SEXO === 'A' || el.SEXO === 'NA'
   );
   const numeroProbablesSDSifilis = arrayProbablesSDSifilis.length || 0;
 
@@ -1900,7 +1897,7 @@ console.log(baseCompletaClinica)
       ...calcularTotalNotificados('VIH - Expuesto perinatal'),
       ...calcularTotalNotificados('VIH en embarazo'),
     ].filter(
-      (el) => el.CLASIFICACION_MANUAL === 'Caso probable de infección por VIH'
+      el => el.CLASIFICACION_MANUAL === 'Caso probable de infección por VIH'
     ).length || 0;
 
   //descartados
@@ -1944,7 +1941,7 @@ console.log(baseCompletaClinica)
         semanaFinal
       ),
     ].filter(
-      (el) => el.CLASIFICACION_MANUAL === 'Caso probable de infección por VIH'
+      el => el.CLASIFICACION_MANUAL === 'Caso probable de infección por VIH'
     ).length || 0;
 
   //descartados entre fechas
@@ -2347,19 +2344,19 @@ console.log(baseCompletaClinica)
 
   //embarazadas
   let arrayNotificadosTbcEmbarazadas = arrayTotalNotificadosTuberculosis.filter(
-    (el) => el.EMBARAZADA == 'SI'
+    el => el.EMBARAZADA === 'SI'
   );
   const numeroEmbarazadasNotificadasTotalTuberculosis =
     arrayNotificadosTbcEmbarazadas.length || 0;
 
   let arrayConfirmadosTbcEmbarazadas = arrayConfirmadosTbc.filter(
-    (el) => el.EMBARAZADA == 'SI'
+    el => el.EMBARAZADA === 'SI'
   );
   const numeroEmbarazadasConfirmadasTuberculosis =
     arrayConfirmadosTbcEmbarazadas.length || 0;
 
   let arrayDescartadasTbcEmbarazadas = arrayDescartadosTotalTuberculosis.filter(
-    (el) => el.EMBARAZADA == 'SI'
+    el => el.EMBARAZADA === 'SI'
   );
   const numeroEmbarazadasDescartadasTuberculosis =
     arrayDescartadasTbcEmbarazadas.length || 0;
@@ -2434,19 +2431,19 @@ console.log(baseCompletaClinica)
 
   let arrayNotificadosTbcEmbarazadasEntreFechas =
     arrayTotalNotificadosTuberculosisEntreFechas.filter(
-      (el) => el.EMBARAZADA == 'SI'
+      el => el.EMBARAZADA === 'SI'
     );
   const numeroEmbarazadasNotificadasTotalTuberculosisEntreFechas =
     arrayNotificadosTbcEmbarazadasEntreFechas.length || 0;
 
   let arrayConfirmadosTbcEmbarazadasEntreFechas =
-    arrayConfirmadosTbcEntreFechas.filter((el) => el.EMBARAZADA == 'SI');
+    arrayConfirmadosTbcEntreFechas.filter(el => el.EMBARAZADA === 'SI');
   const numeroEmbarazadasConfirmadasTuberculosisEntreFechas =
     arrayConfirmadosTbcEmbarazadasEntreFechas.length || 0;
 
   let arrayDescartadasTbcEmbarazadasEntreFechas =
     arrayDescartadosTotalTuberculosisEntreFechas.filter(
-      (el) => el.EMBARAZADA == 'SI'
+      el => el.EMBARAZADA === 'SI'
     );
   const numeroEmbarazadasDescartadasTuberculosisEntreFechas =
     arrayDescartadasTbcEmbarazadasEntreFechas.length || 0;
@@ -3466,10 +3463,10 @@ console.log(baseCompletaClinica)
 
   //--Departamento de carga
   let numeroConfirmadosCovidTotalMoron =
-    arrayConfirmadosCovidTotal.filter((el) => el.DEPARTAMENTO_CARGA === 'Morón')
+    arrayConfirmadosCovidTotal.filter(el => el.DEPARTAMENTO_CARGA === 'Morón')
       .length || 0;
   let numeroConfirmadosCovidTotalNoMoron =
-    arrayConfirmadosCovidTotal.filter((el) => el.DEPARTAMENTO_CARGA !== 'Morón')
+    arrayConfirmadosCovidTotal.filter(el => el.DEPARTAMENTO_CARGA !== 'Morón')
       .length || 0;
 
   const porcentajeNotificadosCovidMoron =
@@ -3483,11 +3480,11 @@ console.log(baseCompletaClinica)
   //Entre fechas
   let numeroConfirmadosCovidTotalMoronEntreFechas =
     arrayConfirmadosCovidTotalEntreFechas.filter(
-      (el) => el.DEPARTAMENTO_CARGA === 'Morón'
+      el => el.DEPARTAMENTO_CARGA === 'Morón'
     ).length || 0;
   let numeroConfirmadosCovidTotalNoMoronEntreFechas =
     arrayConfirmadosCovidTotalEntreFechas.filter(
-      (el) => el.DEPARTAMENTO_CARGA !== 'Morón'
+      el => el.DEPARTAMENTO_CARGA !== 'Morón'
     ).length || 0;
 
   const porcentajeNotificadosCovidMoronEntreFechas =
@@ -3626,15 +3623,25 @@ console.log(baseCompletaClinica)
     arrayConfirmadosVsrEntreFechas.length || 0;
 
   // -------------------------Bronquiolitis ---------------------------
-const arrayClinicaBqlSinEspecificar = calcularTotalNotificadosClinica("Bronquiolitis en menores de 2 años (sin especificar)")
-const arrayClinicaBqlAmbulatorio = calcularTotalNotificadosClinica("Bronquiolitis en menores de 2 años ambulatorios")
-const arrayClinicaBqlInternado = calcularTotalNotificadosClinica("Bronquiolitis en menores de 2 años internados")
+  const arrayClinicaBqlSinEspecificar = calcularTotalNotificadosClinica(
+    'Bronquiolitis en menores de 2 años (sin especificar)'
+  );
+  const arrayClinicaBqlAmbulatorio = calcularTotalNotificadosClinica(
+    'Bronquiolitis en menores de 2 años ambulatorios'
+  );
+  const arrayClinicaBqlInternado = calcularTotalNotificadosClinica(
+    'Bronquiolitis en menores de 2 años internados'
+  );
 
-const arrayNotificadosTotalBql = [...arrayClinicaBqlAmbulatorio, ...arrayClinicaBqlSinEspecificar, ...arrayClinicaBqlInternado]
+  const arrayNotificadosTotalBql = [
+    ...arrayClinicaBqlAmbulatorio,
+    ...arrayClinicaBqlSinEspecificar,
+    ...arrayClinicaBqlInternado,
+  ];
 
-const numeroNotificadosTotalBql = arrayNotificadosTotalBql.length || 0;
+  const numeroNotificadosTotalBql = arrayNotificadosTotalBql.length || 0;
 
-console.log(arrayNotificadosTotalBql)
+  console.log(arrayNotificadosTotalBql);
 
   const data = {
     user,
@@ -3655,7 +3662,6 @@ console.log(arrayNotificadosTotalBql)
     setBaseCompleta,
     setBaseCompletaClinica,
     baseCompletaClinica,
-    calendar,
     setCalendar,
     notificadosEno1,
     notificadosEno2,
@@ -3779,12 +3785,6 @@ console.log(arrayNotificadosTotalBql)
     porcentajeNotificadosSifilisMoronEntreFechas,
     numeroTotalNotificadosSifilisEmbarazadasEntreFechas,
     numeroTotalNotificadosSifilisCongenitaEntreFechas,
-    numeroConfirmadosFemeninosSifilis,
-    numeroConfirmadosMasculinosSifilis,
-    numeroConfirmadosSDSifilis,
-    numeroProbablesFemeninosSifilis,
-    numeroProbablesMasculinosSifilis,
-    numeroProbablesSDSifilis,
     numeroConfirmadosFemeninosSifilisEntreFechas,
     numeroConfirmadosMasculinosSifilisEntreFechas,
     numeroConfirmadosSDSifilisEntreFechas,
@@ -3819,7 +3819,7 @@ console.log(arrayNotificadosTotalBql)
     numeroConfirmadosCovidTotalMoronEntreFechas,
     numeroConfirmadosCovidTotalNoMoronEntreFechas,
     lastWeek,
-    numeroNotificadosTotalBql
+    numeroNotificadosTotalBql,
   };
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;

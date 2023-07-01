@@ -1,8 +1,7 @@
 import { useContext, useEffect } from 'react';
 import DataContext from '../../context/DataContext';
 import './home.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import HomeGraphsRender from './HomeGraphsRender';
 
 function Home() {
@@ -51,9 +50,9 @@ function Home() {
           <div className='home-news'>
             <h3 className='home-news-title'>Novedades</h3>
             <p>
-              Está disponible la información sobre Bronquiolitis
-              en la pestaña de COVID y OVR.
-              Próximamente se modificará la sección "COVID" para representar internaciones.
+              Está disponible la información sobre Bronquiolitis en la pestaña
+              de COVID y OVR. Próximamente se modificará la sección COVID para
+              representar internaciones.
             </p>
           </div>
 

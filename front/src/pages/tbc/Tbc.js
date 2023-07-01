@@ -17,7 +17,7 @@ function Tbc() {
 
   // function detallarEmbarazadasTuberculosis(conf, desc) {
   //   Toast.fire({
-  //     title: `Gestantes confirmadas: ${conf}, \n 
+  //     title: `Gestantes confirmadas: ${conf}, \n
   //   Gestantes descartadas: ${desc}. \n
   //   `,
   //   });

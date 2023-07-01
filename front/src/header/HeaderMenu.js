@@ -1,18 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
-import {TiThMenu} from 'react-icons/ti';
-import './headerMenu.css'
-
+import { TiThMenu } from 'react-icons/ti';
+import './headerMenu.css';
 
 function HeaderMenu(props) {
-
-const {menu, setMenu} = props;
+  const { menu, setMenu } = props;
 
   return (
-    
-<button className="menu-button" onClick={()=>setMenu(!menu)}><TiThMenu className='menu-icon' id='menu'/></button>
-   
-    
-  )
+    <button className='menu-button' onClick={() => setMenu(!menu)}>
+      <TiThMenu className='menu-icon' id='menu' />
+    </button>
+  );
 }
 
-export default HeaderMenu
+export default HeaderMenu;

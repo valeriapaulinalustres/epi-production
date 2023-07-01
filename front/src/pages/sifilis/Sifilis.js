@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Sifilis() {
   const [ultimoMesSifilis, setUltimoMesSifilis] = useState(false);
 
-  //destructuring from context
+  // destructuring from context
   const { anioBaseActual, baseCompleta } = useContext(DataContext);
 
   return (

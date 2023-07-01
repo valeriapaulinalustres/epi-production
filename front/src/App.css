@@ -1,205 +1,197 @@
-*{
-    margin: 0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-:root{
-    --rojo: #FF003C;
-    --rosa: #ffc6d3;
-    --lila: #d7afff;
-    --naranja: #FF9700;
-    --salmon: #ffd18d;
-    --violeta: #63128D;
-    --gris-claro: #F4F5FA;
-    --gris-oscuro: #828282;
-  
+:root {
+  --rojo: #ff003c;
+  --rosa: #ffc6d3;
+  --lila: #d7afff;
+  --naranja: #ff9700;
+  --salmon: #ffd18d;
+  --violeta: #63128d;
+  --gris-claro: #f4f5fa;
+  --gris-oscuro: #828282;
+}
+
+h2 {
+  margin: 40px 10px 10px 10px;
+  text-align: center;
+}
+
+h3 {
+  margin: 10px;
+  text-align: center;
+}
+
+.button {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+  color: var(--naranja);
+  font-weight: bold;
+  width: 150px;
+  background-color: white;
+  box-shadow: 2px 2px 2px gray;
+  border: none;
+  cursor: pointer;
+  border: 2px solid var(--naranja);
+}
+
+.button:hover {
+  background-color: var(--salmon);
+  color: white;
+  border: 2px solid var(--salmon);
+}
+
+.buttonActive {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  background-color: var(--rojo);
+  box-shadow: 2px 2px 2px gray;
+  border: none;
+  cursor: pointer;
+  border: 2px solid var(--rojo);
+}
+
+.buttonActive:hover {
+  background-color: white;
+  color: var(--rojo);
+  border: 2px solid var(--rojo);
+}
+
+.download-btn {
+  border-radius: 5px;
+  margin: 10px 10px;
+  color: var(--naranja);
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 2px gray;
+  cursor: pointer;
+  border: 2px solid var(--naranja);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-btn-icon {
+  color: var(--naranja);
+  width: 20px;
+  height: 20px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnElegir-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.totales-page-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.graphs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.totalesGraphs-container {
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.recuadro {
+  width: 200px;
+
+  border-radius: 5px;
+  color: white;
+  box-shadow: 2px 2px 2px gray;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rojo {
+  background-color: var(--rojo);
+}
+
+.salmon {
+  background-color: var(--salmon);
+}
+
+.rosa {
+  background-color: var(--rosa);
+}
+
+.naranja {
+  background-color: var(--naranja);
+}
+
+.lila {
+  background-color: var(--lila);
+}
+
+.violeta {
+  background-color: var(--violeta);
+}
+
+.totalNumber {
+  font-size: 60px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.links {
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.close-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--rojo);
+}
+
+@media only screen and (max-width: 500px) {
+  .btnElegir-page {
+    flex-direction: column;
   }
-
-h2{
-    margin: 40px 10px 10px 10px;
-    text-align: center;
-}
-
-h3{
-    margin: 10px;
-    text-align: center;
-  
-}
-
-.button{
-    border-radius: 5px;
-    padding: 10px ;
-    margin: 10px 10px;
-    color: var(--naranja);
-    font-weight: bold;
-    width: 150px;
-    background-color: white;
-    box-shadow: 2px 2px 2px gray;
-    border: none;
-    cursor: pointer;
-    border: 2px solid var(--naranja);
-}
-
-.button:hover{
-    background-color: var(--salmon);
-    color: white;
-    border: 2px solid var(--salmon);
-}
-
-.buttonActive{
-    border-radius: 5px;
-    padding: 10px ;
-    margin: 10px 10px;
-    color: white;
-    font-weight: bold;
-    width: 150px;
-    background-color: var(--rojo);
-    box-shadow: 2px 2px 2px  gray;
-    border: none;
-    cursor: pointer;
-    border: 2px solid var(--rojo);
-}
-
-.buttonActive:hover{
-    background-color: white;
-    color: var(--rojo);
-    border: 2px solid var(--rojo);
-}
-
-.download-btn{
-    border-radius: 5px;
-    margin: 10px 10px;
-    color: var(--naranja);
-    font-weight: bold;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    box-shadow: 2px 2px 2px gray;
-    cursor: pointer;
-    border: 2px solid var(--naranja);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.download-btn-icon{
-    color: var(--naranja);
-    width: 20px;
-    height: 20px;
-}
-
-
-.page-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.btnElegir-page{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.totales-page-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-}
-
-.graphs-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.totalesGraphs-container{
-    max-width: 1000px;
-    width: 90%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 120px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.recuadro{
-    width: 200px;
-   
-    border-radius: 5px;
-    color: white;
-    box-shadow: 2px 2px 2px gray;
-    margin: 10px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.rojo{
-    background-color: var(--rojo);
-}
-
-.salmon{
-    background-color: var(--salmon);
-}
-
-.rosa{
-    background-color: var(--rosa);
-}
-
-.naranja{
-    background-color: var(--naranja);
-}
-
-.lila{
-    background-color: var(--lila);
-}
-
-.violeta{
-    background-color: var(--violeta);
-}
-
-.totalNumber{
-    font-size: 60px;
-    font-weight: bold;
-   text-align: right;
-}
-
-.chart-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.links{
-    text-decoration: none;
-    font-size: 30px;
-}
-
-.close-icon{
-    width: 40px;
-    height: 40px;
-    color: var(--rojo);
-}
-
-
-@media only screen and (max-width:500px) {
-.btnElegir-page{
-   
-    flex-direction: column;
-    
-}
 }

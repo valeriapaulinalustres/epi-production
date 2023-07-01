@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
 import BarChart from '../../components/BarChart';
 import '../sifilis/sifilis.css';
@@ -8,7 +8,6 @@ import Colors from '../../components/Colors';
 import { Link } from 'react-router-dom';
 
 function TbcEntreFechas() {
-
   //destructuring from context
 
   const {
@@ -28,57 +27,93 @@ function TbcEntreFechas() {
     numeroTotalGeneralTuberculosisNoMoronEntreFechas,
   } = useContext(DataContext);
 
-  const [salmonTransparente, salmon, lilaTransparente, lila, rosaTransparente, rosa] = Colors
+  const [
+    salmonTransparente,
+    salmon,
+    lilaTransparente,
+    lila,
+    rosaTransparente,
+    rosa,
+  ] = Colors;
 
   //Gráfico notificados según sexo
-  const labelsSexoTbc = ['Maculino', 'Femenino', 'SD']
-  const backgroundColorTbc = [salmonTransparente, lilaTransparente, rosaTransparente]
-  const borderColorTbc = [salmon, lila, rosa]
-  const totalPorSexoTbcEntreFechas = [numeroTotalNotificadosTuberculosisMasculinoEntreFechas, numeroTotalNotificadosTuberculosisFemeninoEntreFechas, numeroTotalNotificadosTuberculosisSdEntreFechas]
-  const titleSexoTbcEntreFechas = `Casos notificados según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  const labelsSexoTbc = ['Maculino', 'Femenino', 'SD'];
+  const backgroundColorTbc = [
+    salmonTransparente,
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorTbc = [salmon, lila, rosa];
+  const totalPorSexoTbcEntreFechas = [
+    numeroTotalNotificadosTuberculosisMasculinoEntreFechas,
+    numeroTotalNotificadosTuberculosisFemeninoEntreFechas,
+    numeroTotalNotificadosTuberculosisSdEntreFechas,
+  ];
+  const titleSexoTbcEntreFechas = `Casos notificados según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
   //Gráfico notificados Morón/Total
-  const labelsEstablecimientoTbc = ['Establecimientos de Morón', 'Establecimientos no pertenecientes a Morón',]
-  const backgroundColorEstablecimientoTbc = [lilaTransparente, rosaTransparente]
-  const borderColorEstablecimientoTbc = [lila, rosa]
-  const notificadosTbcEstablecimientoCargaEntreFechas = [numeroTotalGeneralTuberculosisMoronEntreFechas, numeroTotalGeneralTuberculosisNoMoronEntreFechas]
-  const titleEstablecimientoTbcEntreFechas = `Casos notificados de Tuberculosis según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  const labelsEstablecimientoTbc = [
+    'Establecimientos de Morón',
+    'Establecimientos no pertenecientes a Morón',
+  ];
+  const backgroundColorEstablecimientoTbc = [
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorEstablecimientoTbc = [lila, rosa];
+  const notificadosTbcEstablecimientoCargaEntreFechas = [
+    numeroTotalGeneralTuberculosisMoronEntreFechas,
+    numeroTotalGeneralTuberculosisNoMoronEntreFechas,
+  ];
+  const titleEstablecimientoTbcEntreFechas = `Casos notificados de Tuberculosis según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
   //Tabla resultados
-  const labelsRestultadoTuberculosis = ["Resultados de laboratorio"]
-  const label1RestultadoTuberculosis = "Positivos"
-  const label2RestultadoTuberculosis = "Negativos"
-  const label3RestultadoTuberculosis = "En estudio"
-  const titleResultadoTuberculosisEntreFechas = `Casos notificados de Tuberculosis según resultado de laboratorio. Morón, SE ${semanaInicial} a ${semanaFinal}.`
-  const dataPositivosTuberculosisEntreFechas = [numeroConfirmadosTotalTuberculosisEntreFechas]
-  const dataNegativosTuberculosisEntreFechas = [numeroDescartadosTotalTuberculosisEntreFechas]
-  const dataSinResultadosTuberculosisEntreFechas = [numeroEnEstudioTotalTuberculosisEntreFechas]
+  const labelsRestultadoTuberculosis = ['Resultados de laboratorio'];
+  const label1RestultadoTuberculosis = 'Positivos';
+  const label2RestultadoTuberculosis = 'Negativos';
+  const label3RestultadoTuberculosis = 'En estudio';
+  const titleResultadoTuberculosisEntreFechas = `Casos notificados de Tuberculosis según resultado de laboratorio. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
+  const dataPositivosTuberculosisEntreFechas = [
+    numeroConfirmadosTotalTuberculosisEntreFechas,
+  ];
+  const dataNegativosTuberculosisEntreFechas = [
+    numeroDescartadosTotalTuberculosisEntreFechas,
+  ];
+  const dataSinResultadosTuberculosisEntreFechas = [
+    numeroEnEstudioTotalTuberculosisEntreFechas,
+  ];
 
   //Alerts
 
   function handleEmbarazadasTbcEntreFechas() {
-    detallarEmbarazadasTuberculosis(numeroEmbarazadasConfirmadasTuberculosisEntreFechas, numeroEmbarazadasDescartadasTuberculosisEntreFechas)
+    detallarEmbarazadasTuberculosis(
+      numeroEmbarazadasConfirmadasTuberculosisEntreFechas,
+      numeroEmbarazadasDescartadasTuberculosisEntreFechas
+    );
   }
 
   function detallarEmbarazadasTuberculosis(conf, desc) {
     Toast.fire({
       title: `Gestantes confirmadas: ${conf}, \n 
     Gestantes descartadas: ${desc}. \n
-    `
-    })
+    `,
+    });
   }
-
 
   return (
     <div className='totalesGraphs-container'>
-      {
-        semanaInicial
-          ? <h3>Semanas Epidemiológicas {semanaInicial} a {semanaFinal}</h3>
-          : <div>
-            <p>No hay fechas ingresadas</p>
-            <Link to="/upload"><button className='button'>Ingresar fechas</button></Link>
-          </div>
-      }
+      {semanaInicial ? (
+        <h3>
+          Semanas Epidemiológicas {semanaInicial} a {semanaFinal}
+        </h3>
+      ) : (
+        <div>
+          <p>No hay fechas ingresadas</p>
+          <Link to='/upload'>
+            <button className='button'>Ingresar fechas</button>
+          </Link>
+        </div>
+      )}
 
       <div className='totales-page-container'>
         <div className='recuadro naranja'>
@@ -105,7 +140,10 @@ function TbcEntreFechas() {
             {numeroEnEstudioTotalTuberculosisEntreFechas}
           </p>
         </div>
-        <div className='recuadro salmon' onClick={handleEmbarazadasTbcEntreFechas}>
+        <div
+          className='recuadro salmon'
+          onClick={handleEmbarazadasTbcEntreFechas}
+        >
           Gestantes:
           <p className='totalNumber'>
             {numeroEmbarazadasDescartadasTuberculosisEntreFechas}
@@ -119,7 +157,6 @@ function TbcEntreFechas() {
         </div>
       </div>
       <div className='graphs-container'>
-
         <div className='doughnutChart-sifilis'>
           <DoughnutChart
             title={titleSexoTbcEntreFechas}
@@ -160,7 +197,7 @@ function TbcEntreFechas() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default TbcEntreFechas
+export default TbcEntreFechas;

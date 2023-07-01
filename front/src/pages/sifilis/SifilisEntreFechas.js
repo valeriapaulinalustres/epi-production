@@ -1,16 +1,13 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
 import BarChart from '../../components/BarChart';
 import './sifilis.css';
 import DataContext from '../../context/DataContext';
-import Toast from 'sweetalert2';
 import Colors from '../../components/Colors';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 
 function SifilisEntreFechas() {
-
-  //destructuring from context
+  // destructuring from context
   const {
     semanaInicial,
     semanaFinal,
@@ -31,47 +28,83 @@ function SifilisEntreFechas() {
     numeroConfirmadosSDSifilisEntreFechas,
     numeroProbablesFemeninosSifilisEntreFechas,
     numeroProbablesMasculinosSifilisEntreFechas,
-    numeroProbablesSDSifilisEntreFechas
-
+    numeroProbablesSDSifilisEntreFechas,
   } = useContext(DataContext);
 
-  const [salmonTransparente, salmon, lilaTransparente, lila, rosaTransparente, rosa] = Colors
+  const [
+    salmonTransparente,
+    salmon,
+    lilaTransparente,
+    lila,
+    rosaTransparente,
+    rosa,
+  ] = Colors;
 
+  // Gráficos
+  // Gráfico notificados según sexo entre fechas
+  const labelsSexoSifilis = ['Maculino', 'Femenino', 'SD'];
+  const backgroundColorSifilis = [
+    salmonTransparente,
+    lilaTransparente,
+    rosaTransparente,
+  ];
+  const borderColorSifilis = [salmon, lila, rosa];
+  const totalPorSexoSifilisEntreFechas = [
+    numeroTotalGeneralNotificadosSifilisMasculinoEntreFechas,
+    numeroTotalGeneralNotificadosSifilisFemeninoEntreFechas,
+    numeroTotalGeneralNotificadosSifilisSdEntreFechas,
+  ];
+  const titleSexoSifilisEntreFechas = `Casos notificados de Sífilis según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
-  //Gráficos 
-  //Gráfico notificados según sexo entre fechas
-  const labelsSexoSifilis = ['Maculino', 'Femenino', 'SD']
-  const backgroundColorSifilis = [salmonTransparente, lilaTransparente, rosaTransparente]
-  const borderColorSifilis = [salmon, lila, rosa]
-  const totalPorSexoSifilisEntreFechas = [numeroTotalGeneralNotificadosSifilisMasculinoEntreFechas, numeroTotalGeneralNotificadosSifilisFemeninoEntreFechas, numeroTotalGeneralNotificadosSifilisSdEntreFechas]
-  const titleSexoSifilisEntreFechas = `Casos notificados de Sífilis según sexo. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  // Gráfico embarazadas sobre total de notificadas mujeres entre fechas
+  const labelsEmbarazoSifilis = ['Gestantes', 'No gestantes'];
+  const backgroundColorEmbarazoSifilis = [lilaTransparente, rosaTransparente];
+  const borderColorEmbarazoSifilis = [lila, rosa];
+  const embarazadasEnMujeresSifilisEntreFechas = [
+    numeroTotalNotificadosSifilisEmbarazadasEntreFechas,
+    parseInt(
+      numeroTotalGeneralNotificadosSifilisFemeninoEntreFechas -
+        numeroTotalNotificadosSifilisEmbarazadasEntreFechas
+    ),
+  ];
+  const titleEmbarazoSifilisEntreFechas = `Casos notificados de Síflis en gestantes, sobre personas con posibilidad de gestar. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
-  //Gráfico embarazadas sobre total de notificadas mujeres entre fechas
-  const labelsEmbarazoSifilis = ['Gestantes', 'No gestantes',]
-  const backgroundColorEmbarazoSifilis = [lilaTransparente, rosaTransparente]
-  const borderColorEmbarazoSifilis = [lila, rosa]
-  const embarazadasEnMujeresSifilisEntreFechas = [numeroTotalNotificadosSifilisEmbarazadasEntreFechas, parseInt(numeroTotalGeneralNotificadosSifilisFemeninoEntreFechas - numeroTotalNotificadosSifilisEmbarazadasEntreFechas)]
-  const titleEmbarazoSifilisEntreFechas = `Casos notificados de Síflis en gestantes, sobre personas con posibilidad de gestar. Morón, SE ${semanaInicial} a ${semanaFinal}.`
+  // Gráfico notificados Morón/Total entre fechas
+  const labelsEstablecimientoSifilis = [
+    'Establecimientos de Morón',
+    'Establecimientos no pertenecientes a Morón',
+  ];
+  const backgroundColorEstablecimientoSifilis = [
+    salmonTransparente,
+    rosaTransparente,
+  ];
+  const borderColorEstablecimientoSifilis = [salmon, rosa];
+  const notificadosSifilisEstablecimientoCargaEntreFechas = [
+    numeroTotalGeneralSifilisMoronEntreFechas,
+    numeroTotalGeneralSifilisNoMoronEntreFechas,
+  ];
+  const titleEstablecimientoSifilisEntreFechas = `Casos notificados de Sífilis según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
 
+  // Gráfico tabla probables y confirmados entre fechas
+  const labelsConfProbSifilis = ['Confirmados', 'Probables'];
+  const label1Sifilis = 'Mujeres';
+  const label2Sifilis = 'Varones';
+  const label3Sifilis = 'SD';
+  const titleConfProbSifilisEntreFechas = `Casos confirmados y probables de Sífilis. Morón, SE ${semanaInicial} a ${semanaFinal}.`;
+  const femeninoConfProbSifilisEntreFechas = [
+    numeroConfirmadosFemeninosSifilisEntreFechas,
+    numeroProbablesFemeninosSifilisEntreFechas,
+  ];
+  const masculinoConfProbSifilisEntreFechas = [
+    numeroConfirmadosMasculinosSifilisEntreFechas,
+    numeroProbablesMasculinosSifilisEntreFechas,
+  ];
+  const sdConfProbSifilisEntreFechas = [
+    numeroConfirmadosSDSifilisEntreFechas,
+    numeroProbablesSDSifilisEntreFechas,
+  ];
 
-  //Gráfico notificados Morón/Total entre fechas
-  const labelsEstablecimientoSifilis = ['Establecimientos de Morón', 'Establecimientos no pertenecientes a Morón',]
-  const backgroundColorEstablecimientoSifilis = [salmonTransparente, rosaTransparente]
-  const borderColorEstablecimientoSifilis = [salmon, rosa]
-  const notificadosSifilisEstablecimientoCargaEntreFechas = [numeroTotalGeneralSifilisMoronEntreFechas, numeroTotalGeneralSifilisNoMoronEntreFechas]
-  const titleEstablecimientoSifilisEntreFechas = `Casos notificados de Sífilis según Establecimiento de carga. Morón, SE ${semanaInicial} a ${semanaFinal}.`
-
-  //Gráfico tabla probables y confirmados entre fechas
-  const labelsConfProbSifilis = ['Confirmados', 'Probables']
-  const label1Sifilis = "Mujeres";
-  const label2Sifilis = "Varones";
-  const label3Sifilis = "SD";
-  const titleConfProbSifilisEntreFechas = `Casos confirmados y probables de Sífilis. Morón, SE ${semanaInicial} a ${semanaFinal}.`
-  const femeninoConfProbSifilisEntreFechas = [numeroConfirmadosFemeninosSifilisEntreFechas, numeroProbablesFemeninosSifilisEntreFechas];
-  const masculinoConfProbSifilisEntreFechas = [numeroConfirmadosMasculinosSifilisEntreFechas, numeroProbablesMasculinosSifilisEntreFechas];
-  const sdConfProbSifilisEntreFechas = [numeroConfirmadosSDSifilisEntreFechas, numeroProbablesSDSifilisEntreFechas]
-
-  //--------ALERTS----------------
+  // --------ALERTS----------------
 
   /*
     function detallarDescartadosSifilis() {
@@ -85,14 +118,18 @@ function SifilisEntreFechas() {
   */
   return (
     <div className='totalesGraphs-container'>
-      {
-        semanaInicial
-          ? <h3>Semanas Epidemiológicas {semanaInicial} a {semanaFinal}</h3>
-          : <div>
-            <p>No hay fechas ingresadas</p>
-            <Link to="/upload"><button className='button'>Ingresar fechas</button></Link>
-          </div>
-      }
+      {semanaInicial ? (
+        <h3>
+          Semanas Epidemiológicas {semanaInicial} a {semanaFinal}
+        </h3>
+      ) : (
+        <div>
+          <p>No hay fechas ingresadas</p>
+          <Link to='/upload'>
+            <button className='button'>Ingresar fechas</button>
+          </Link>
+        </div>
+      )}
       <div className='totales-page-container'>
         <div className='recuadro naranja'>
           Notificados:
@@ -100,7 +137,7 @@ function SifilisEntreFechas() {
             {numeroTotalGeneralNotificadosSifilisEntreFechas}
           </p>
         </div>
-        <div className='recuadro salmon' >
+        <div className='recuadro salmon'>
           Confirmados:
           <p className='totalNumber'>
             {numeroConfirmadosTotalGeneralSifilisEntreFechas}
@@ -138,7 +175,6 @@ function SifilisEntreFechas() {
         </div>
       </div>
       <div className='graphs-container'>
-
         <div className='doughnutChart-sifilis'>
           <DoughnutChart
             title={titleSexoSifilisEntreFechas}
@@ -187,10 +223,9 @@ function SifilisEntreFechas() {
             bgColor3={rosaTransparente}
           />
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default SifilisEntreFechas
+export default SifilisEntreFechas;
