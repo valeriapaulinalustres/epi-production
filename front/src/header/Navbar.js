@@ -144,6 +144,17 @@ function Navbar(props) {
         </NavLink>
 
         <NavLink
+          to='/hepatitis'
+          className='nav-links'
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
+          style={styleLinks}
+          onClick={() => setMenu(false)}
+        >
+          Hepatitis C
+        </NavLink>
+        
+        <NavLink
           to='/covid'
           className='nav-links'
           onMouseEnter={mouseEnter}
@@ -153,6 +164,7 @@ function Navbar(props) {
         >
           COVID y OVR
         </NavLink>
+
       </nav>
     </div>
   );

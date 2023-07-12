@@ -50,9 +50,15 @@ function Home() {
           <div className='home-news'>
             <h3 className='home-news-title'>Novedades</h3>
             <p>
-              Está disponible la información sobre Bronquiolitis en la pestaña
-              de COVID y OVR. Próximamente se modificará la sección COVID para
-              representar internaciones.
+            ✔️ Está disponible la información sobre Bronquiolitis en la pestaña
+              de COVID y OVR. 
+            </p>
+            <p>
+            ✔️ Próximamente se modificará la sección COVID para
+              representar internaciones. 
+            </p>
+            <p>
+            ✔️Se agrega la pestaña Hepatitis C, la cual se encuentra en construcción.
             </p>
           </div>
 
