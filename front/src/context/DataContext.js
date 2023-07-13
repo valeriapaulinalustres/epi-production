@@ -3641,6 +3641,374 @@ const DataProvider = ({ children }) => {
 
   const numeroNotificadosTotalBql = arrayNotificadosTotalBql.length || 0;
 
+  // ------------------- Hepatitis C -------------------------------------
+  //-------------array total
+  let arrayTotalNotificadosHepatitisC = calcularTotalNotificados('Hepatitis C');
+  arrayTotalNotificadosHepatitisC = quitarDuplicados(arrayTotalNotificadosHepatitisC);
+
+  //entre fechas
+  let arrayTotalNotificadosHepatitisCEntreFechas =
+    calcularTotalNotificadosEntreFechas('Hepatitis C', semanaInicial, semanaFinal);
+    arrayTotalNotificadosHepatitisCEntreFechas = quitarDuplicados(
+      arrayTotalNotificadosHepatitisCEntreFechas
+  );
+
+  //------------valores totales
+  const numeroTotalNotificadosHepatitisC = arrayTotalNotificadosHepatitisC.length || 0;
+  //entre fechas
+  const numeroTotalNotificadosHepatitisCEntreFechas =
+    arrayTotalNotificadosHepatitisCEntreFechas.length || 0;
+
+  //--------------por sexo
+  const numeroTotalNotificadosHepatitisCFemenino = calcularPorSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F'
+  );
+  const numeroTotalNotificadosHepatitisCMasculino = calcularPorSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M'
+  );
+  const numeroTotalNotificadosHepatitisCSd = calcularPorSexo(
+    arrayTotalNotificadosHepatitisC,
+    'NA'
+  );
+
+  //entre fechas
+  const numeroTotalNotificadosHepatitisCFemeninoEntreFechas = calcularPorSexo(
+    arrayTotalNotificadosHepatitisCEntreFechas,
+    'F'
+  );
+  const numeroTotalNotificadosHepatitisCMasculinoEntreFechas = calcularPorSexo(
+    arrayTotalNotificadosHepatitisCEntreFechas,
+    'M'
+  );
+  const numeroTotalNotificadosHepatitisCSdEntreFechas = calcularPorSexo(
+    arrayTotalNotificadosHepatitisCEntreFechas,
+    'NA'
+  );
+
+  //---------------clasificaciones totales
+  //confirmados
+  const arrayConfirmadosTotalHepatitisC1= calcularClasificacionManualPorEvento('Hepatitis C', 'Virus Hepatitis C, genotipo 1a');
+  const arrayConfirmadosTotalHepatitisC2= calcularClasificacionManualPorEvento('Hepatitis C', '04. Caso CONFIRMADO de Infección por VHC ');
+  let arrayConfirmadosTotalHepatitisC = [...arrayConfirmadosTotalHepatitisC1, ...arrayConfirmadosTotalHepatitisC2]
+
+  arrayConfirmadosTotalHepatitisC = quitarDuplicados(arrayConfirmadosTotalHepatitisC);
+  const numeroConfirmadosTotalHepatitisC = arrayConfirmadosTotalHepatitisC.length || 0;
+
+
+  //descartados
+  let arrayDescartadosTotalHepatitisC = calcularClasificacionManualPorEvento('Hepatitis C', 'Caso descartado Hepatitis C');
+  arrayDescartadosTotalHepatitisC = quitarDuplicados(arrayDescartadosTotalHepatitisC);
+  const numeroDescartadosTotalHepatitisC = arrayDescartadosTotalHepatitisC.length || 0;
+
+  //sospechosos
+  let arraySospechososTotalHepatitisC = calcularClasificacionManualPorEvento('Hepatitis C', '02. Caso sospechoso en banco de sangre');
+  arraySospechososTotalHepatitisC = quitarDuplicados(arraySospechososTotalHepatitisC);
+  const numeroSospechososTotalHepatitisC = arraySospechososTotalHepatitisC.length || 0;
+
+  //entre fechas
+  //confirmados
+  const arrayConfirmadosTotalHepatitisCEntreFechas1 =
+  calcularClasificacionManualPorEventoEntreFechas('Hepatitis C', 'Virus Hepatitis C, genotipo 1a', semanaInicial, semanaFinal);
+    const arrayConfirmadosTotalHepatitisCEntreFechas2 =
+    calcularClasificacionManualPorEventoEntreFechas('Hepatitis C', '04. Caso CONFIRMADO de Infección por VHC ', semanaInicial, semanaFinal);
+
+    let arrayConfirmadosTotalHepatitisCEntreFechas = [...arrayConfirmadosTotalHepatitisCEntreFechas2, ...arrayConfirmadosTotalHepatitisCEntreFechas1]
+
+    arrayConfirmadosTotalHepatitisCEntreFechas = quitarDuplicados(
+      arrayConfirmadosTotalHepatitisCEntreFechas
+  );
+  const numeroConfirmadosTotalHepatitisCEntreFechas =
+  arrayConfirmadosTotalHepatitisCEntreFechas.length || 0;
+
+  //descartados
+  let arrayDescartadosTotalHepatitisCEntreFechas =
+  calcularClasificacionManualPorEventoEntreFechas('Hepatitis C', 'Caso descartado Hepatitis C', semanaInicial, semanaFinal);
+  arrayDescartadosTotalHepatitisCEntreFechas = quitarDuplicados(
+    arrayDescartadosTotalHepatitisCEntreFechas
+  );
+  const numeroDescartadosTotalHepatitisCEntreFechas =
+    arrayDescartadosTotalHepatitisCEntreFechas.length || 0;
+
+  //sospechosos
+  let arraySospechososTotalHepatitisCEntreFechas =
+  calcularClasificacionManualPorEventoEntreFechas('Hepatitis C', '02. Caso sospechoso en banco de sangre', semanaInicial, semanaFinal);
+  arraySospechososTotalHepatitisCEntreFechas = quitarDuplicados(
+    arraySospechososTotalHepatitisCEntreFechas
+  );
+  const numeroSospechososTotalHepatitisCEntreFechas =
+    arraySospechososTotalHepatitisCEntreFechas.length || 0;
+
+  //embarazadas
+  let arrayEmbarazadasNotificadoTotalHepatitisC =
+    calcularEventoEnEmbarazo('Hepatitis C');
+  arrayEmbarazadasNotificadoTotalHepatitisC = quitarDuplicados(
+    arrayEmbarazadasNotificadoTotalHepatitisC
+  );
+  const numeroEmbarazadasNotificadoTotalHepatitisC =
+    arrayEmbarazadasNotificadoTotalHepatitisC.length || 0;
+
+  //embarazadas entre fechas
+  let arrayEmbarazadasNotificadoTotalHepatitisCEntreFechas =
+    calcularEventoEnEmbarazoEntreFechas('Hepatitis C', semanaInicial, semanaFinal);
+  arrayEmbarazadasNotificadoTotalHepatitisCEntreFechas = quitarDuplicados(
+    arrayEmbarazadasNotificadoTotalHepatitisCEntreFechas
+  );
+  const numeroEmbarazadasNotificadoTotalHepatitisCEntreFechas =
+    arrayEmbarazadasNotificadoTotalHepatitisCEntreFechas.length || 0;
+
+  //-------------Departamento de carga
+  let arrayTotalGeneralHepatitisCMoron = calcularDptoCargaMoron('Hepatitis C');
+  arrayTotalGeneralHepatitisCMoron = quitarDuplicados(arrayTotalGeneralHepatitisCMoron);
+  const numeroTotalGeneralHepatitisCMoron = arrayTotalGeneralHepatitisCMoron.length || 0;
+
+  let arrayTotalGeneralHepatitisCNoMoron = calcularDptoCargaNoMoron('Hepatitis C');
+  arrayTotalGeneralHepatitisCNoMoron = quitarDuplicados(
+    arrayTotalGeneralHepatitisCNoMoron
+  );
+  const numeroTotalGeneralHepatitisCNoMoron =
+    arrayTotalGeneralHepatitisCNoMoron.length || 0;
+
+  const porcentajeNotificadosHepatitisCMoron =
+    Math.round(
+      (numeroTotalGeneralHepatitisCMoron /
+        (numeroTotalGeneralHepatitisCNoMoron + numeroTotalGeneralHepatitisCMoron)) *
+        100
+    ) || 0;
+
+  //-------------Departamento de carga entre fechas
+  let arrayTotalGeneralHepatitisCMoronEntreFechas =
+    calcularDptoCargaMoronEntreFechas('Hepatitis C', semanaInicial, semanaFinal);
+  arrayTotalGeneralHepatitisCMoronEntreFechas = quitarDuplicados(
+    arrayTotalGeneralHepatitisCMoronEntreFechas
+  );
+  const numeroTotalGeneralHepatitisCMoronEntreFechas =
+    arrayTotalGeneralHepatitisCMoronEntreFechas.length || 0;
+
+  let arrayTotalGeneralHepatitisCNoMoronEntreFechas =
+    calcularDptoCargaNoMoronEntreFechas('Hepatitis C', semanaInicial, semanaFinal);
+  arrayTotalGeneralHepatitisCNoMoronEntreFechas = quitarDuplicados(
+    arrayTotalGeneralHepatitisCNoMoronEntreFechas
+  );
+  const numeroTotalGeneralHepatitisCNoMoronEntreFechas =
+    arrayTotalGeneralHepatitisCNoMoronEntreFechas.length || 0;
+
+  const porcentajeNotificadosHepatitisCMoronEntreFechas =
+    Math.round(
+      (numeroTotalGeneralHepatitisCMoronEntreFechas /
+        (numeroTotalGeneralHepatitisCNoMoronEntreFechas +
+          numeroTotalGeneralHepatitisCMoronEntreFechas)) *
+        100
+    ) || 0;
+
+  //---Edad x sexo
+  const hepatitisCFmenor1m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'Neonato (hasta 28 dneas)'
+  );
+  const hepatitisCF2m12m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'Posneonato (29 hasta 365 dneas)'
+  );
+  const hepatitisCF13m24m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 13 a 24 meses'
+  );
+  const hepatitisCF2a4a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 2 a 4 anaos'
+  );
+  const hepatitisCF5a9a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 5 a 9 anaos'
+  );
+  const hepatitisCF10a14a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 10 a 14 anaos'
+  );
+  const hepatitisCF15a19a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 15 a 19 anaos'
+  );
+  const hepatitisCF20a24a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 20 a 24 anaos'
+  );
+  const hepatitisCF25a34a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 25 a 34 anaos'
+  );
+  const hepatitisCF35a44a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 35 a 44 anaos'
+  );
+  const hepatitisCF45a65a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'De 45 a 65 anaos'
+  );
+  const hepatitisCFmay65 = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'F',
+    'Mayores de 65 anaos'
+  );
+
+  const hepatitisCMmenor1m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'Neonato (hasta 28 dneas)'
+  );
+  const hepatitisCM2m12m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'Posneonato (29 hasta 365 dneas)'
+  );
+  const hepatitisCM13m24m = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 13 a 24 meses'
+  );
+  const hepatitisCM2a4a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 2 a 4 anaos'
+  );
+  const hepatitisCM5a9a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 5 a 9 anaos'
+  );
+  const hepatitisCM10a14a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 10 a 14 anaos'
+  );
+  const hepatitisCM15a19a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 15 a 19 anaos'
+  );
+  const hepatitisCM20a24a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 20 a 24 anaos'
+  );
+  const hepatitisCM25a34a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 25 a 34 anaos'
+  );
+  const hepatitisCM35a44a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 35 a 44 anaos'
+  );
+  const hepatitisCM45a65a = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'De 45 a 65 anaos'
+  );
+  const hepatitisCMmay65 = calcularEdadSexo(
+    arrayTotalNotificadosHepatitisC,
+    'M',
+    'Mayores de 65 anaos'
+  );
+
+  const hepatitisSexoEdad = [
+    hepatitisCFmenor1m,
+    hepatitisCF2m12m,
+    hepatitisCF13m24m,
+    hepatitisCF2a4a,
+    hepatitisCF5a9a,
+    hepatitisCF10a14a,
+    hepatitisCF15a19a,
+    hepatitisCF20a24a,
+    hepatitisCF25a34a,
+    hepatitisCF35a44a,
+    hepatitisCF45a65a,
+    hepatitisCFmay65,
+    hepatitisCMmenor1m,
+    hepatitisCM2m12m,
+    hepatitisCM13m24m,
+    hepatitisCM2a4a,
+    hepatitisCM5a9a,
+    hepatitisCM10a14a,
+    hepatitisCM15a19a,
+    hepatitisCM20a24a,
+    hepatitisCM25a34a,
+    hepatitisCM35a44a,
+    hepatitisCM45a65a,
+    hepatitisCMmay65,
+  ];
+
+  //notificados por semana epidemiológica
+
+  const hepatitisCXse = [
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 1),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 2),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 3),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 4),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 5),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 6),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 7),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 8),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 9),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 10),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 11),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 12),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 13),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 14),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 15),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 16),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 17),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 18),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 19),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 20),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 21),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 22),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 23),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 24),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 25),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 26),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 27),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 28),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 29),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 30),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 31),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 32),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 33),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 34),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 35),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 36),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 37),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 38),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 39),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 40),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 41),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 42),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 43),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 44),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 45),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 46),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 47),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 48),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 49),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 50),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 51),
+    calcularNotificadosXSE(arrayTotalNotificadosHepatitisC, 52),
+  ];
+
   console.log(arrayNotificadosTotalBql);
 
   const data = {
@@ -3669,6 +4037,7 @@ const DataProvider = ({ children }) => {
     numeroTotalGeneralNotificadosHiv,
     numeroTotalNotificadosTuberculosis,
     numeroTotalNotificadosDengue,
+    numeroTotalNotificadosHepatitisC,
     numeroTotalGeneralNotificadosSifilisFemenino,
     numeroTotalGeneralNotificadosSifilisMasculino,
     numeroTotalGeneralNotificadosSifilisSd,
@@ -3685,10 +4054,14 @@ const DataProvider = ({ children }) => {
     numeroTotalNotificadosDengueFemenino,
     numeroTotalNotificadosDengueMasculino,
     numeroTotalNotificadosDengueSd,
+    numeroTotalNotificadosHepatitisCFemenino,
+    numeroTotalNotificadosHepatitisCMasculino,
+    numeroTotalNotificadosHepatitisCSd,
     numeroConfirmadosTotalGeneralSifilis,
     numeroConfirmadosTotalGeneralHiv,
     numeroConfirmadosTotalTuberculosis,
     numeroConfirmadosTotalDengue,
+    numeroConfirmadosTotalHepatitisC,
     numeroProbablesTotalGeneralSifilis,
     numeroProbablesTotalGeneralHiv,
     numeroProbablesTotalDengue,
@@ -3696,14 +4069,17 @@ const DataProvider = ({ children }) => {
     numeroDescartadosTotalGeneralHiv,
     numeroDescartadosTotalTuberculosis,
     numeroDescartadosTotalDengue,
+    numeroDescartadosTotalHepatitisC,
     numeroEmbarazadasNotificadasTotalTuberculosis,
     numeroEmbarazadasNotificadoTotalDengue,
+    numeroEmbarazadasNotificadoTotalHepatitisC,
     numeroEmbarazadasConfirmadasTuberculosis,
     numeroEmbarazadasDescartadasTuberculosis,
     numeroEmbarazadasConfirmadasDengue,
     numeroEmbarazadasDescartadasDengue,
     numeroEnEstudioTotalTuberculosis,
     numeroSospechososTotalDengue,
+    numeroSospechososTotalHepatitisC,
     numeroTotalGeneralSifilisNoMoron,
     numeroTotalGeneralSifilisMoron,
     porcentajeNotificadosSifilisMoron,
@@ -3716,6 +4092,9 @@ const DataProvider = ({ children }) => {
     numeroTotalGeneralDengueMoron,
     numeroTotalGeneralDengueNoMoron,
     porcentajeNotificadosDengueMoron,
+    numeroTotalGeneralHepatitisCMoron,
+    numeroTotalGeneralHepatitisCNoMoron,
+    porcentajeNotificadosHepatitisCMoron,
     numeroConfirmadosMasculinosSifilis,
     numeroConfirmadosFemeninosSifilis,
     numeroConfirmadosSDSifilis,
@@ -3726,11 +4105,13 @@ const DataProvider = ({ children }) => {
     numeroTotalNegativosTuberculosis,
     numeroTotalSinResultadoTuberculosis,
     dengueSexoEdad,
+    hepatitisSexoEdad,
     tuberculosisSexoEdad,
     hivSexoEdad,
     sifilisSexoEdad,
     tuberculosisXse,
     dengueXse,
+    hepatitisCXse,
     hivXse,
     sifilisXse,
     numeroTotalNotificadosTuberculosisEntreFechas,
@@ -3760,6 +4141,17 @@ const DataProvider = ({ children }) => {
     numeroEmbarazadasNotificadoTotalDengueEntreFechas,
     numeroEmbarazadasConfirmadasDengueEntreFechas,
     numeroEmbarazadasDescartadasDengueEntreFechas,
+    numeroTotalNotificadosHepatitisCEntreFechas,
+    numeroTotalNotificadosHepatitisCFemeninoEntreFechas,
+    numeroTotalNotificadosHepatitisCMasculinoEntreFechas,
+    numeroTotalNotificadosHepatitisCSdEntreFechas,
+    numeroConfirmadosTotalHepatitisCEntreFechas,
+    numeroDescartadosTotalHepatitisCEntreFechas,
+    numeroSospechososTotalHepatitisCEntreFechas,
+    porcentajeNotificadosHepatitisCMoronEntreFechas,
+    numeroTotalGeneralHepatitisCNoMoronEntreFechas,
+    numeroTotalGeneralHepatitisCMoronEntreFechas,
+    numeroEmbarazadasNotificadoTotalHepatitisCEntreFechas,
     numeroTotalNotificadosHivEntreFechas,
     numeroTotalGeneralNotificadosHivEntreFechas,
     numeroTotalNotificadosHivEmbarazoEntreFechas,
