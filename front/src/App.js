@@ -20,7 +20,7 @@ import Profile from './pages/profile/Profile';
 import AddUser from './pages/profile/AddUser';
 import { UsersProvider } from './context/UsersContext';
 import ChangePassword from './pages/profile/ChangePassword';
-import Hepatitis from './pages/hepatitis/Hepatitis';
+import HepatitisC from './pages/hepatitisC/HepatitisC';
 
 const App = () => {
   const [login, setLogin] = useState(true);
@@ -50,7 +50,7 @@ const App = () => {
                 <Route path='/tbc' element={<Tbc />} />
                 <Route path='/upload' element={<Upload />} />
                 <Route path='/covid' element={<Covid />} />
-                <Route path='/hepatitis' element={<Hepatitis />} />
+                <Route path='/hepatitis-c' element={<HepatitisC />} />
                 <Route
                   path='/profile'
                   element={<Profile setLogin={setLogin} />}

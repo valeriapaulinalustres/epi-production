@@ -144,7 +144,7 @@ function Navbar(props) {
         </NavLink>
 
         <NavLink
-          to='/hepatitis'
+          to='/hepatitis-c'
           className='nav-links'
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}

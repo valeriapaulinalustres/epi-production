@@ -3925,7 +3925,7 @@ const DataProvider = ({ children }) => {
     'Mayores de 65 anaos'
   );
 
-  const hepatitisSexoEdad = [
+  const hepatitisCSexoEdad = [
     hepatitisCFmenor1m,
     hepatitisCF2m12m,
     hepatitisCF13m24m,
@@ -4105,7 +4105,7 @@ const DataProvider = ({ children }) => {
     numeroTotalNegativosTuberculosis,
     numeroTotalSinResultadoTuberculosis,
     dengueSexoEdad,
-    hepatitisSexoEdad,
+    hepatitisCSexoEdad,
     tuberculosisSexoEdad,
     hivSexoEdad,
     sifilisSexoEdad,
