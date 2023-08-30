@@ -26,3 +26,20 @@ mejorar código
 ver si da lo de covid en el mundo
 pasar por R archivo descargado
 continuar con internados covid y sacar los covid e influenza a y b que no existen más
+
+para agregar brush chart: https://codesandbox.io/s/react-chartjs-2-line-chart-slider-xhkdfv?file=/src/Slidercomponent.json
+
+
+
+
+*** R ***
+
+tabla<-read.csv('BUENOS_AIRES_NOMINAL.csv', header=TRUE, dec=",", sep=";", fileEncoding='Latin1')
+
+install.packages('dplyr')
+
+library('dplyr')
+
+tabla2<-filter(tabla, DEPARTAMENTO_RESIDENCIA == 'Morón' & ANIO_EPI_APERTURA == 2023)
+
+write.table(tabla2, file='C:\\Users\\Vale\\Documents\\VALERIA AGOSTO 2022\\VALERIA\\Vale Trabajo 2022\\EXPORT\\agosto\\moron2023.csv', sep=';', row.names=FALSE, fileEncoding='Latin1')

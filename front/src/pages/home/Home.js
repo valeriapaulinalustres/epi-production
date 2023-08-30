@@ -19,7 +19,7 @@ function Home() {
   return (
     <div className='home-container'>
       <h2>Vigilancia de Enfermedades de Notificación Obligatoria</h2>
-      <h6>Datos actualizados al 27/06/2023</h6>
+      <h6>Datos actualizados al 30/08/2023</h6>
 
       {anioBaseActual && <h3>Datos del año {anioBaseActual}</h3>}
 
@@ -53,13 +53,14 @@ function Home() {
             ✔️ Está disponible la información sobre Bronquiolitis en la pestaña
               de COVID y OVR. 
             </p>
+             <p>
+            ✔️Se agregó la pestaña Hepatitis C.
+            </p>
             <p>
             ✔️ Próximamente se modificará la sección COVID para
               representar internaciones. 
             </p>
-            <p>
-            ✔️Se agrega la pestaña Hepatitis C, la cual se encuentra en construcción.
-            </p>
+           
           </div>
 
           <Link to='/upload' className='homeInstruction'>

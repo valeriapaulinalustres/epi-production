@@ -3359,6 +3359,44 @@ const DataProvider = ({ children }) => {
   ];
 
   //---------COVID--------------------
+  //Internación
+  let covidInternadosVacCompRef = calcularTotalNotificadosClinica('COVID en Internación general - Vacunación completa + Refuerzo')
+  let covidInternadosVacCompSinRef = calcularTotalNotificadosClinica('COVID en Internación general - CON vacunación completa SIN refuerzo')
+  let covidInternadosVacInc = calcularTotalNotificadosClinica('COVID en Internación general - Con esquema INCOMPLETO')
+  let covidInternadosSinVac = calcularTotalNotificadosClinica('COVID en Internación general - SIN vacunación')
+
+  //UTI
+  let covidUTIVacCompRef = calcularTotalNotificadosClinica('Pacientes en UTI por COVID-19 - CON vacunación completa + Refuerzo')
+  let covidUTIVacCompSinRef = calcularTotalNotificadosClinica('Pacientes en UTI por COVID-19 - esquema inicial COMPLETO') //ver si esta denominación es correcta
+  let covidUTIVacInc = calcularTotalNotificadosClinica('Pacientes en UTI por COVID-19 - esquema inicial INCOMPLETO')
+  let covidUTISinVac = calcularTotalNotificadosClinica('Pacientes en UTI por COVID-19 - SIN vacunación')
+
+  //ARM
+  let covidARMVacCompRef = calcularTotalNotificadosClinica('Pacientes en ARM por COVID-19 - Con vacunación completa + Refuerzo')
+  let covidARMVacCompSinRef = calcularTotalNotificadosClinica('Pacientes en UTI por COVID-19 - esquema inicial COMPLETO') //ver si esta denominación es correcta
+  let covidARMVacInc = calcularTotalNotificadosClinica('Pacientes en ARM por COVID-19 con esquema inicial INCOMPLETO')
+  let covidARMSinVac = calcularTotalNotificadosClinica('Pacientes en ARM por COVID-19 - SIN vacunación')
+
+
+
+  let covidTotalInternados = [...covidInternadosVacCompRef, ...covidInternadosVacCompSinRef, ...covidInternadosVacInc, ...covidInternadosSinVac]
+const numeroCovidTotalInternados = covidTotalInternados.length
+
+
+  let covidTotalUTI = [...covidUTIVacCompRef, ...covidUTIVacCompSinRef, ...covidUTIVacInc, ...covidUTISinVac]
+  const numeroCovidTotalUTI = covidTotalUTI.length
+
+  let covidTotalARM = [...covidARMVacCompRef, ...covidARMVacCompSinRef, ...covidARMVacInc, ...covidARMSinVac]
+  const numeroCovidTotalARM = covidTotalARM.length
+
+  const covidTotal = [...covidTotalInternados, ...covidTotalUTI, ...covidTotalARM]
+  const numeroCovidTotal = covidTotal.length
+
+console.log(covidTotalARM)
+
+
+
+  //Viejo
   //Totales y clasificación
   let arrayConfirmadosCovidPcr = calcularClasificacionManualPorEvento(
     'COVID-19, Influenza y OVR en ambulatorios (No UMAs)',
@@ -4212,6 +4250,10 @@ const DataProvider = ({ children }) => {
     numeroConfirmadosCovidTotalNoMoronEntreFechas,
     lastWeek,
     numeroNotificadosTotalBql,
+    numeroCovidTotalInternados,
+    numeroCovidTotalUTI,
+    numeroCovidTotalARM,
+    numeroCovidTotal
   };
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;

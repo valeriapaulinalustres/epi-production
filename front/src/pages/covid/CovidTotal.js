@@ -30,6 +30,10 @@ function Covid() {
     numeroConfirmadosVsr,
     covidXse,
     numeroNotificadosTotalBql,
+    numeroCovidTotalInternados,
+    numeroCovidTotalUTI,
+    numeroCovidTotalARM,
+    numeroCovidTotal
   } = useContext(DataContext);
 
   const [
@@ -61,6 +65,23 @@ function Covid() {
   const dataConfirmadosPcrCovid = [numeroConfirmadosCovidPcr];
   const dataConfirmadosAgCovid = [numeroConfirmadosCovidAg];
   const dataConfirmadosAutotestCovid = [numeroConfirmadosCovidAutotest];
+
+//Gráfico clasificación de internados COVID
+ const totalInternadosCovid = [
+  numeroCovidTotalInternados,
+  numeroCovidTotalUTI,
+  numeroCovidTotalARM,
+];
+const labelsInternadosCovid = ['Sala común', 'UTI', 'ARM'];
+const backgroundColorCovidInternados = [
+  salmonTransparente,
+  lilaTransparente,
+  rosaTransparente,
+];
+const borderColorCovidInternados = [salmon, lila, rosa];
+const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+
+
 
   //Gráfico confirmados según sexo Covid
   const totalPorSexoCovid = [
@@ -127,17 +148,17 @@ function Covid() {
           <p className='totalNumber'>{totalNotificadosETI}</p>
         </div>
         <div className='recuadro salmon'>
-          Confirmados COVID:
-          <p className='totalNumber'>{numeroConfirmadosCovidTotal}</p>
+          Internados COVID:
+          <p className='totalNumber'>{numeroCovidTotal}</p>
         </div>
-        <div className='recuadro rosa'>
+        {/* <div className='recuadro rosa'>
           Confirmados Influenza A:
           <p className='totalNumber'>{numeroConfirmadosInfluenzaA}</p>
         </div>
         <div className='recuadro lila'>
           Confirmados Influenza B:
           <p className='totalNumber'>{numeroConfirmadosInfluenzaB}</p>
-        </div>
+        </div> */}
         <div className='recuadro rosa' onClick={detallarEmbarazadasDengue}>
           Total confirmados VSR:
           <p className='totalNumber'>{numeroConfirmadosVsr}</p>
@@ -166,7 +187,17 @@ function Covid() {
           />
         </div>
 
-        <div className='barChart-sifilis'>
+        <div className='doughnutChart-sifilis'>
+          <DoughnutChart
+            title={titleInternadosCovid}
+            datos={totalInternadosCovid}
+            labels={labelsInternadosCovid}
+            backgroundColor={backgroundColorCovidInternados}
+            borderColor={borderColorCovidInternados}
+          />
+        </div>
+
+        {/* <div className='barChart-sifilis'>
           <BarChartThreeData
             title={titleClasificacionCovid}
             barLabels={labelsClasificacionCovid}
@@ -215,7 +246,7 @@ function Covid() {
             borderColor1={salmon}
             bgColor1={salmonTransparente}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
