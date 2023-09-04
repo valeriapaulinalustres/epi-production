@@ -3382,7 +3382,6 @@ const DataProvider = ({ children }) => {
   let covidTotalInternados = [...covidInternadosVacCompRef, ...covidInternadosVacCompSinRef, ...covidInternadosVacInc, ...covidInternadosSinVac]
 const numeroCovidTotalInternados = covidTotalInternados.length
 
-
   let covidTotalUTI = [...covidUTIVacCompRef, ...covidUTIVacCompSinRef, ...covidUTIVacInc, ...covidUTISinVac]
   const numeroCovidTotalUTI = covidTotalUTI.length
 
@@ -3391,6 +3390,16 @@ const numeroCovidTotalInternados = covidTotalInternados.length
 
   const covidTotal = [...covidTotalInternados, ...covidTotalUTI, ...covidTotalARM]
   const numeroCovidTotal = covidTotal.length
+
+//Para gráfico de vacunación/internación
+  let arayNumeroCovidTotalInternados = [covidInternadosVacCompRef.length, covidInternadosVacCompSinRef.length, covidInternadosVacInc.length, covidInternadosSinVac.length]
+
+
+  let arrayNumeroCovidTotalUTI = [covidUTIVacCompRef.length, covidUTIVacCompSinRef.length, covidUTIVacInc.length, covidUTISinVac.length]
+
+
+  let arayNumeroCovidTotalARM = [covidARMVacCompRef.length, covidARMVacCompSinRef.length, covidARMVacInc.length, covidARMSinVac.length]
+ 
 
 console.log(covidTotalARM)
 
@@ -4253,7 +4262,10 @@ console.log(covidTotalARM)
     numeroCovidTotalInternados,
     numeroCovidTotalUTI,
     numeroCovidTotalARM,
-    numeroCovidTotal
+    numeroCovidTotal,
+    arayNumeroCovidTotalInternados,
+    arrayNumeroCovidTotalUTI,
+    arayNumeroCovidTotalARM
   };
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;

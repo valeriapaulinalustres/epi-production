@@ -6,6 +6,7 @@ import Toast from 'sweetalert2';
 import Colors from '../../components/Colors';
 import BarChartSe from '../../components/BarChartSe';
 import BarChartThreeData from '../../components/BarChartThreeData';
+import BarChartSexAge from '../../components/BarChartSexAge';
 
 function Covid() {
   //destructuring from context
@@ -33,7 +34,10 @@ function Covid() {
     numeroCovidTotalInternados,
     numeroCovidTotalUTI,
     numeroCovidTotalARM,
-    numeroCovidTotal
+    numeroCovidTotal,
+    arayNumeroCovidTotalInternados,
+    arrayNumeroCovidTotalUTI,
+    arayNumeroCovidTotalARM
   } = useContext(DataContext);
 
   const [
@@ -120,6 +124,9 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
   const labelSeCovid = 'SE';
   const seCovid = covidXse;
 
+
+
+  
   //Alerts
 
   function detallarEmbarazadasDengue() {
@@ -194,6 +201,25 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
             labels={labelsInternadosCovid}
             backgroundColor={backgroundColorCovidInternados}
             borderColor={borderColorCovidInternados}
+          />
+        </div>
+
+        <div className='barChart-sifilis'>
+          <BarChartThreeData
+            title={`Casos de COVID internados según esquema de vacunación.  Morón, SE 1 a ${se}, ${anioBaseActual}`}
+            barLabels={['Esquema completo + Refuerzo','Esquema completo sin refuerzo', 'Esquema incompleto', 'Sin vacunas']}
+            label1={'Sala'}
+            label2={'UTI'}
+            label3={'ARM'}
+            data1={arayNumeroCovidTotalInternados}
+            data2={arrayNumeroCovidTotalUTI}
+            data3={arayNumeroCovidTotalARM}
+            borderColor1={lila}
+            borderColor2={salmon}
+            borderColor3={rosa}
+            bgColor1={lilaTransparente}
+            bgColor2={salmonTransparente}
+            bgColor3={rosaTransparente}
           />
         </div>
 

@@ -21,7 +21,7 @@ function DoughnutChart({ title, datos, labels, backgroundColor, borderColor }) {
     labels,
     datasets: [
       {
-        label: 'hola',
+        label: 'Número',
         data: datos,
         backgroundColor,
         borderColor,
