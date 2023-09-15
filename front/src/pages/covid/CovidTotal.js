@@ -16,20 +16,20 @@ function Covid() {
     semanas,
     totalNotificadosETI,
     etiXse,
-    numeroConfirmadosCovidTotal,
-    numeroConfirmadosCovidPcr,
-    numeroConfirmadosCovidAg,
-    numeroConfirmadosCovidAutotest,
-    numeroConfirmadosFemeninosCovid,
-    numeroConfirmadosMasculinosCovid,
-    numeroConfirmadosSdCovid,
-    porcentajeNotificadosCovidMoron,
-    numeroConfirmadosCovidTotalMoron,
-    numeroConfirmadosCovidTotalNoMoron,
-    numeroConfirmadosInfluenzaA,
-    numeroConfirmadosInfluenzaB,
-    numeroConfirmadosVsr,
-    covidXse,
+    // numeroConfirmadosCovidTotal,
+    // numeroConfirmadosCovidPcr,
+    // numeroConfirmadosCovidAg,
+    // numeroConfirmadosCovidAutotest,
+    // numeroConfirmadosFemeninosCovid,
+    // numeroConfirmadosMasculinosCovid,
+    // numeroConfirmadosSdCovid,
+    // porcentajeNotificadosCovidMoron,
+    // numeroConfirmadosCovidTotalMoron,
+    // numeroConfirmadosCovidTotalNoMoron,
+    // numeroConfirmadosInfluenzaA,
+    // numeroConfirmadosInfluenzaB,
+    // numeroConfirmadosVsr,
+    // covidXse,
     numeroNotificadosTotalBql,
     numeroCovidTotalInternados,
     numeroCovidTotalUTI,
@@ -37,7 +37,8 @@ function Covid() {
     numeroCovidTotal,
     arayNumeroCovidTotalInternados,
     arrayNumeroCovidTotalUTI,
-    arayNumeroCovidTotalARM
+    arayNumeroCovidTotalARM,
+    bronquiolitisXse
   } = useContext(DataContext);
 
   const [
@@ -60,15 +61,22 @@ function Covid() {
   const labelSeEti = 'SE';
   const seEti = etiXse;
 
-  //Gráfico clasificación COVID
-  const titleClasificacionCovid = `Clasificación de los casos confirmados de COVID. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
-  const labelsClasificacionCovid = ['Clasificación'];
-  const label1ClasificacionCovid = 'Confirmados por PCR';
-  const label2ClasificacionCovid = 'Confirmados por Test de Antígeno';
-  const label3ClasificacionCovid = 'Confirmados por autotest';
-  const dataConfirmadosPcrCovid = [numeroConfirmadosCovidPcr];
-  const dataConfirmadosAgCovid = [numeroConfirmadosCovidAg];
-  const dataConfirmadosAutotestCovid = [numeroConfirmadosCovidAutotest];
+    //Gráfico notificados x SE Bronquiolitis
+
+    const titleSeBql = `Casos notificados de Bronquiolitis, según Semana Epidemiológica. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+    const labelsSeBql = semanas;
+    const labelSeBql = 'SE';
+
+
+  // //Gráfico clasificación COVID
+  // const titleClasificacionCovid = `Clasificación de los casos confirmados de COVID. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+  // const labelsClasificacionCovid = ['Clasificación'];
+  // const label1ClasificacionCovid = 'Confirmados por PCR';
+  // const label2ClasificacionCovid = 'Confirmados por Test de Antígeno';
+  // const label3ClasificacionCovid = 'Confirmados por autotest';
+  // const dataConfirmadosPcrCovid = [numeroConfirmadosCovidPcr];
+  // const dataConfirmadosAgCovid = [numeroConfirmadosCovidAg];
+  // const dataConfirmadosAutotestCovid = [numeroConfirmadosCovidAutotest];
 
 //Gráfico clasificación de internados COVID
  const totalInternadosCovid = [
@@ -83,46 +91,46 @@ const backgroundColorCovidInternados = [
   rosaTransparente,
 ];
 const borderColorCovidInternados = [salmon, lila, rosa];
-const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+const titleInternadosCovid = `Casos internados de COVID según condición. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
 
 
 
-  //Gráfico confirmados según sexo Covid
-  const totalPorSexoCovid = [
-    numeroConfirmadosFemeninosCovid,
-    numeroConfirmadosMasculinosCovid,
-    numeroConfirmadosSdCovid,
-  ];
-  const labelsSexoCovid = ['Maculino', 'Femenino', 'SD'];
-  const backgroundColorCovid = [
-    salmonTransparente,
-    lilaTransparente,
-    rosaTransparente,
-  ];
-  const borderColorCovid = [salmon, lila, rosa];
-  const titleSexoCovid = `Casos confirmados de COVID según sexo. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+  // //Gráfico confirmados según sexo Covid
+  // const totalPorSexoCovid = [
+  //   numeroConfirmadosFemeninosCovid,
+  //   numeroConfirmadosMasculinosCovid,
+  //   numeroConfirmadosSdCovid,
+  // ];
+  // const labelsSexoCovid = ['Maculino', 'Femenino', 'SD'];
+  // const backgroundColorCovid = [
+  //   salmonTransparente,
+  //   lilaTransparente,
+  //   rosaTransparente,
+  // ];
+  // const borderColorCovid = [salmon, lila, rosa];
+  // const titleSexoCovid = `Casos confirmados de COVID según sexo. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
 
-  //Gráfico notificados Morón/Total
-  const notificadosCovidEstablecimientoCarga = [
-    numeroConfirmadosCovidTotalMoron,
-    numeroConfirmadosCovidTotalNoMoron,
-  ];
-  const labelsEstablecimientoCovid = [
-    'Establecimientos de Morón',
-    'Establecimientos no pertenecientes a Morón',
-  ];
-  const backgroundColorEstablecimientoCovid = [
-    lilaTransparente,
-    rosaTransparente,
-  ];
-  const borderColorEstablecimientoCovid = [lila, rosa];
-  const titleEstablecimientoCovid = `Casos confirmados de COVID según Establecimiento de carga. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+  // //Gráfico notificados Morón/Total
+  // const notificadosCovidEstablecimientoCarga = [
+  //   numeroConfirmadosCovidTotalMoron,
+  //   numeroConfirmadosCovidTotalNoMoron,
+  // ];
+  // const labelsEstablecimientoCovid = [
+  //   'Establecimientos de Morón',
+  //   'Establecimientos no pertenecientes a Morón',
+  // ];
+  // const backgroundColorEstablecimientoCovid = [
+  //   lilaTransparente,
+  //   rosaTransparente,
+  // ];
+  // const borderColorEstablecimientoCovid = [lila, rosa];
+  // const titleEstablecimientoCovid = `Casos confirmados de COVID según Establecimiento de carga. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
 
-  //Gráfico notificados x SE
-  const titleSeCovid = `Casos confirmados de COVID, según Semana Epidemiológica. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
-  const labelsSeCovid = semanas;
-  const labelSeCovid = 'SE';
-  const seCovid = covidXse;
+  // //Gráfico notificados x SE
+  // const titleSeCovid = `Casos confirmados de COVID, según Semana Epidemiológica. Morón, SE 1 a ${se}, ${anioBaseActual}.`;
+  // const labelsSeCovid = semanas;
+  // const labelSeCovid = 'SE';
+  // const seCovid = covidXse;
 
 
 
@@ -139,7 +147,7 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
 
   return (
     <div className='totalesGraphs-container'>
-      <p
+      {/* <p
         style={{
           border: '1px solid red',
           borderRadius: '15px',
@@ -148,7 +156,7 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
         }}
       >
         Atención: Página en remodelación
-      </p>
+      </p> */}
       <div className='totales-page-container'>
         <div className='recuadro naranja'>
           Total notificados ETI:
@@ -166,19 +174,19 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
           Confirmados Influenza B:
           <p className='totalNumber'>{numeroConfirmadosInfluenzaB}</p>
         </div> */}
-        <div className='recuadro rosa' onClick={detallarEmbarazadasDengue}>
+        {/* <div className='recuadro rosa' onClick={detallarEmbarazadasDengue}>
           Total confirmados VSR:
           <p className='totalNumber'>{numeroConfirmadosVsr}</p>
-        </div>
-        <div className='recuadro lila' onClick={detallarEmbarazadasDengue}>
+        </div> */}
+        <div className='recuadro rosa' onClick={detallarEmbarazadasDengue}>
           Notificados Bronquiolitis:
           <p className='totalNumber'>{numeroNotificadosTotalBql}</p>
         </div>
 
-        <div className='recuadro salmon'>
+        {/* <div className='recuadro salmon'>
           Covid conf. por Morón:
           <p className='totalNumber'>{porcentajeNotificadosCovidMoron}%</p>
-        </div>
+        </div> */}
       </div>
 
       <div className='graphs-container'>
@@ -191,6 +199,18 @@ const titleInternadosCovid = `Casos internados de COVID según sexo. Morón, SE 
             data1={etiXse}
             borderColor1={salmon}
             bgColor1={salmonTransparente}
+          />
+        </div>
+
+        <div className='barChart-sifilis'>
+          <BarChartSe
+            eje={'x'}
+            title={titleSeBql}
+            barLabels={labelsSeBql}
+            label1={labelSeBql}
+            data1={bronquiolitisXse}
+            borderColor1={rosa}
+            bgColor1={rosaTransparente}
           />
         </div>
 

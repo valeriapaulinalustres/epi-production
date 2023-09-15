@@ -3358,6 +3358,10 @@ const DataProvider = ({ children }) => {
     calcularNotificadosXSEClinica(arrayTotalNotificadosETI, 53),
   ];
 
+
+
+
+
   //---------COVID--------------------
   //Internación
   let covidInternadosVacCompRef = calcularTotalNotificadosClinica('COVID en Internación general - Vacunación completa + Refuerzo')
@@ -3401,8 +3405,51 @@ const numeroCovidTotalInternados = covidTotalInternados.length
   let arayNumeroCovidTotalARM = [covidARMVacCompRef.length, covidARMVacCompSinRef.length, covidARMVacInc.length, covidARMSinVac.length]
  
 
-console.log(covidTotalARM)
 
+//Entre fechas COVID
+
+
+
+//Internación
+let covidInternadosVacCompRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('COVID en Internación general - Vacunación completa + Refuerzo', semanaInicial, semanaFinal)
+let covidInternadosVacCompSinRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('COVID en Internación general - CON vacunación completa SIN refuerzo', semanaInicial, semanaFinal)
+let covidInternadosVacIncEntreFechas = calcularTotalNotificadosClinicaEntreFechas('COVID en Internación general - Con esquema INCOMPLETO', semanaInicial, semanaFinal)
+let covidInternadosSinVacEntreFechas = calcularTotalNotificadosClinicaEntreFechas('COVID en Internación general - SIN vacunación', semanaInicial, semanaFinal)
+
+//UTI
+let covidUTIVacCompRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en UTI por COVID-19 - CON vacunación completa + Refuerzo', semanaInicial, semanaFinal)
+let covidUTIVacCompSinRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en UTI por COVID-19 - esquema inicial COMPLETO', semanaInicial, semanaFinal) //ver si esta denominación es correcta
+let covidUTIVacIncEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en UTI por COVID-19 - esquema inicial INCOMPLETO', semanaInicial, semanaFinal)
+let covidUTISinVacEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en UTI por COVID-19 - SIN vacunación', semanaInicial, semanaFinal)
+
+//ARM
+let covidARMVacCompRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en ARM por COVID-19 - Con vacunación completa + Refuerzo', semanaInicial, semanaFinal)
+let covidARMVacCompSinRefEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en UTI por COVID-19 - esquema inicial COMPLETO', semanaInicial, semanaFinal) //ver si esta denominación es correcta
+let covidARMVacIncEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en ARM por COVID-19 con esquema inicial INCOMPLETO', semanaInicial, semanaFinal)
+let covidARMSinVacEntreFechas = calcularTotalNotificadosClinicaEntreFechas('Pacientes en ARM por COVID-19 - SIN vacunación', semanaInicial, semanaFinal)
+
+
+
+let covidTotalInternadosEntreFechas = [...covidInternadosVacCompRefEntreFechas, ...covidInternadosVacCompSinRefEntreFechas, ...covidInternadosVacIncEntreFechas, ...covidInternadosSinVacEntreFechas]
+const numeroCovidTotalInternadosEntreFechas = covidTotalInternadosEntreFechas.length
+
+let covidTotalUTIEntreFechas = [...covidUTIVacCompRefEntreFechas, ...covidUTIVacCompSinRefEntreFechas, ...covidUTIVacIncEntreFechas, ...covidUTISinVacEntreFechas]
+const numeroCovidTotalUTIEntreFechas = covidTotalUTIEntreFechas.length
+
+let covidTotalARMEntreFechas = [...covidARMVacCompRefEntreFechas, ...covidARMVacCompSinRefEntreFechas, ...covidARMVacIncEntreFechas, ...covidARMSinVacEntreFechas]
+const numeroCovidTotalARMEntreFechas = covidTotalARMEntreFechas.length
+
+const covidTotalEntreFechas = [...covidTotalInternadosEntreFechas, ...covidTotalUTIEntreFechas, ...covidTotalARMEntreFechas]
+const numeroCovidTotalEntreFechas = covidTotalEntreFechas.length
+
+//Para gráfico de vacunación/internación
+let arayNumeroCovidTotalInternadosEntreFechas = [covidInternadosVacCompRefEntreFechas.length, covidInternadosVacCompSinRefEntreFechas.length, covidInternadosVacIncEntreFechas.length, covidInternadosSinVacEntreFechas.length]
+
+
+let arrayNumeroCovidTotalUTIEntreFechas = [covidUTIVacCompRefEntreFechas.length, covidUTIVacCompSinRefEntreFechas.length, covidUTIVacIncEntreFechas.length, covidUTISinVacEntreFechas.length]
+
+
+let arayNumeroCovidTotalARMEntreFechas = [covidARMVacCompRefEntreFechas.length, covidARMVacCompSinRefEntreFechas.length, covidARMVacIncEntreFechas.length, covidARMSinVacEntreFechas.length]
 
 
   //Viejo
@@ -3687,6 +3734,85 @@ console.log(covidTotalARM)
   ];
 
   const numeroNotificadosTotalBql = arrayNotificadosTotalBql.length || 0;
+
+   //notificados por semana epidemiológica
+
+  const bronquiolitisXse = [
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 1),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 2),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 3),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 4),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 5),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 6),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 7),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 8),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 9),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 10),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 11),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 12),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 13),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 14),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 15),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 16),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 17),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 18),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 19),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 20),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 21),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 22),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 23),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 24),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 25),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 26),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 27),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 28),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 29),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 30),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 31),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 32),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 33),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 34),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 35),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 36),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 37),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 38),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 39),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 40),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 41),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 42),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 43),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 44),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 45),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 46),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 47),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 48),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 49),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 50),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 51),
+    calcularNotificadosXSEClinica(arrayNotificadosTotalBql, 52),
+  ];
+
+  //Bronquiolitis entre fechas
+
+  const arrayClinicaBqlSinEspecificarEntreFechas = calcularTotalNotificadosClinicaEntreFechas(
+    'Bronquiolitis en menores de 2 años (sin especificar)', semanaInicial, semanaFinal
+  );
+  const arrayClinicaBqlAmbulatorioEntreFechas = calcularTotalNotificadosClinicaEntreFechas(
+    'Bronquiolitis en menores de 2 años ambulatorios', semanaInicial, semanaFinal
+  );
+  const arrayClinicaBqlInternadoEntreFechas = calcularTotalNotificadosClinicaEntreFechas(
+    'Bronquiolitis en menores de 2 años internados', semanaInicial, semanaFinal
+  );
+
+  const arrayNotificadosTotalBqlEntreFechas = [
+    ...arrayClinicaBqlAmbulatorioEntreFechas,
+    ...arrayClinicaBqlSinEspecificarEntreFechas,
+    ...arrayClinicaBqlInternadoEntreFechas,
+  ];
+
+  const numeroNotificadosTotalBqlEntreFechas = arrayNotificadosTotalBqlEntreFechas.length || 0;
+
+
 
   // ------------------- Hepatitis C -------------------------------------
   //-------------array total
@@ -4265,7 +4391,17 @@ console.log(covidTotalARM)
     numeroCovidTotal,
     arayNumeroCovidTotalInternados,
     arrayNumeroCovidTotalUTI,
-    arayNumeroCovidTotalARM
+    arayNumeroCovidTotalARM,
+    bronquiolitisXse,
+    numeroNotificadosTotalBqlEntreFechas,
+    numeroCovidTotalEntreFechas,
+    numeroCovidTotalUTIEntreFechas,
+    numeroCovidTotalARMEntreFechas,
+    numeroCovidTotalInternadosEntreFechas,
+    arayNumeroCovidTotalInternadosEntreFechas,
+    arrayNumeroCovidTotalUTIEntreFechas,
+    arayNumeroCovidTotalARMEntreFechas
+    
   };
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
