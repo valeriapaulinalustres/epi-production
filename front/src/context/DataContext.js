@@ -12,8 +12,7 @@ const DataProvider = ({ children }) => {
   const [baseCompletaClinica, setBaseCompletaClinica] = useState([]);
   const [anioBaseActual, setAnioBaseActual] = useState();
 
-  const se = 52;
-
+  
   const date = new Date(); // calcula fecha y hora actual
   // const hoy = date.getDate() + "/" + (date.getMonth() +1) + "/" + date.getFullYear();
   // const fechaActual = date.getFullYear() + "-" + (date.getMonth() +1) + "-" +  date.getDate();
@@ -21,7 +20,31 @@ const DataProvider = ({ children }) => {
   const anioActual = date.getFullYear();
   //   const eneroFormatoNumero = pasarFechaAFormatoNumero(1-1-2022)
 
-  console.log(baseCompletaClinica);
+  console.log(baseCompleta);
+
+const baseCopia = baseCompleta.slice()
+
+let se = 52;
+if (baseCopia.length > 0) {
+
+//Se ordena baseCompleta en función de SEPI_APERTURA para tener el máximo valor de SE (SE actual)
+  baseCopia.sort(function (a, b) {
+    if (a.SEPI_APERTURA > b.SEPI_APERTURA) {
+      return 1;
+    }
+    if (a.SEPI_APERTURA < b.SEPI_APERTURA) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+  
+  se=baseCopia[baseCopia.length - 1].SEPI_APERTURA
+}
+
+
+
+  //https://docs.google.com/spreadsheets/d/1DwZpcmPudJP9THYTJ20oESfLyxZjhmMd1Y6mImK1xHo/edit#gid=0
 
   const semanas = [
     '1',
