@@ -297,29 +297,34 @@ if (baseCopia.length > 0) {
     const a = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     const b = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     const c = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-2' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     const d = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL ===
           'Caso confirmado por nexo epidemiológico autóctono' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     const e = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL ===
           'Caso de Dengue en brote con laboratorio (+)' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     const ab = [...a, ...b, ...c, ...d, ...e];
     return ab;
@@ -330,19 +335,44 @@ if (baseCopia.length > 0) {
       el =>
         el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-1' &&
         el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue' &&
         el.SEPI_APERTURA >= fechaInicio &&
         el.SEPI_APERTURA <= fechaFin
     );
     let b = baseCompleta.filter(
       el =>
         el.CLASIFICACION_MANUAL === 'Caso confirmado sin serotipo' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' && 
+        el.SEPI_APERTURA >= fechaInicio &&
+        el.SEPI_APERTURA <= fechaFin &&
+        el.EVENTO === 'Dengue'
+    );
+    let c = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado DEN-2' &&
         el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
         el.SEPI_APERTURA >= fechaInicio &&
-        el.SEPI_APERTURA <= fechaFin
+        el.SEPI_APERTURA <= fechaFin &&
+        el.EVENTO === 'Dengue'
     );
-    let ab = [...a, ...b];
+    let d = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso confirmado por nexo epidemiológico autóctono' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.SEPI_APERTURA >= fechaInicio &&
+        el.SEPI_APERTURA <= fechaFin &&
+        el.EVENTO === 'Dengue'
+    );
+    let e = baseCompleta.filter(
+      el =>
+        el.CLASIFICACION_MANUAL === 'Caso de Dengue en brote con laboratorio (+)' &&
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.SEPI_APERTURA >= fechaInicio &&
+        el.SEPI_APERTURA <= fechaFin &&
+        el.EVENTO === 'Dengue'
+    );
+
+    let ab = [...a, ...b, ...c, ...d, ...e];
     return ab;
   }
 
@@ -407,7 +437,8 @@ if (baseCopia.length > 0) {
       el =>
         el.CLASIFICACION_MANUAL ===
           'Caso descartado por diagnóstico diferencial' &&
-        el.DEPARTAMENTO_RESIDENCIA === 'Morón'
+        el.DEPARTAMENTO_RESIDENCIA === 'Morón' &&
+        el.EVENTO === 'Dengue'
     );
     let b = baseCompleta.filter(
       el =>

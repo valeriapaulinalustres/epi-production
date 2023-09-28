@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
-import BarChartFiveData from '../../components/BarChartFiveData';
+import BarChartFourData from '../../components/BarChartFourData';
 import '../sifilis/sifilis.css';
 import DataContext from '../../context/DataContext';
 import Toast from 'sweetalert2';
@@ -186,29 +186,25 @@ function DengueEntreFechas() {
         </div>
 
         <div className='barChart-sifilis'>
-          <BarChartFiveData
+          <BarChartFourData
             title={titleClasificacionDengueEntreFechas}
             barLabels={labelsClasificacionDengue}
             label1={label1ClasificacionDengue}
             label2={label2ClasificacionDengue}
-            label3={label3ClasificacionDengue}
-            label4={label4ClasificacionDengue}
-            label5={label5ClasificacionDengue}
+            label3={label4ClasificacionDengue}
+            label4={label5ClasificacionDengue}
             data1={dataConfirmadosClasificacionDengueEntreFechas}
             data2={dataProbablesClasificacionDengueEntreFechas}
-            data3={dataSospechososNoConcClasificacionDengueEntreFechas}
-            data4={dataSospechososClasificacionDengueEntreFechas}
-            data5={dataDescartadosClasificacionDengueEntreFechas}
+            data3={dataSospechososClasificacionDengueEntreFechas}
+            data4={dataDescartadosClasificacionDengueEntreFechas}
             borderColor1={lila}
             borderColor2={salmon}
             borderColor3={rosa}
             borderColor4={amarillo}
-            borderColor5={verde}
             bgColor1={lilaTransparente}
             bgColor2={salmonTransparente}
             bgColor3={rosaTransparente}
             bgColor4={amarilloTransparente}
-            bgColor5={verdeTransparente}
           />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
-import BarChartFiveData from '../../components/BarChartFiveData';
+import BarChartFourData from '../../components/BarChartFourData';
 import BarChartSexAge from '../../components/BarChartSexAge';
 import '../sifilis/sifilis.css';
 import DataContext from '../../context/DataContext';
@@ -108,14 +108,10 @@ function DengueTotal() {
   const labelsClasificacionDengue = ['Clasificación'];
   const label1ClasificacionDengue = 'Confirmados';
   const label2ClasificacionDengue = 'Probables';
-  const label3ClasificacionDengue = 'Sospechosos no conclusivos';
   const label4ClasificacionDengue = 'Sospechosos';
   const label5ClasificacionDengue = 'Descartados';
   const dataConfirmadosClasificacionDengue = [numeroConfirmadosTotalDengue];
   const dataProbablesClasificacionDengue = [numeroProbablesTotalDengue];
-  const dataSospechososNoConcClasificacionDengue = [
-    numeroConfirmadosTotalDengue,
-  ];
   const dataSospechososClasificacionDengue = [numeroSospechososTotalDengue];
   const dataDescartadosClasificacionDengue = [numeroDescartadosTotalDengue];
 
@@ -239,29 +235,25 @@ function DengueTotal() {
         </div>
 
         <div className='barChart-sifilis'>
-          <BarChartFiveData
+          <BarChartFourData
             title={titleClasificacionDengue}
             barLabels={labelsClasificacionDengue}
             label1={label1ClasificacionDengue}
             label2={label2ClasificacionDengue}
-            label3={label3ClasificacionDengue}
-            label4={label4ClasificacionDengue}
-            label5={label5ClasificacionDengue}
+            label3={label4ClasificacionDengue}
+            label4={label5ClasificacionDengue}
             data1={dataConfirmadosClasificacionDengue}
             data2={dataProbablesClasificacionDengue}
-            data3={dataSospechososNoConcClasificacionDengue}
-            data4={dataSospechososClasificacionDengue}
-            data5={dataDescartadosClasificacionDengue}
+            data3={dataSospechososClasificacionDengue}
+            data4={dataDescartadosClasificacionDengue}
             borderColor1={lila}
             borderColor2={salmon}
             borderColor3={rosa}
             borderColor4={amarillo}
-            borderColor5={verde}
             bgColor1={lilaTransparente}
             bgColor2={salmonTransparente}
             bgColor3={rosaTransparente}
             bgColor4={amarilloTransparente}
-            bgColor5={verdeTransparente}
           />
         </div>
 
