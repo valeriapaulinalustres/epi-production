@@ -134,14 +134,14 @@ function TbcEntreFechas() {
             {numeroDescartadosTotalTuberculosisEntreFechas}
           </p>
         </div>
-        <div className='recuadro lila'>
+        {/* <div className='recuadro lila'>
           En estudio:
           <p className='totalNumber'>
             {numeroEnEstudioTotalTuberculosisEntreFechas}
           </p>
-        </div>
+        </div> */}
         <div
-          className='recuadro salmon'
+          className='recuadro lila'
           onClick={handleEmbarazadasTbcEntreFechas}
         >
           Gestantes:
@@ -186,13 +186,13 @@ function TbcEntreFechas() {
             label3={label3RestultadoTuberculosis}
             data1={dataPositivosTuberculosisEntreFechas}
             data2={dataNegativosTuberculosisEntreFechas}
-            data3={dataSinResultadosTuberculosisEntreFechas}
+            // data3={dataSinResultadosTuberculosisEntreFechas}
             borderColor1={lila}
             borderColor2={salmon}
-            borderColor3={rosa}
+            // borderColor3={rosa}
             bgColor1={lilaTransparente}
             bgColor2={salmonTransparente}
-            bgColor3={rosaTransparente}
+            // bgColor3={rosaTransparente}
           />
         </div>
       </div>

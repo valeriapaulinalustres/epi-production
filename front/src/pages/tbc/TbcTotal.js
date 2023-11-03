@@ -201,11 +201,11 @@ function TbcTotal() {
           Descartados:
           <p className='totalNumber'>{numeroDescartadosTotalTuberculosis}</p>
         </div>
-        <div className='recuadro lila'>
+        {/* <div className='recuadro lila'>
           En estudio:
           <p className='totalNumber'>{numeroEnEstudioTotalTuberculosis}</p>
-        </div>
-        <div className='recuadro salmon' onClick={handleEmbarazadasTbc}>
+        </div> */}
+        <div className='recuadro lila' onClick={handleEmbarazadasTbc}>
           Gestantes:
           <p className='totalNumber'>
             {numeroEmbarazadasNotificadasTotalTuberculosis}
@@ -245,16 +245,16 @@ function TbcTotal() {
             barLabels={labelsRestultadoTuberculosis}
             label1={label1RestultadoTuberculosis}
             label2={label2RestultadoTuberculosis}
-            label3={label3RestultadoTuberculosis}
+            // label3={label3RestultadoTuberculosis}
             data1={dataPositivosTuberculosis}
             data2={dataNegativosTuberculosis}
-            data3={dataSinResultadosTuberculosis}
+            // data3={dataSinResultadosTuberculosis}
             borderColor1={lila}
             borderColor2={salmon}
             borderColor3={rosa}
             bgColor1={lilaTransparente}
             bgColor2={salmonTransparente}
-            bgColor3={rosaTransparente}
+            // bgColor3={rosaTransparente}
           />
         </div>
 

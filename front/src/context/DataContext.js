@@ -1941,18 +1941,26 @@ if (baseCopia.length > 0) {
   arrayConfirmadosTotalGeneralHiv = quitarDuplicados(
     arrayConfirmadosTotalGeneralHiv
   );
+
+  const arrayConfirmadosTotalHivPerinatal = calcularConfirmadosPorClasificacion('Caso confirmado de VIH perinatal')
+
+  const numeroConfirmadosTotalHivPerinatal = arrayConfirmadosTotalHivPerinatal.length ||0
   const numeroConfirmadosTotalGeneralHiv =
-    arrayConfirmadosTotalGeneralHiv.length || 0;
+  arrayConfirmadosTotalGeneralHiv.length || 0;
 
   //probables
-  let numeroProbablesTotalGeneralHiv =
+  let arrayProbablesTotalGeneralHiv =
     [
       ...calcularTotalNotificados('VIH'),
       ...calcularTotalNotificados('VIH - Expuesto perinatal'),
       ...calcularTotalNotificados('VIH en embarazo'),
     ].filter(
       el => el.CLASIFICACION_MANUAL === 'Caso probable de infección por VIH'
-    ).length || 0;
+    );
+
+    arrayProbablesTotalGeneralHiv = quitarDuplicados(arrayProbablesTotalGeneralHiv)
+
+const numeroProbablesTotalGeneralHiv = arrayProbablesTotalGeneralHiv.length || 0
 
   //descartados
   let arrayDescartadosTotalGeneralHiv = calcularConfirmadosPorClasificacion(
@@ -4454,7 +4462,8 @@ let arayNumeroCovidTotalARMEntreFechas = [covidARMVacCompRefEntreFechas.length, 
     numeroCovidTotalInternadosEntreFechas,
     arayNumeroCovidTotalInternadosEntreFechas,
     arrayNumeroCovidTotalUTIEntreFechas,
-    arayNumeroCovidTotalARMEntreFechas
+    arayNumeroCovidTotalARMEntreFechas,
+    numeroConfirmadosTotalHivPerinatal
     
   };
 

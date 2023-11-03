@@ -26,6 +26,7 @@ function HivTotal() {
     numeroTotalGeneralHivMoron,
     hivSexoEdad,
     hivXse,
+    numeroConfirmadosTotalHivPerinatal
   } = useContext(DataContext);
 
   const [
@@ -184,6 +185,10 @@ function HivTotal() {
         <div className='recuadro lila'>
           Descartados:
           <p className='totalNumber'>{numeroDescartadosTotalGeneralHiv}</p>
+        </div>
+        <div className='recuadro salmon'>
+          Confirmado perinatal:
+          <p className='totalNumber'>{numeroConfirmadosTotalHivPerinatal}</p>
         </div>
         <div className='recuadro rosa'>
           Expuesto perinatal:
