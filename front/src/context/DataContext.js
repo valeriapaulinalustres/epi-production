@@ -1886,7 +1886,7 @@ if (baseCopia.length > 0) {
 
   //------------valores totales--
   const numeroTotalNotificadosHiv = arrayTotalNotificadosHiv.length || 0;
-  const numeroTotalNotificadosHivPerinatal =
+  const numeroTotalNotificadosHivPerinatal = 
     arrayTotalNotificadosHivPerinatal.length || 0;
   const numeroTotalNotificadosHivEmbarazo =
     arrayTotalNotificadosHivEmbarazo.length || 0;
