@@ -135,7 +135,7 @@ function Upload() {
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
       json = xlsx.utils.sheet_to_json(worksheet);
-      console.log(json);
+      console.log('base',json);
       setBaseCompleta(json);
       setSpinnerHome(false);
       setAnioBaseActual(2022);

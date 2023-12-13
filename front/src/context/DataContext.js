@@ -837,10 +837,12 @@ if (baseCopia.length > 0) {
 
   function calcularNotificadosXSEClinica(arr, se) {
     return (
-      arr.filter(el => el.DEPARTAMENTO === 'MORÓN' && el.SEMANA === se).length ||
+      arr.filter(el =>  parseInt(el.SEMANA) === parseInt(se)).length ||
       0
-    );
+    )
+    //próximo mes agregarle de nuevo el.DEPARTAMENTO === 'MORÓN" &&
   }
+
 
   function quitarDuplicados(arr) {
     let sinDuplicados = [];
@@ -3422,7 +3424,7 @@ const numeroProbablesTotalGeneralHiv = arrayProbablesTotalGeneralHiv.length || 0
 
 
 
-
+console.log(etiXse)
 
   //---------COVID--------------------
   //Internación
