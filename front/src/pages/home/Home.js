@@ -19,8 +19,8 @@ function Home() {
   return (
     <div className='home-container'>
       <h2>Vigilancia de Enfermedades de Notificación Obligatoria</h2>
-      <h6>Datos actualizados al 30/11/2023</h6>
-      <h6 style={{color: '#ff003c'}}>Se está trabajando en solucionar un error en Notificados por Morón de cada enfermedad</h6>
+      <h6>Datos actualizados al 05/01/2024</h6>
+      {/* <h6 style={{color: '#ff003c'}}>Se está trabajando en solucionar un error en Notificados por Morón de cada enfermedad</h6> */}
 
       {anioBaseActual && <h3>Datos del año {anioBaseActual}</h3>}
 
