@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../../components/Loading/Loading';
 
-import excelFile from './moron2022.csv';
+import excelFile from './moron2024.csv';
 import excelFile2023 from './moron2023.csv';
 import excelFileClinica from './clinica2022.csv';
 import excelFileClinica2023 from './clinica2023.csv';
