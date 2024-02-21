@@ -12,7 +12,7 @@ const DataProvider = ({ children }) => {
   const [baseCompletaClinica, setBaseCompletaClinica] = useState([]);
   const [anioBaseActual, setAnioBaseActual] = useState('');
 
-  setAnioBaseActual(baseCompleta[0].ANIO_EPI_APERTURA)
+
 
   const date = new Date(); // calcula fecha y hora actual
   // const hoy = date.getDate() + "/" + (date.getMonth() +1) + "/" + date.getFullYear();
