@@ -12,6 +12,7 @@ import excelFile2023 from './moron2023.csv';
 import excelFile2024 from './moron2024.csv';
 import excelFileClinica from './clinica2022.csv';
 import excelFileClinica2023 from './clinica2023.csv';
+import excelFileClinica2024 from './clinica2024.csv';
 import * as xlsx from 'xlsx';
 
 function Upload() {
@@ -293,7 +294,7 @@ function Upload() {
 
     // get file from the imported url
     let requestClinica = new XMLHttpRequest();
-    requestClinica.open('GET', excelFileClinica2023, true);
+    requestClinica.open('GET', excelFileClinica2024, true);
     requestClinica.responseType = 'arraybuffer';
     requestClinica.onload = function () {
       let dataClinica = new Uint8Array(requestClinica.response);
@@ -329,7 +330,7 @@ function Upload() {
           Cargar archivo local 2023
         </button>
         <button onClick={loadLocalFile2024} className='buttonActive'>
-          Cargar archivo local 202
+          Cargar archivo local 2024
         </button>
 
         {/* Input para cargar archivo csv externo */}
