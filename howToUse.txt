@@ -47,7 +47,7 @@ write.table(tabla2, file='C:\\Users\\Vale\\Documents\\Valeria\\Trabajo Epidemio 
 ****************
 
 Excel => Datos => de Texto/CSV => elegir el archivo a transformar => crear
-Eliminar columnas sobrantes
+Filtrar por año 2024 tanto en clínica como en nominales. Eliminar columnas sobrantes
 reemplazar en uploads
 
 GIT PUSH ORIGIN 2024
